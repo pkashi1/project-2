@@ -30,7 +30,7 @@ export const services = [
     id: 'utility-installation',
     name: 'Utility Installation',
     icon: 'Zap',
-    image: '/images/di-F1MlxlEpaOk-unsplash.jpg',
+    image: '/images//di-F1MlxlEpaOk-unsplash.jpg',
     shortDescription: 'Complete utility infrastructure installation and maintenance services.',
     detailedDescription: 'Comprehensive utility installation services covering water, sewer, gas, electrical, and telecommunications infrastructure. Our experienced team handles everything from residential connections to major municipal projects.',
     features: [
@@ -130,7 +130,7 @@ export const projects = [
     title: 'Downtown Baton Rouge Utility Upgrade',
     description: 'Complete utility infrastructure upgrade including water, sewer, and telecommunications for 12-block downtown area.',
     category: 'Utility Installation',
-    image: '/images/downtown-construction.png',
+    image: '/images//downtown-construction.png',
     completionDate: '2024-02-15',
     clientName: 'City of Baton Rouge',
     location: 'Baton Rouge, LA',
@@ -184,7 +184,7 @@ export const projects = [
     title: 'Water Treatment Plant Upgrade',
     description: 'Major upgrade to municipal water treatment facility including new filtration systems and pipeline connections.',
     category: 'Water & Sewer Treatment',
-    image: '/images/waterplant.png',
+    image: '/images//waterplant.png',
     completionDate: '2023-09-15',
     clientName: 'Central Water Works',
     location: 'Central, LA',
@@ -333,7 +333,7 @@ export const blogPosts = [
     author: 'Amanda Wilson',
     publishDate: '2024-03-05',
     tags: ['Safety', 'Training', 'Best Practices'],
-    featuredImage: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
+    featuredImage: '/images//dean-bennett-aBV8pVODWiM-unsplash.jpg',
     readTime: 4
   },
   {
