@@ -12,9 +12,9 @@ const transporter = nodemailer.createTransport({
 transporter.sendMail({
   from: process.env.EMAIL_USER,
   to: 'parimalkashireddy1@gmail.com',
-  subject: '✅ Test Email from Azure Resume App',
+  subject: 'Test Email from Azure Resume App',
   text: 'If you see this, your email credentials are working!'
 }, (err, info) => {
   if (err) return console.error('❌ Failed:', err);
-  console.log('✅ Success:', info.response);
+  console.log('Success:', info.response);
 });

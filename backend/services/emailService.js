@@ -21,8 +21,9 @@ async function sendJobApplicationEmail({ name, email, phone, position, experienc
 
   return transporter.sendMail({
     from: process.env.EMAIL_USER,
-    to: 'kasiparimal@gmail.com',
-    subject: `🔥 Application for ${position} – ${name}`,
+    // to: 'kasiparimal@gmail.com',
+    to:'srikanthbangaru.lsu@gmail.com',
+    subject: `Application for ${position} – ${name}`,
     html,
   });
 }
