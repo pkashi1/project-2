@@ -47,23 +47,59 @@ const Careers: React.FC = () => {
       description: 'Stable employment with a growing, established company'
     }
   ];
+const [submitting, setSubmitting] = useState(false);
+const [formMsg, setFormMsg] = useState('');
 
-  const handleApplicationSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle application submission
-    console.log('Application submitted:', applicationData);
-    alert('Thank you for your application! We will review it and contact you soon.');
-    setApplicationData({
-      name: '',
-      email: '',
-      phone: '',
-      position: '',
-      experience: '',
-      message: '',
-      resume: null
+  const handleApplicationSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setFormMsg('');
+  setSubmitting(true);
+
+  try {
+    const payload = new FormData();
+    // append all text fields
+    Object.entries(applicationData).forEach(([key, val]) => {
+      if (key === 'resume') return;
+      payload.append(key, val as string);
     });
-    setSelectedJob(null);
-  };
+    // append the file
+    if (applicationData.resume) {
+      payload.append('resume', applicationData.resume);
+    }
+
+    const res = await fetch('http://localhost:5050/api/job/apply', {
+      method: 'POST',
+      body: payload,
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      setFormMsg(data.msg || 'Application submitted successfully! 🎉');
+      // clear form
+      setTimeout(() => {
+        setFormMsg('');
+        setSelectedJob(null);
+        setApplicationData({
+          name: '',
+          email: '',
+          phone: '',
+          position: '',
+          experience: '',
+          message: '',
+          resume: null
+        });
+      }, 3000);
+    } else {
+      setFormMsg(data.msg || 'Submission failed. Please try again.');
+    }
+  } catch (err) {
+    console.error(err);
+    setFormMsg('Server error. Please try again later.');
+  }
+
+  setSubmitting(false);
+};
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -357,6 +393,7 @@ const Careers: React.FC = () => {
                   </label>
                   <input
                     type="file"
+                    name="resume"
                     onChange={handleFileChange}
                     accept=".pdf,.doc,.docx"
                     required
@@ -385,9 +422,10 @@ const Careers: React.FC = () => {
                   <button
                     type="submit"
                     className="flex-1 bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center"
+                    disabled={submitting}
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Submit Application
+                    {submitting ? 'Submitting...' : 'Submit Application'}
                   </button>
                   <button
                     type="button"
@@ -397,6 +435,14 @@ const Careers: React.FC = () => {
                     Cancel
                   </button>
                 </div>
+
+                {/* Feedback message */}
+                {formMsg && (
+                  <p className={`mt-4 text-center ${formMsg.includes('successfully') ? 'text-green-600' : 'text-red-500'}`}>
+                    {formMsg}
+                  </p>
+                )}
+
               </form>
             </div>
           </div>

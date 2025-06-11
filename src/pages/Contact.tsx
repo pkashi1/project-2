@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,29 +26,48 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        projectType: '',
-        timeline: '',
-        budget: '',
-        message: '',
-        newsletter: false
-      });
-    }, 3000);
-  };
+const [formMsg, setFormMsg] = useState('');
+const [submitting, setSubmitting] = useState(false);
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setFormMsg('');
+  setSubmitting(true);
+  try {
+    const res = await fetch('http://localhost:5050/api/contact/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setFormMsg(data.msg || 'Submitted!');
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormMsg('');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          projectType: '',
+          timeline: '',
+          budget: '',
+          message: '',
+          newsletter: false
+        });
+      }, 3000);
+    } else {
+      setFormMsg(data.msg || 'Submission failed.');
+    }
+  } catch (err) {
+    setFormMsg('Server error. Please try again.');
+  }
+  setSubmitting(false);
+};
+
 
   const contactInfo = [
     {
@@ -182,6 +202,11 @@ const Contact: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Request a Quote</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {formMsg && (
+                  <div className={`mt-4 text-center ${formMsg.includes('Thank') ? 'text-green-600' : 'text-red-500'}`}>
+                    {formMsg}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -363,11 +388,16 @@ const Contact: React.FC = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Visit Our Office</h3>
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <div className="h-64 bg-gray-200 flex items-center justify-center">
-                    <div className="text-center text-gray-500">
-                      <MapPin className="w-12 h-12 mx-auto mb-2" />
-                      <p>Interactive Map</p>
-                      <p className="text-sm">4922 Rankin Street, Zachary, LA 70791</p>
-                    </div>
+                    <iframe
+                      title="Southern Underground Office"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, borderRadius: '12px', minHeight: '256px' }}
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src="https://www.google.com/maps?q=4922+Rankin+Street,+Zachary,+LA+70791&output=embed"
+                    />
                   </div>
                   <div className="p-6">
                     <h4 className="font-semibold text-gray-900 mb-2">Office Location</h4>

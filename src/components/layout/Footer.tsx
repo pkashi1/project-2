@@ -1,8 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react';
 
+
 const Footer: React.FC = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+const [newsletterMsg, setNewsletterMsg] = useState('');
+const [loading, setLoading] = useState(false);
+
+const handleSubscribe = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setNewsletterMsg('');
+  setLoading(true);
+  try {
+    const res = await fetch('http://localhost:5050/api/newsletter/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: newsletterEmail }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      setNewsletterMsg('Subscribed successfully!');
+      setNewsletterEmail('');
+    } else {
+      setNewsletterMsg(data.msg || 'Subscription failed.');
+    }
+  } catch (err) {
+    setNewsletterMsg('Server error. Please try again later.');
+  }
+  setLoading(false);
+};
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -89,25 +116,39 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="text-center">
-            <h4 className="text-lg font-semibold text-white mb-2">Stay Updated</h4>
-            <p className="text-gray-300 text-sm mb-4">
-              Subscribe to our newsletter for industry insights and company updates.
-            </p>
-            <div className="flex max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
-              />
-              <button className="bg-primary-600 text-white px-6 py-2 rounded-r-lg hover:bg-primary-700 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+{/* Newsletter Signup */}
+<div className="border-t border-gray-800 mt-8 pt-8">
+  <div className="text-center">
+    <h4 className="text-lg font-semibold text-white mb-2">Stay Updated</h4>
+    <p className="text-gray-300 text-sm mb-4">
+      Subscribe to our newsletter for industry insights and company updates.
+    </p>
+    <form className="flex max-w-md mx-auto" onSubmit={handleSubscribe}>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+        value={newsletterEmail}
+        onChange={e => setNewsletterEmail(e.target.value)}
+        required
+        disabled={loading}
+      />
+      <button
+        type="submit"
+        className="bg-primary-600 text-white px-6 py-2 rounded-r-lg hover:bg-primary-700 transition-colors"
+        disabled={loading}
+      >
+        {loading ? 'Subscribing...' : 'Subscribe'}
+      </button>
+    </form>
+    {newsletterMsg && (
+      <p className={`mt-2 text-center ${newsletterMsg.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+        {newsletterMsg}
+      </p>
+    )}
+  </div>
+</div>
+
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
