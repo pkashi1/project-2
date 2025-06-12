@@ -1,4 +1,4 @@
-import { image } from "framer-motion/client";
+// import { image } from "framer-motion/client";
 import { addServiceMetadata } from '../../src/utils/seoMetadata';
 import type { ServiceWithMeta } from '../../src/utils/seoMetadata';
 

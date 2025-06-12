@@ -37,8 +37,13 @@ const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {services.map((service, index) => {
-              const IconComponent = Icons[service.icon as keyof typeof Icons] as React.ComponentType<any>;
-              
+              // First, define an interface for the icon props
+              interface IconProps {
+                className?: string;
+              }
+
+              // Then modify your mapping line to include the proper typing
+              const IconComponent = Icons[service.icon as keyof typeof Icons] as React.ComponentType<IconProps>;
               return (
                 <div
                   key={service.id}

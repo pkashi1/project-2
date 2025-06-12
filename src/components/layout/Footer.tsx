@@ -25,7 +25,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
     } else {
       setNewsletterMsg(data.msg || 'Subscription failed.');
     }
-  } catch (err) {
+  } catch {
     setNewsletterMsg('Server error. Please try again later.');
   }
   setLoading(false);

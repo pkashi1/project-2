@@ -1,12 +1,14 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Phone, Mail } from 'lucide-react';
-import { services, projects } from '../data/mockData';
+// import { services, projects } from '../data/mockData';
+import { enhancedServices, projects } from '../data/mockData';
+
 import * as Icons from 'lucide-react';
 
 const ServiceDetail: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
-  const service = services.find(s => s.id === serviceId);
+  const service = enhancedServices.find(s => s.id === serviceId);
   
   if (!service) {
     return (
@@ -21,7 +23,7 @@ const ServiceDetail: React.FC = () => {
     );
   }
 
-  const IconComponent = Icons[service.icon as keyof typeof Icons] as React.ComponentType<any>;
+  const IconComponent = Icons[service.icon as keyof typeof Icons] as React.FC<React.SVGProps<SVGSVGElement>>;
   const relatedProjects = projects.filter(p => 
     p.category.toLowerCase().includes(service.name.toLowerCase().split(' ')[0])
   );
@@ -122,59 +124,12 @@ const ServiceDetail: React.FC = () => {
             {/* Process */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Process</h2>
-              <div className="space-y-6">
+              {/* <div className="space-y-6"> */}
+              <ol className="space-y-4 list-decimal list-inside text-gray-700">
                 {service.process.map((step, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold">{index + 1}</span>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">{step}</h3>
-                      {/* <p className="text-gray-600 text-sm">
-                        Each step is carefully executed with attention to detail and quality control.
-                      </p> */}
-                    </div>
-                  </div>
+                  <li key={index}>{step}</li>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Equipment & Technology */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Advanced Equipment & Technology</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We invest in the latest technology and equipment to deliver superior results
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icons.Zap className="w-8 h-8 text-primary-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">State-of-the-Art Equipment</h3>
-              <p className="text-gray-600">Modern machinery and tools for efficient, precise work</p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icons.MapPin className="w-8 h-8 text-secondary-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">GPS Guidance Systems</h3>
-              <p className="text-gray-600">Precision positioning and real-time tracking technology</p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icons.Shield className="w-8 h-8 text-accent-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Safety Monitoring</h3>
-              <p className="text-gray-600">Advanced safety systems and real-time monitoring</p>
+              </ol>
             </div>
           </div>
         </div>
@@ -182,34 +137,24 @@ const ServiceDetail: React.FC = () => {
 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Related Projects</h2>
-              <p className="text-xl text-gray-600">
-                See examples of our {service.name.toLowerCase()} work
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedProjects.slice(0, 3).map((project) => (
-                <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{project.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                    <Link
-                      to={`/projects/${project.id}`}
-                      className="text-primary-600 font-medium hover:text-primary-700"
-                    >
-                      View Project Details →
-                    </Link>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {relatedProjects.map((project) => (
+                <Link
+                  key={project.id}
+                  to={`/projects/${project.id}`}
+                  className="block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-700">{project.description}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -217,32 +162,7 @@ const ServiceDetail: React.FC = () => {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Get Started with {service.name}?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            Contact us today for a free consultation and detailed quote for your project.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center bg-secondary-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-colors"
-            >
-              Get Free Quote
-              <Mail className="ml-2 w-5 h-5" />
-            </Link>
-            <a
-              href="tel:+12255550123"
-              className="inline-flex items-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-700 transition-colors"
-            >
-              <Phone className="mr-2 w-5 h-5" />
-              Call (225) 555-0123
-            </a>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };

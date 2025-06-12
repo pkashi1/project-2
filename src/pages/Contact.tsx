@@ -27,12 +27,12 @@ const Contact: React.FC = () => {
   };
 
 const [formMsg, setFormMsg] = useState('');
-const [submitting, setSubmitting] = useState(false);
+// const [submitting, setSubmitting] = useState(false);
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setFormMsg('');
-  setSubmitting(true);
+  // setSubmitting(true);
   try {
     const res = await fetch('http://localhost:5050/api/contact/submit', {
       method: 'POST',
@@ -62,10 +62,10 @@ const handleSubmit = async (e: React.FormEvent) => {
     } else {
       setFormMsg(data.msg || 'Submission failed.');
     }
-  } catch (err) {
+  } catch {
     setFormMsg('Server error. Please try again.');
   }
-  setSubmitting(false);
+  // setSubmitting(false);
 };
 
 

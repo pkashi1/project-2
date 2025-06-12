@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Users, Award, Shield, Target, Heart, Lightbulb, CheckCircle } from 'lucide-react';
 import { teamMembers, companyStats } from '../data/mockData';
+import { Helmet } from 'react-helmet-async';
 
 const About: React.FC = () => {
   const values = [
@@ -37,6 +38,10 @@ const About: React.FC = () => {
 
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>About | Southern Underground</title>
+        <meta name="description" content="Learn about Southern Underground, our history and dedication to quality utility construction." />
+      </Helmet>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
