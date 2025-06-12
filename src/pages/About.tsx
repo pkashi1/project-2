@@ -51,9 +51,11 @@ const About: React.FC = () => {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                   Building Louisiana's <span className="text-primary-600">Future</span> Since 2015
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Southern Underground of Louisiana has grown from a small local contractor to a regional leader 
-                  in construction and utility services, driven by our commitment to excellence and innovation.
+                <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                  At Southern Underground, we specialize in the critical infrastructure services that form the backbone of Louisiana's communities and industries. With expertise in underground utilities, site development, and civil construction, we excel in delivering comprehensive solutions that meet the unique demands of our region.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Every project we take on benefits from our team's years of specialized experience, cutting-edge tools, and unrelenting dedication to quality.  We have the know-how and commitment to go above and beyond your expectations, whether you're building a new subdivision, renovating municipal infrastructure, getting ready for an industrial site, or needing urgent utility repairs.  We are the go-to company for your construction and utilities needs because of our accuracy, safety record, and thorough knowledge of Louisiana's difficult soils and climate.
                 </p>
               </div>
               
@@ -88,8 +90,61 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Mission Statement */}
+      {/* Services Overview */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive construction and utility services built on decades of Louisiana experience
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-50 rounded-xl p-8 hover:bg-primary-50 transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Underground Utilities</h3>
+              <p className="text-gray-600 mb-4">
+                Complete water, sewer, storm drainage, and gas line installation with advanced directional boring and trenchless technology.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Water and sewer infrastructure</li>
+                <li>• Storm drainage systems</li>
+                <li>• Natural gas distribution</li>
+                <li>• Telecommunications installation</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-8 hover:bg-primary-50 transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Site Development</h3>
+              <p className="text-gray-600 mb-4">
+                From initial site preparation to final grading, we handle all aspects of civil construction and earthwork.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Site preparation and excavation</li>
+                <li>• Road construction and paving</li>
+                <li>• Concrete work and foundations</li>
+                <li>• Environmental remediation</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-8 hover:bg-primary-50 transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Specialized Services</h3>
+              <p className="text-gray-600 mb-4">
+                Emergency repairs, industrial maintenance, and specialized construction services for unique project requirements.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Emergency utility repairs</li>
+                <li>• Industrial plant utilities</li>
+                <li>• Municipal infrastructure upgrades</li>
+                <li>• Flood mitigation systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Statement */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Mission</h2>
@@ -99,14 +154,15 @@ const About: React.FC = () => {
             </blockquote>
             <p className="text-lg text-gray-600">
               We believe that every project is an opportunity to make a positive impact on the communities 
-              we serve, creating infrastructure that will benefit generations to come.
+              we serve, creating infrastructure that will benefit generations to come. Your vision becomes our mission, 
+              and we're committed to bringing it to life with precision and excellence.
             </p>
           </div>
         </div>
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
@@ -119,7 +175,7 @@ const About: React.FC = () => {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group hover:-translate-y-2">
+                <div key={index} className="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center group hover:-translate-y-2">
                   <div className="flex justify-center mb-6">
                     <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center group-hover:bg-primary-600 transition-colors duration-300">
                       <Icon className="w-8 h-8 text-primary-600 group-hover:text-white transition-colors duration-300" />
@@ -135,7 +191,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
@@ -171,7 +227,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
@@ -182,7 +238,7 @@ const About: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
-              <div key={member.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
+              <div key={member.id} className="bg-gray-50 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -202,7 +258,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Certifications & Credentials</h2>
@@ -212,22 +268,22 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
+            <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Shield className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="font-semibold text-gray-900 mb-2">OSHA Compliant</h3>
               <p className="text-gray-600 text-sm">Full compliance with safety standards</p>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
+            <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Award className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="font-semibold text-gray-900 mb-2">Licensed Contractor</h3>
               <p className="text-gray-600 text-sm">State-licensed construction contractor</p>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
+            <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <Users className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="font-semibold text-gray-900 mb-2">NUCA Member</h3>
               <p className="text-gray-600 text-sm">National Association of Utility Contractors</p>
             </div>
-            <div className="text-center p-6 bg-gray-50 rounded-xl">
+            <div className="text-center p-6 bg-white rounded-xl shadow-lg">
               <CheckCircle className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="font-semibold text-gray-900 mb-2">Bonded & Insured</h3>
               <p className="text-gray-600 text-sm">Comprehensive insurance coverage</p>

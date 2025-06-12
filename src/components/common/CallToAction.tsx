@@ -18,7 +18,7 @@ const CallToAction: React.FC = () => {
           </h2>
           
           <p className="text-xl md:text-2xl text-primary-100 leading-relaxed">
-            Get a free consultation and quote from Louisiana's leading construction experts. 
+            Get a free consultation from Louisiana's leading construction experts. 
             We're here to bring your vision to life with precision and professionalism.
           </p>
 
@@ -27,7 +27,7 @@ const CallToAction: React.FC = () => {
               to="/contact"
               className="inline-flex items-center bg-secondary-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
             >
-              Get Free Quote
+              Get Free consultation
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             

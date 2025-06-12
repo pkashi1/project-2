@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
                 to="/contact"
                 className="inline-flex items-center justify-center bg-secondary-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
               >
-                Request Quote
+                Book Appointment
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
