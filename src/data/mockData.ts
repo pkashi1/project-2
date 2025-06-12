@@ -1,4 +1,6 @@
 import { image } from "framer-motion/client";
+import { addServiceMetadata } from '../../src/utils/seoMetadata';
+import type { ServiceWithMeta } from '../../src/utils/seoMetadata';
 
 // Mock data for the website
 export const services = [
@@ -123,6 +125,8 @@ export const services = [
     ]
   }
 ];
+
+export const enhancedServices: ServiceWithMeta[] = addServiceMetadata(services);
 
 export const projects = [
   {
