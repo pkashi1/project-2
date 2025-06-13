@@ -29,7 +29,7 @@ const Projects: React.FC = () => {
     }}
   >
     {/* Dark Overlay */}
-    <div className="absolute inset-0 bg-black/50" />
+    <div className="absolute inset-0 bg-black/70" />
   </div>
 
   {/* Content */}

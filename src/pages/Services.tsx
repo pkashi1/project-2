@@ -17,7 +17,7 @@ const Services: React.FC = () => {
   }}
 >
   {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/50" /> {/* Changed to black with 50% opacity */}
+  <div className="absolute inset-0 bg-black/70" /> {/* Changed to black with 50% opacity */}
 </div>
 
       {/* Content */}
@@ -57,7 +57,7 @@ const Services: React.FC = () => {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-gray-900">{service.name}</h2>
-                        <p className="text-primary-600 font-medium">Professional Service</p>
+                        {/* <p className="text-primary-600 font-medium">Professional Service</p> */}
                       </div>
                     </div>
                     <p className="text-gray-700 text-lg leading-relaxed">

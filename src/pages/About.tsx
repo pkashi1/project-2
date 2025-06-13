@@ -153,9 +153,7 @@ const About: React.FC = () => {
               while maintaining the highest standards of safety, quality, and environmental responsibility."
             </blockquote>
             <p className="text-lg text-gray-600">
-              We believe that every project is an opportunity to make a positive impact on the communities 
-              we serve, creating infrastructure that will benefit generations to come. Your vision becomes our mission, 
-              and we're committed to bringing it to life with precision and excellence.
+              Every project, in our opinion, is a chance to improve the communities we serve and build infrastructure that will help future generations.  Our goal becomes realizing your vision, and we're dedicated to doing it with accuracy and quality.
             </p>
           </div>
         </div>
@@ -167,7 +165,7 @@ const About: React.FC = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These values guide every decision we make and every project we undertake
+              Every choice we make and every project we work on is guided by these principles
             </p>
           </div>
           
@@ -231,9 +229,6 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experienced professionals dedicated to delivering exceptional results
-            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

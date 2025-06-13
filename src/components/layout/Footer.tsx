@@ -50,10 +50,10 @@ const handleSubscribe = async (e: React.FormEvent) => {
               and civil construction across the nation since 2015.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/southernundergroundofla/" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/southern-underground-ofla">
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -116,7 +116,6 @@ const handleSubscribe = async (e: React.FormEvent) => {
           </div>
         </div>
 
-{/* Newsletter Signup */}
 <div className="border-t border-gray-800 mt-8 pt-8">
   <div className="text-center">
     <h4 className="text-lg font-semibold text-white mb-2">Stay Updated</h4>

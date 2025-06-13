@@ -180,15 +180,6 @@ const Header: React.FC = () => {
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center space-x-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center bg-secondary-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
-              >
-                Get Quote
-              </Link>
-            </div>
-
             <button
               className="lg:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}

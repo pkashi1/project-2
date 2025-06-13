@@ -9,7 +9,7 @@ const FeaturedProjects: React.FC = () => {
     {
       id: 1,
       title: 'Downtown Baton Rouge Utility Upgrade',
-      description: 'Complete utility infrastructure upgrade including water, sewer, and telecommunications for 12-block downtown area.',
+      description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
       image: '/images/downtown-construction.png',
       category: 'Utility Installation',
       location: 'Baton Rouge, LA',
@@ -18,7 +18,7 @@ const FeaturedProjects: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Industrial Gas Pipeline Installation',
+      title: 'Industrial Gas Pipeline Installation at Lake Charles',
       description: 'High-pressure gas pipeline installation for petrochemical facility with specialized safety protocols.',
       image: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
       category: 'Directional Boring',

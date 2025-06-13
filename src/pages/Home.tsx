@@ -10,8 +10,8 @@ const Home: React.FC = () => {
   return (
     <div>
       <Helmet>
-        {/* <title>Southern Underground | Louisiana Construction Compa</title> */}
-        <title>Directional Boring & Underground Utilities - Southern Underground of Louisiana</title>
+        <title>Southern Underground | Louisiana Construction Compa</title>
+        {/* <title>Directional Boring & Underground Utilities - Southern Underground of Louisiana</title> */}
 
         <meta
           name="description"

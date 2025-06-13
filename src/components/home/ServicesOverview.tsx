@@ -50,7 +50,7 @@ const ServicesOverview: React.FC = () => {
             Our <span className="text-primary-600">Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive construction solutions backed by years of experience and cutting-edge technology
+            Complete building solutions supported by advanced technology and years of experience
           </p>
         </div>
 

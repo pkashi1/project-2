@@ -4,16 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <meta name="description" content="Southern Underground of Louisiana - Leading construction company specializing in directional boring, utility installation, and civil construction across the nation." />
     <meta name="keywords" content="directional boring, utility installation, civil construction, Louisiana, underground utilities" />
-    <!-- <title>Southern Underground of Louisiana - Expert Construction & Utility Services</title> -->
+
     <title>Directional Boring & Underground Utilities - Southern Underground of Louisiana</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; right: 10px; z-index: 9999;"></div>
+
+    <!-- Root of React App -->
     <div id="root"></div>
+
+    <!-- Main Vite Script -->
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,es',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          },
+          'google_translate_element'
+        );
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

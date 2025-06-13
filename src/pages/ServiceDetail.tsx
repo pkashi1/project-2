@@ -62,7 +62,7 @@ const ServiceDetail: React.FC = () => {
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold text-gray-900">{service.name}</h1>
-                  <p className="text-primary-600 font-medium text-lg">Expert Service</p>
+                  {/* <p className="text-primary-600 font-medium text-lg">Expert Service</p> */}
                 </div>
               </div>
 

@@ -6,14 +6,17 @@ const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br overflow-hidden">
       {/* Background Image with Overlay */}
-        <div 
-      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-      style={{
-        backgroundImage: 'url(/images/pexels-ywanphoto-188679.jpg)',
-      }}
-    >
-      <div className="absolute inset-0 bg-black/60" /> 
-    </div>
+       <div className="absolute inset-0 z-0 overflow-hidden">
+  <video
+    className="w-full h-full object-cover"
+    src="/images/road-construction.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+  />
+  <div className="absolute inset-0 bg-black/60" />
+</div>
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -34,8 +37,7 @@ const Hero: React.FC = () => {
                 of Tomorrow
               </h1>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl">
-                Specializing in Directional Boring, Utility Installation, and Civil Construction 
-                Across the Nation
+                Offering Civil Construction, Utility Installation, and Directional Boring Services Throughout the United States.
               </p>
             </div>
 
@@ -52,7 +54,7 @@ const Hero: React.FC = () => {
                 className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 group"
               >
                 <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                View Projects
+                Our Work
               </Link>
             </div>
 
@@ -88,13 +90,13 @@ const Hero: React.FC = () => {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">24/7 Emergency Service</h3>
               <p className="text-gray-300">
-                Round-the-clock emergency response for critical infrastructure issues.
+                24-hour emergency response for important infrastructure problems.
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Quality Guaranteed</h3>
               <p className="text-gray-300">
-                Every project backed by our commitment to excellence and customer satisfaction.
+                Providing Outstanding Outcomes and Outstanding Client Contentment in Baton Rouge and Louisiana
               </p>
             </div>
           </div>
