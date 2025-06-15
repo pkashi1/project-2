@@ -27,7 +27,7 @@ export default {
           200: '#fed7aa',
           300: '#fdba74',
           400: '#fb923c',
-          500: '#f97316',
+          500: '#FF6B35', // Main orange
           600: '#ea580c',
           700: '#c2410c',
           800: '#9a3412',
@@ -59,6 +59,14 @@ export default {
           800: '#243b53',
           900: '#1B365D',
           950: '#102a43',
+        },
+        // Dark mode colors
+        dark: {
+          primary: '#2C5282', // Lighter navy for dark mode
+          background: '#1A202C',
+          surface: '#2D3748',
+          text: '#F7FAFC',
+          accent: '#FF8C65', // Softer orange for dark backgrounds
         }
       },
       animation: {
@@ -67,6 +75,7 @@ export default {
         'slide-in-left': 'slideInLeft 0.6s ease-out',
         'slide-in-right': 'slideInRight 0.6s ease-out',
         'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         fadeIn: {
@@ -93,7 +102,24 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'construction-pattern': 'linear-gradient(45deg, transparent 25%, rgba(27, 54, 93, 0.1) 25%, rgba(27, 54, 93, 0.1) 50%, transparent 50%, transparent 75%, rgba(27, 54, 93, 0.1) 75%)',
+        'hero-pattern': 'linear-gradient(135deg, rgba(27, 54, 93, 0.9) 0%, rgba(36, 59, 83, 0.8) 100%)',
       },
+      boxShadow: {
+        'construction': '0 25px 50px -12px rgba(27, 54, 93, 0.25)',
+        'glow': '0 0 20px rgba(255, 107, 53, 0.3)',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      zIndex: {
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+        '100': '100',
+      }
     },
   },
   plugins: [],

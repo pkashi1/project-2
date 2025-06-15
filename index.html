@@ -5,19 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <meta name="description" content="Southern Underground of Louisiana - Leading construction company specializing in directional boring, utility installation, and civil construction across the nation." />
-    <meta name="keywords" content="directional boring, utility installation, civil construction, Louisiana, underground utilities" />
-
-    <title>Directional Boring & Underground Utilities - Southern Underground of Louisiana</title>
-
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional underground construction, utilities installation, and foundation services in Louisiana. Licensed contractors with 20+ years experience. Emergency services available 24/7." />
+    <meta name="keywords" content="underground construction Louisiana, foundation services, utilities installation, excavation contractors, emergency repairs, Baton Rouge, New Orleans, directional boring" />
+    <meta name="author" content="Southern Underground of Louisiana" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Underground Construction & Foundation Services | Southern Underground Louisiana" />
+    <meta property="og:description" content="Professional underground construction, utilities installation, and foundation services in Louisiana. Licensed contractors with 20+ years experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://southernunderground.com" />
+    <meta property="og:image" content="/images/og-image.jpg" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Underground Construction & Foundation Services | Southern Underground Louisiana" />
+    <meta name="twitter:description" content="Professional underground construction, utilities installation, and foundation services in Louisiana." />
+    <meta name="twitter:image" content="/images/twitter-image.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://southernunderground.com" />
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://translate.google.com">
+    
+    <!-- Google Fonts with font-display: swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1B365D" />
+    
+    <title>Underground Construction & Foundation Services | Southern Underground Louisiana</title>
   </head>
   <body>
-    <!-- Google Translate Widget -->
-    <div id="google_translate_element" style="position: absolute; top: 10px; right: 10px; z-index: 9999;"></div>
-
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Root of React App -->
     <div id="root"></div>
 
@@ -31,7 +56,8 @@
           {
             pageLanguage: 'en',
             includedLanguages: 'en,es',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
           },
           'google_translate_element'
         );
