@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown, Facebook, Linkedin, Twitter } from 'lucide-react';
 import { enhancedServices, projects } from '../../data/mockData';
 
 interface Service {
@@ -68,17 +68,43 @@ const Header: React.FC = () => {
 
   return (
     <>
+      {/* Top Bar */}
+      <div className="bg-gray-100 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-2 text-sm">
+            <div className="flex items-center space-x-4 text-gray-600">
+              <a href="mailto:info@southernunderground.com" className="flex items-center space-x-1 hover:text-navy-900 transition-colors">
+                <Mail className="w-4 h-4" />
+                <span>info@southernunderground.com</span>
+              </a>
+            </div>
+            <div className="flex items-center space-x-4">
+              <a href="https://www.facebook.com/southernundergroundofla/" className="text-gray-600 hover:text-navy-900 transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://www.linkedin.com/company/southern-underground-ofla" className="text-gray-600 hover:text-navy-900 transition-colors">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="#" className="text-gray-600 hover:text-navy-900 transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
       <header className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-primary-700 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-navy-900 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">SU</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Southern Underground</h1>
+                <h1 className="text-xl font-bold text-navy-900">Southern Underground</h1>
                 <p className="text-sm text-gray-600">of Louisiana</p>
               </div>
             </Link>
@@ -90,9 +116,9 @@ const Header: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`font-medium transition-colors duration-200 hover:text-primary-600 ${
+                    className={`font-medium transition-colors duration-200 hover:text-navy-900 ${
                       location.pathname === link.path
-                        ? 'text-primary-600 border-b-2 border-primary-600'
+                        ? 'text-navy-900 border-b-2 border-navy-900'
                         : 'text-gray-700'
                     }`}
                   >
@@ -108,9 +134,9 @@ const Header: React.FC = () => {
                   >
                     <Link
                       to="/services"
-                      className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-primary-600 focus:outline-none ${
+                      className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-navy-900 focus:outline-none ${
                         location.pathname === '/services'
-                          ? 'text-primary-600 border-b-2 border-primary-600'
+                          ? 'text-navy-900 border-b-2 border-navy-900'
                           : 'text-gray-700'
                       }`}
                     >
@@ -130,7 +156,7 @@ const Header: React.FC = () => {
                         <Link
                           key={service.id}
                           to={`/services/${service.id}`}
-                          className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-600 text-sm border-b last:border-b-0"
+                          className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-navy-900 text-sm border-b last:border-b-0"
                         >
                           {service.name}
                         </Link>
@@ -147,9 +173,9 @@ const Header: React.FC = () => {
                   >
                     <Link
                       to="/projects"
-                      className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-primary-600 focus:outline-none ${
+                      className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-navy-900 focus:outline-none ${
                         location.pathname === '/projects'
-                          ? 'text-primary-600 border-b-2 border-primary-600'
+                          ? 'text-navy-900 border-b-2 border-navy-900'
                           : 'text-gray-700'
                       }`}
                     >
@@ -169,7 +195,7 @@ const Header: React.FC = () => {
                         <Link
                           key={project.id}
                           to={`/projects/${project.id}`}
-                          className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-600 text-sm border-b last:border-b-0"
+                          className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-navy-900 text-sm border-b last:border-b-0"
                         >
                           {project.title}
                         </Link>
@@ -179,6 +205,23 @@ const Header: React.FC = () => {
                 )
               ))}
             </nav>
+
+            {/* Header Contact Info */}
+            <div className="hidden lg:flex items-center space-x-6">
+              <a
+                href="tel:+12255550123"
+                className="flex items-center space-x-2 text-navy-900 font-semibold hover:text-navy-700 transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                <span>(225) 555-0123</span>
+              </a>
+              <Link
+                to="/contact"
+                className="bg-secondary-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-secondary-600 transition-colors duration-200"
+              >
+                24/7 Emergency
+              </Link>
+            </div>
 
             <button
               className="lg:hidden"
@@ -204,19 +247,28 @@ const Header: React.FC = () => {
                   to={link.path}
                   className={`block font-medium py-2 transition-colors duration-200 ${
                     location.pathname === link.path
-                      ? 'text-primary-600'
-                      : 'text-gray-700 hover:text-primary-600'
+                      ? 'text-navy-900'
+                      : 'text-gray-700 hover:text-navy-900'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to="/contact"
-                className="block bg-secondary-500 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-secondary-600 transition-colors duration-200 mt-4"
-              >
-                Request a Appointment
-              </Link>
+              <div className="pt-4 border-t border-gray-200 space-y-3">
+                <a
+                  href="tel:+12255550123"
+                  className="flex items-center space-x-2 text-navy-900 font-semibold"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>(225) 555-0123</span>
+                </a>
+                <Link
+                  to="/contact"
+                  className="block bg-secondary-500 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-secondary-600 transition-colors duration-200"
+                >
+                  24/7 Emergency Service
+                </Link>
+              </div>
             </div>
           </div>
         )}
