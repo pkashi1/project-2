@@ -43,30 +43,30 @@ const Testimonials: React.FC = () => {
   }, [testimonials.length]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+    <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            What Our <span className="text-primary-600">Clients Say</span>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            What Our <span className="text-primary-600 dark:text-primary-400">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Don't just take our word for it - hear from the clients who trust us with their most important projects
           </p>
         </div>
 
         {/* Testimonial Carousel */}
         <div className="relative max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 min-h-[400px] flex items-center">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 lg:p-12 min-h-[400px] flex items-center">
             <div className="w-full">
               {/* Quote Icon */}
               <div className="flex justify-center mb-8">
-                <Quote className="w-16 h-16 text-primary-200" />
+                <Quote className="w-16 h-16 text-primary-200 dark:text-primary-700" />
               </div>
 
               {/* Testimonial Content */}
               <blockquote className="text-center mb-8">
-                <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
+                <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic">
                   "{testimonials[currentTestimonial].content}"
                 </p>
               </blockquote>
@@ -86,13 +86,13 @@ const Testimonials: React.FC = () => {
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div className="text-center sm:text-left">
-                  <div className="font-semibold text-gray-900 text-lg">
+                  <div className="font-semibold text-gray-900 dark:text-white text-lg">
                     {testimonials[currentTestimonial].name}
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-gray-600 dark:text-gray-400">
                     {testimonials[currentTestimonial].position}
                   </div>
-                  <div className="text-primary-600 font-medium">
+                  <div className="text-primary-600 dark:text-primary-400 font-medium">
                     {testimonials[currentTestimonial].company}
                   </div>
                 </div>
@@ -108,8 +108,8 @@ const Testimonials: React.FC = () => {
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentTestimonial
-                    ? 'bg-primary-600 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-primary-600 dark:bg-primary-400 w-8'
+                    : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
               />
             ))}
@@ -118,21 +118,21 @@ const Testimonials: React.FC = () => {
 
         {/* Client Logos */}
         <div className="mt-16">
-          <h3 className="text-center text-lg font-semibold text-gray-600 mb-8">
+          <h3 className="text-center text-lg font-semibold text-gray-600 dark:text-gray-400 mb-8">
             Trusted by Leading Organizations
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-            <div className="bg-white rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
-              <span className="text-gray-600 font-semibold">City of Baton Rouge</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
+              <span className="text-gray-600 dark:text-gray-300 font-semibold">City of Baton Rouge</span>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
-              <span className="text-gray-600 font-semibold">Magnolia Dev.</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
+              <span className="text-gray-600 dark:text-gray-300 font-semibold">Magnolia Dev.</span>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
-              <span className="text-gray-600 font-semibold">Gulf Coast Ind.</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
+              <span className="text-gray-600 dark:text-gray-300 font-semibold">Gulf Coast Ind.</span>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
-              <span className="text-gray-600 font-semibold">Central Water</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm flex items-center justify-center h-20">
+              <span className="text-gray-600 dark:text-gray-300 font-semibold">Central Water</span>
             </div>
           </div>
         </div>

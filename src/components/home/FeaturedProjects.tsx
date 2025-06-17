@@ -47,14 +47,14 @@ const FeaturedProjects: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Featured <span className="text-primary-600">Projects</span>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Featured <span className="text-primary-600 dark:text-primary-400">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Showcasing our expertise through successful project completions across Louisiana and beyond
           </p>
         </div>
@@ -79,34 +79,34 @@ const FeaturedProjects: React.FC = () => {
               </div>
 
               {/* Project Details */}
-              <div className="bg-white p-8 lg:p-12 flex flex-col justify-center">
+              <div className="bg-white dark:bg-gray-800 p-8 lg:p-12 flex flex-col justify-center">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                       {projects[currentProject].title}
                     </h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
                       {projects[currentProject].description}
                     </p>
                   </div>
 
                   <div className="space-y-3">
-                    <div className="flex items-center text-gray-500">
-                      <MapPin className="w-5 h-5 mr-3 text-primary-600" />
+                    <div className="flex items-center text-gray-500 dark:text-gray-400">
+                      <MapPin className="w-5 h-5 mr-3 text-primary-600 dark:text-primary-400" />
                       <span>{projects[currentProject].location}</span>
                     </div>
-                    <div className="flex items-center text-gray-500">
-                      <Calendar className="w-5 h-5 mr-3 text-primary-600" />
+                    <div className="flex items-center text-gray-500 dark:text-gray-400">
+                      <Calendar className="w-5 h-5 mr-3 text-primary-600 dark:text-primary-400" />
                       <span>Completed {new Date(projects[currentProject].completionDate).toLocaleDateString()}</span>
                     </div>
-                    <div className="text-2xl font-bold text-primary-600">
+                    <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
                       {projects[currentProject].value}
                     </div>
                   </div>
 
                   <Link
                     to={`/projects/${projects[currentProject].id}`}
-                    className="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors group"
+                    className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors group"
                   >
                     View Project Details
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -119,13 +119,13 @@ const FeaturedProjects: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevProject}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextProject}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -138,8 +138,8 @@ const FeaturedProjects: React.FC = () => {
                 onClick={() => setCurrentProject(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentProject
-                    ? 'bg-primary-600 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-primary-600 dark:bg-primary-400 w-8'
+                    : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
               />
             ))}
@@ -150,7 +150,7 @@ const FeaturedProjects: React.FC = () => {
         <div className="text-center mt-12">
           <Link
             to="/projects"
-            className="inline-flex items-center bg-secondary-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             View All Projects
             <ArrowRight className="ml-2 w-5 h-5" />

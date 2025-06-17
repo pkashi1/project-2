@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SocialHeader from './components/layout/SocialHeader';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -14,13 +15,13 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/common/ScrollToTop';
-// import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         <ScrollToTop />
+        <SocialHeader />
         <Header />
         <main>
           <Routes>

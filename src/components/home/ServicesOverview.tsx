@@ -42,14 +42,14 @@ const ServicesOverview: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our <span className="text-primary-600">Services</span>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our <span className="text-primary-600 dark:text-primary-400">Services</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Complete building solutions supported by advanced technology and years of experience
           </p>
         </div>
@@ -61,24 +61,24 @@ const ServicesOverview: React.FC = () => {
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100"
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-lg mb-6 group-hover:bg-primary-600 transition-colors duration-300">
-                  <Icon className="w-8 h-8 text-primary-600 group-hover:text-white transition-colors duration-300" />
+                <div className="flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-lg mb-6 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 transition-colors duration-300">
+                  <Icon className="w-8 h-8 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors duration-300" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                   {service.name}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                   {service.description}
                 </p>
                 
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-500">
+                    <li key={idx} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                       <div className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-3"></div>
                       {feature}
                     </li>
@@ -87,7 +87,7 @@ const ServicesOverview: React.FC = () => {
                 
                 <Link
                   to={`/services/${service.id}`}
-                  className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors group-hover:translate-x-1"
+                  className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group-hover:translate-x-1"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -101,7 +101,7 @@ const ServicesOverview: React.FC = () => {
         <div className="text-center">
           <Link
             to="/services"
-            className="inline-flex items-center bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             View All Services
             <ArrowRight className="ml-2 w-5 h-5" />
