@@ -52,6 +52,7 @@ const SocialHeader: React.FC = () => {
             >
               <Mail className="w-4 h-4" />
             </a>
+            
           </div>
         </div>
       </div>
