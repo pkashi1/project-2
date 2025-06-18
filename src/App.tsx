@@ -10,7 +10,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Safety from './pages/Safety';
-import Careers from './pages/Careers';
+import Careers from './pages/CareersEnglish';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';

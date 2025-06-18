@@ -7,6 +7,7 @@ import App from './App.tsx';
 import { ThemeProvider } from './contexts/ThemeContext';
 import GoogleAnalytics from './components/common/GoogleAnalytics';
 import './index.css';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
@@ -17,10 +18,12 @@ createRoot(document.getElementById('root')!).render(
   // </ThemeProvider>
   <StrictMode>
     <HelmetProvider>
-      <ThemeProvider>
-        <GoogleAnalytics />
-        <App />
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <GoogleAnalytics />
+          <App />
+        </ThemeProvider>
+      </LanguageProvider>
     </HelmetProvider>
   </StrictMode>
 );
