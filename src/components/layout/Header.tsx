@@ -66,14 +66,14 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-primary-700 dark:bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SU</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Southern Underground</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-300">of Louisiana</p>
-            </div>
-          </Link>
+  <img
+    src="/images/logo.jpg"
+    alt="Southern Underground Construction Company Logo"
+    className="w-32 h-12 rounded-lg object-contain bg-white"
+    style={{ maxWidth: 200 }}
+  />
+</Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 relative">
