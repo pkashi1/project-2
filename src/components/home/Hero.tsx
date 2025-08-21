@@ -30,18 +30,18 @@ const Hero: React.FC = () => {
           <div className="text-white space-y-8 animate-slide-in-left">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold text-white dark:text-gray-100">
-                Building the{' '}
+                Strength Below the Surface. {' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
-                  Foundations
+                  Deep Solutions. Strong Foundations.
                 </span>{' '}
-                of Tomorrow
+                
               </h1>
               <p className="text-xl sm:text-2xl text-gray-200 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Offering Civil Construction, Utility Installation, and Directional Boring Services Throughout the United States.
+                A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
@@ -56,25 +56,25 @@ const Hero: React.FC = () => {
                 <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                 Our Work
               </Link>
-            </div>
+            </div> */}
 
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">9+</div>
-                <div className="text-gray-300 dark:text-gray-400 text-sm">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">500+</div>
-                <div className="text-gray-300 dark:text-gray-400 text-sm">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">1,200+</div>
-                <div className="text-gray-300 dark:text-gray-400 text-sm">Miles Installed</div>
+                <div className="text-3xl font-bold text-secondary-400">35+</div>
+                <div className="text-gray-300 dark:text-gray-400 text-sm">Years of Experience</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary-400">99.9%</div>
                 <div className="text-gray-300 dark:text-gray-400 text-sm">Safety Record</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-secondary-400">98%</div>
+                <div className="text-gray-300 dark:text-gray-400 text-sm">Client Retention Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-secondary-400">800+</div>
+                <div className="text-gray-300 dark:text-gray-400 text-sm">Projects Completed</div>
               </div>
             </div>
           </div>
@@ -84,19 +84,19 @@ const Hero: React.FC = () => {
             <div className="bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-white/20 dark:border-gray-700/30 hover:bg-white/15 dark:hover:bg-gray-800/40 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
               <p className="text-gray-300 dark:text-gray-400">
-                Fully licensed contractor with comprehensive insurance coverage for all projects.
+                Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
               </p>
             </div>
             <div className="bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-white/20 dark:border-gray-700/30 hover:bg-white/15 dark:hover:bg-gray-800/40 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">24/7 Emergency Service</h3>
               <p className="text-gray-300 dark:text-gray-400">
-                24-hour emergency response for important infrastructure problems.
+                Trusted 24/7 Response for select municipal emergency services
               </p>
             </div>
             <div className="bg-white/10 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-white/20 dark:border-gray-700/30 hover:bg-white/15 dark:hover:bg-gray-800/40 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Quality Guaranteed</h3>
               <p className="text-gray-300 dark:text-gray-400">
-                Providing Outstanding Outcomes and Outstanding Client Contentment in Baton Rouge and Louisiana
+                We stand behind the quality of our work and take pride in delivering dependable, high-quality work on every project. Our team is committed to precision, safety, and lasting results—guaranteed.
               </p>
             </div>
           </div>

@@ -6,31 +6,37 @@ import { Helmet } from 'react-helmet-async';
 
 const About: React.FC = () => {
   const values = [
-    {
-      icon: Shield,
-      title: 'Integrity',
-      description:
-        'We conduct business with honesty, transparency, and ethical practices in every interaction.',
-    },
-    {
-      icon: Lightbulb,
-      title: 'Innovation',
-      description:
-        'We embrace new technologies and methods to deliver superior results and efficiency.',
-    },
-    {
-      icon: Award,
-      title: 'Safety',
-      description:
-        'Safety is our top priority, ensuring zero incidents through comprehensive training and protocols.',
-    },
-    {
-      icon: Heart,
-      title: 'Community Engagement',
-      description:
-        'We are committed to supporting and strengthening the communities where we work and live.',
-    },
-  ];
+  {
+    icon: Award,
+    title: 'Safety',
+    description:
+      'We prioritize the safety of our team, partners, and the public in every phase of our work. Our commitment to strict safety standards ensures every project is completed without compromise.',
+  },
+  {
+    icon: Shield,
+    title: 'Integrity & Accountability',
+    description:
+      'We conduct business with honesty, transparency, and professionalism. We stand by our work and take ownership of our responsibilities—every step of the way.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Innovation and Expertise',
+    description:
+      'We invest in specialized equipment and continued training to stay at the forefront of the industry. Our team brings the experience and technical skills needed for even the most challenging jobs.',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Quality Craftmanship',
+    description:
+      'We take pride in delivering dependable, high-performance results. From underground utilities to complex infrastructure, we focus on doing it right the first time.',
+  },
+  {
+    icon: Target,
+    title: 'Reliability',
+    description:
+      'Our clients trust us to deliver on time, on budget, and with consistent communication. We respond quickly and effectively to meet the unique demands of each project.',
+  },
+];
 
   const milestones = [
     {
@@ -293,7 +299,7 @@ const About: React.FC = () => {
             Meet Our Team
           </h2>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <div
               key={member.id}

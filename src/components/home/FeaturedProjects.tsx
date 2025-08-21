@@ -6,16 +6,16 @@ const FeaturedProjects: React.FC = () => {
   const [currentProject, setCurrentProject] = useState(0);
 
   const projects = [
-    {
-      id: 1,
-      title: 'Downtown Baton Rouge Utility Upgrade',
-      description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
-      image: '/images/downtown-construction.png',
-      category: 'Utility Installation',
-      location: 'Baton Rouge, LA',
-      completionDate: '2024-02-15',
-      value: '$2.4M'
-    },
+    // {
+    //   id: 1,
+    //   title: 'Downtown Baton Rouge Utility Upgrade',
+    //   description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
+    //   image: '/images/downtown-construction.png',
+    //   category: 'Utility Installation',
+    //   location: 'Baton Rouge, LA',
+    //   completionDate: '2024-02-15',
+    //   value: '$2.4M'
+    // },
     {
       id: 2,
       title: 'Industrial Gas Pipeline Installation at Lake Charles',

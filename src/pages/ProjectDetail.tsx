@@ -144,7 +144,7 @@ const ProjectDetail: React.FC = () => {
               </div>
 
               {/* Highlights */}
-              {project.details && (
+              {/* {project.details && (
                 <div className="bg-primary-50 dark:bg-primary-900 rounded-xl p-6 transition-colors">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                     Project Highlights
@@ -168,7 +168,49 @@ const ProjectDetail: React.FC = () => {
                     )}
                   </div>
                 </div>
+              )} */}
+              {/* Highlights */}
+              {project.details && (
+                <div className="bg-primary-50 dark:bg-primary-900 rounded-xl p-6 transition-colors">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                    Project Highlights
+                  </h3>
+                  <div className="space-y-3">
+                    {project.details.duration && (
+                      <div className="flex items-center space-x-3">
+                        <Clock className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                        <span className="text-gray-700 dark:text-gray-300">
+                          Duration: {project.details.duration}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* NEW: scope can be string or array */}
+                    {project.details.scope && (
+                      <div className="mt-2">
+                        <div className="flex items-start space-x-3 mb-2">
+                          <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5" />
+                          <span className="text-gray-900 dark:text-gray-100 font-semibold">
+                            Scope
+                          </span>
+                        </div>
+                        {Array.isArray(project.details.scope) ? (
+                          <ul className="list-disc pl-7 text-gray-700 dark:text-gray-300 space-y-1">
+                            {project.details.scope.map((s: string, i: number) => (
+                              <li key={i}>{s}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-gray-700 dark:text-gray-300 pl-8">
+                            {project.details.scope}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
+
             </div>
           </div>
         </div>
@@ -231,10 +273,13 @@ const ProjectDetail: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                Related Projects
+                  <p className="pl-4">
+
+                  Related Projects
+                  </p>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                More examples of our {project.category.toLowerCase()} work
+                  More examples of our {project.category.toLowerCase()} work
               </p>
             </div>
 

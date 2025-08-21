@@ -7,9 +7,18 @@ export interface Service {
   image: string;
   shortDescription: string;
   detailedDescription: string;
+  overview?: string;
+  subServices?: string[];
+  applications?: string[];
+  gallery?: string[];
+  relatedServices?: string[];
+
   features: string[];
   process: string[];
   locationTags?: string[];
+  // features: string[];
+  // process: string[];
+  // locationTags?: string[];
 }
 
 export interface ServiceWithMeta extends Service {

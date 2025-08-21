@@ -69,7 +69,7 @@ const Header: React.FC = () => {
   <img
     src="/images/logo.jpg"
     alt="Southern Underground Construction Company Logo"
-    className="w-32 h-12 rounded-lg object-contain bg-white"
+    className="w-70 h-16 rounded-lg object-contain bg-white"
     style={{ maxWidth: 200 }}
   />
 </Link>
@@ -174,20 +174,23 @@ const Header: React.FC = () => {
             {/* Dark & Language Toggles */}
             <div className="flex items-center space-x-4">
               <DarkModeToggle />
-              {isCareers && (
+                <div id="google_translate_element" className="translate-widget" />
+
+              {/* {isCareers && (
                 <button
                   onClick={toggleLang}
                   className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
                 >
                   {lang === 'en' ? 'Español' : 'English'}
                 </button>
-              )}
+              )} */}
             </div>
           </nav>
 
           {/* Mobile Hamburger & Toggles */}
           <div className="flex items-center space-x-4 lg:hidden">
             <DarkModeToggle />
+              <div id="google_translate_element" className="translate-widget" />
             {isCareers && (
               <button
                 onClick={() => { console.log('🔄 toggling lang from', lang); toggleLang(); }}
