@@ -57,7 +57,7 @@ const About: React.FC = () => {
     {
       year: '2021',
       event: 'Equipment Upgrade',
-      description: 'Invested in state-of-the-art directional boring equipment',
+      description: 'Invested in state-of-the-art directional drilling equipment',
     },
     {
       year: '2023',
@@ -161,7 +161,7 @@ const About: React.FC = () => {
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Complete water, sewer, storm drainage, and gas line installation with advanced directional
-                boring and trenchless technology.
+                drilling and trenchless technology.
               </p>
               <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
                 <li>• Water & sewer infrastructure</li>
@@ -254,7 +254,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+      {/* <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -290,7 +290,7 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team Section */}
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors">

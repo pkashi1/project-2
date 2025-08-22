@@ -131,40 +131,65 @@ const ServicesOverview: React.FC = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
+              // <div
+              //   key={service.id}
+              //   // className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
+              //   className='bg-white dark:bg-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100 dark:border-gray-700 transform rotate-45 w-48 h-48 '
+              //   style={{ animationDelay: `${index * 100}ms` }}
+              // >
+              //   {/* <div className="flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-lg mb-6 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 transition-colors duration-300">
+              //     <Icon className="w-8 h-8 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors duration-300" />
+              //   </div> */}
+
+              //   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              //     {service.name}
+              //   </h3>
+
+              //   {/* <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              //     {service.description}
+              //   </p> */}
+
+              //   {/* <ul className="space-y-2 mb-6">
+              //     {service.features.map((feature, idx) => (
+              //       <li key={idx} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+              //         <div className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-3" />
+              //         {feature}
+              //       </li>
+              //     ))}
+              //   </ul> */}
+
+              //   <Link
+              //     to={`/services/${service.id}`}
+              //     className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group-hover:translate-x-1"
+              //   >
+              //     Learn More
+              //     <ArrowRight className="ml-2 w-4 h-4" />
+              //   </Link>
+              // </div>
               <div
-                key={service.id}
-                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-lg mb-6 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 transition-colors duration-300">
-                  <Icon className="w-8 h-8 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors duration-300" />
-                </div>
+  key={service.id}
+  className="relative bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 group hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden"
+  style={{ animationDelay: `${index * 100}ms` }}
+>
+  {/* Decorative rotated background */}
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="w-40 h-40 bg-primary-100 dark:bg-primary-900 opacity-20 rounded-xl transform rotate-45"></div>
+  </div>
 
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  {service.name}
-                </h3>
-
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                      <div className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to={`/services/${service.id}`}
-                  className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group-hover:translate-x-1"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </div>
+  {/* Main content stays upright */}
+  <div className="relative z-10">
+    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+      {service.name}
+    </h3>
+    <Link
+      to={`/services/${service.id}`}
+      className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group-hover:translate-x-1"
+    >
+      Learn More
+      <ArrowRight className="ml-2 w-4 h-4" />
+    </Link>
+  </div>
+</div>
             );
           })}
         </div>

@@ -4,7 +4,7 @@ const path = require('path');
 const baseUrl = process.env.SITE_URL || 'https://example.com';
 const pages = ['/', '/about', '/services', '/projects', '/safety', '/careers', '/blog', '/contact'];
 const services = [
-  'directional-boring',
+  'directional-drilling',
   'utility-installation',
   'pile-installation',
   'civil-construction',

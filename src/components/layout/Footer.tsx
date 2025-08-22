@@ -46,7 +46,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
               </div>
             </div>
             <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed">
-              Leading construction company specializing in directional boring, utility installation, 
+              Leading construction company specializing in directional drilling, utility installation, 
               and civil construction across the nation since 2015.
             </p>
             <div className="flex space-x-4">
@@ -79,7 +79,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><Link to="/services/directional-boring" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Directional Boring</Link></li>
+              <li><Link to="/services/directional-drilling" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Directional drilling</Link></li>
               <li><Link to="/services/utility-installation" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Utility Installation</Link></li>
               <li><Link to="/services/pile-installation" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Pile Installation</Link></li>
               <li><Link to="/services/civil-construction" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Civil Construction</Link></li>

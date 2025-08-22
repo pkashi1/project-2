@@ -27,25 +27,25 @@ const Contact: React.FC = () => {
     {
       icon: Phone,
       title: 'Phone Number',
-      details: ['(225) 555-0123', '24/7 Emergency Service'],
-      link: 'tel:+12255550123',
+      details: ['(225) 592-1336', '24/7 Emergency Service'],
+      link: 'tel:+12255921336',
     },
     {
       icon: Mail,
       title: 'Email Address',
-      details: ['info@southernunderground.com', 'quotes@southernunderground.com'],
+      details: ['info@southernunderground.com'],
       link: 'mailto:info@southernunderground.com',
     },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      details: ['Monday - Friday: 7:00 AM - 6:00 PM', 'Saturday: 8:00 AM - 4:00 PM'],
-      link: null,
-    },
+    // {
+    //   icon: Clock,
+    //   title: 'Business Hours',
+    //   details: ['Monday - Friday: 7:00 AM - 6:00 PM', 'Saturday: 8:00 AM - 4:00 PM'],
+    //   link: null,
+    // },
   ];
 
   const services = [
-    'Directional Boring',
+    'Directional drilling',
     'Utility Installation',
     'Pile Installation',
     'Civil Construction',
@@ -156,7 +156,7 @@ const Contact: React.FC = () => {
               Multiple ways to reach us for your convenience
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mx-auto">
             {contactInfo.map((info, idx) => {
               const Icon = info.icon;
               return (

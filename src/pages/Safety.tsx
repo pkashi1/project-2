@@ -16,7 +16,7 @@ const Safety: React.FC = () => {
     { label: 'Safety Record', value: '99.9%', icon: Shield },
     { label: 'Work Hours Without Incident', value: '1M+', icon: Clock },
     { label: 'Certified Safety Personnel', value: '100%', icon: Users },
-    { label: 'Safety Training Hours/Year', value: '2,400+', icon: HardHat },
+    { label: 'Safety Training Hours/Year', value: '3,000+', icon: HardHat },
   ];
 
   const safetyProtocols = [
@@ -212,7 +212,7 @@ const Safety: React.FC = () => {
                   Safety training is an ongoing process. We conduct regular refresher courses, update training materials with the latest industry standards, and ensure all certifications remain current.
                 </p>
                 <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-4 transition-colors">
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">2,400+</div>
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">3,000+</div>
                   <div className="text-gray-700 dark:text-gray-300">Safety training hours annually</div>
                 </div>
               </div>

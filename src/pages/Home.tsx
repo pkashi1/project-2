@@ -11,11 +11,11 @@ const Home: React.FC = () => {
     <div>
       <Helmet>
         <title>Southern Underground | Louisiana Construction Compa</title>
-        {/* <title>Directional Boring & Underground Utilities - Southern Underground of Louisiana</title> */}
+        {/* <title>Directional drilling & Underground Utilities - Southern Underground of Louisiana</title> */}
 
         <meta
           name="description"
-          content="Southern Underground provides directional boring, utility installation and civil construction services across Louisiana."
+          content="Southern Underground provides directional drilling, utility installation and civil construction services across Louisiana."
         />
       </Helmet>
       <Hero />

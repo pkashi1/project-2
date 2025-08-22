@@ -149,7 +149,7 @@ const BlogPost: React.FC = () => {
                 </h2>
 
                 <p>
-                  Modern directional boring has evolved far beyond traditional
+                  Modern directional drilling has evolved far beyond traditional
                   methods. Today's GPS-guided systems provide unprecedented
                   precision, allowing us to navigate complex underground
                   environments with millimeter accuracy. These advanced
@@ -173,7 +173,7 @@ const BlogPost: React.FC = () => {
 
                 <p>
                   Environmental stewardship remains a cornerstone of modern
-                  construction practices. Advanced boring techniques
+                  construction practices. Advanced drilling techniques
                   significantly reduce surface disruption compared to
                   traditional excavation methods. This approach preserves
                   existing landscapes, minimizes traffic disruption, and reduces

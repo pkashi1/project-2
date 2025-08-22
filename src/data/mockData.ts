@@ -5,12 +5,12 @@ import type { ServiceWithMeta } from '../../src/utils/seoMetadata';
 // Mock data for the website
 // export const services = [
 //   {
-//     id: 'directional-boring',
-//     name: 'Directional Boring',
+//     id: 'directional-drilling',
+//     name: 'Directional drilling',
 //     icon: 'Drill',
 //     image: 'https://pc-db.com/wp-content/uploads/2016/04/Example-1-300x137.jpg',
 //     shortDescription: 'Precision underground drilling for utility installation without surface disruption.',
-//     detailedDescription: 'Our directional boring services provide efficient underground utility installation with minimal surface disruption. Using state-of-the-art equipment and GPS guidance systems, we can precisely drill horizontal holes for various utilities including gas, water, sewer, telecommunications, and electrical lines.',
+//     detailedDescription: 'Our directional drilling services provide efficient underground utility installation with minimal surface disruption. Using state-of-the-art equipment and GPS guidance systems, we can precisely drill horizontal holes for various utilities including gas, water, sewer, telecommunications, and electrical lines.',
 //     features: [
 //       'GPS-guided precision drilling',
 //       'Minimal surface disruption',
@@ -684,7 +684,7 @@ export const services = [
         id: 'sewer-specialty-methods',
         title: 'Wastewater/Sewer — Specialty Installation Methods',
         features: [
-          'Directional drilling, jack-and-bore, or auger boring under roads, railways, or waterways',
+          'Directional drilling, jack-and-bore, or auger drilling under roads, railways, or waterways',
           'Installing casing pipes and carrier pipes',
           'Trenchless rehabilitation methods (lining, sleeving, or pipe bursting)'
         ]
@@ -821,7 +821,7 @@ export const services = [
         id: 'drainage-specialty-methods',
         title: 'Specialty Installation Methods',
         features: [
-          'Directional boring or jack-and-bore under roads, railways, or waterways',
+          'Directional drilling or jack-and-bore under roads, railways, or waterways',
           'Installing casing pipes for protected crossings',
           'Trenchless rehabilitation (lining, pipe bursting, or sliplining)'
         ]
@@ -918,7 +918,7 @@ export const services = [
         id: 'electrical-specialty-methods',
         title: 'Specialty Installation Methods',
         features: [
-          'Directional boring, jack-and-bore, or trenchless conduit installation under roads, railways, or waterways',
+          'Directional drilling, jack-and-bore, or trenchless conduit installation under roads, railways, or waterways',
           'Installing casing pipes and carrier conduits for protected crossings',
           'Conduit encasement in concrete for added protection',
           'Installation in joint trench configurations with other utilities'
@@ -1419,7 +1419,7 @@ export const projects = [
     title: 'Baker Water and Gas Distribution System Improvements',
     description:
       'Water and gas distribution improvements including high‑pressure gas pipeline work with enhanced safety protocols.',
-    category: 'Gas Distribution',
+    category: 'Water / Gas Distribution',
     image: '/images/fleur-dQf7RZhMOJU-unsplash.jpg',
     completionDate: '2024-08-15',
     clientName: 'City of Baker',
@@ -1436,79 +1436,80 @@ export const projects = [
       challenges: 'Coordinating shutdown windows and maintaining community safety around work zones',
       solution: 'Phased tie‑ins, enhanced safety monitoring, and stakeholder communication'
     }
-  },
-  {
-    id: 1,
-    title: 'Downtown Baton Rouge Utility Upgrade',
-    description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
-    category: 'Utility Installation',
-    image: '/images//downtown-construction.png',
-    completionDate: '2024-02-15',
-    clientName: 'City of Baton Rouge',
-    location: 'Baton Rouge, LA',
-    testimonial: 'Southern Underground delivered exceptional results on schedule and within budget. Their professionalism and expertise made this complex project seamless.',
-    details: {
-      duration: '8 months',
-      value: '$2.4M',
-      scope: 'Installation of 3.2 miles of water lines, 2.8 miles of sewer lines, and fiber optic infrastructure',
-      challenges: 'Working in dense urban environment with minimal traffic disruption',
-      solution: 'Utilized directional boring and night work schedules to minimize impact'
-    }
-  },
-  {
-    id: 2,
-    title: 'Industrial Gas Pipeline Installation at Lake Charles',
-    description: 'High-pressure gas pipeline installation for petrochemical facility with specialized safety protocols.',
-    category: 'Directional Boring',
-    image: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
-    completionDate: '2023-11-30',
-    clientName: 'Gulf Coast Industries',
-    location: 'Lake Charles, LA',
-    testimonial: 'The team demonstrated exceptional safety standards and technical expertise throughout this critical infrastructure project.',
-    details: {
-      duration: '6 months',
-      value: '$1.8M',
-      scope: '2-mile high-pressure gas pipeline with specialized coating and cathodic protection',
-      challenges: 'Environmental sensitivity and strict safety requirements',
-      solution: 'Implemented enhanced safety protocols and environmental monitoring'
-    }
-  },
-  {
-    id: 3,
-    title: 'Residential Subdivision Development',
-    description: 'Complete utility infrastructure for 200-home subdivision including water, sewer, gas, and electrical.',
-    category: 'Civil Construction',
-    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
-    completionDate: '2024-01-20',
-    clientName: 'Magnolia Developments',
-    location: 'Zachary, LA',
-    testimonial: 'Outstanding work quality and attention to detail. The project was completed ahead of schedule with zero safety incidents.',
-    details: {
-      duration: '10 months',
-      value: '$3.2M',
-      scope: 'Complete infrastructure for 200-home subdivision',
-      challenges: 'Coordination with multiple contractors and tight timeline',
-      solution: 'Detailed project management and phased construction approach'
-    }
-  },
-  {
-    id: 4,
-    title: 'Water Treatment Plant Upgrade',
-    description: 'Major upgrade to municipal water treatment facility including new filtration systems and pipeline connections.',
-    category: 'Water & Sewer Treatment',
-    image: '/images//waterplant.png',
-    completionDate: '2023-09-15',
-    clientName: 'Central Water Works',
-    location: 'Central, LA',
-    testimonial: 'Professional execution of a complex project. The new systems are performing excellently and serving our community well.',
-    details: {
-      duration: '12 months',
-      value: '$4.1M',
-      scope: 'Filtration system upgrade and 1.5 miles of distribution pipeline',
-      challenges: 'Maintaining water service during construction',
-      solution: 'Phased construction with temporary systems to maintain service'
-    }
   }
+  // ,
+  // {
+  //   id: 1,
+  //   title: 'Downtown Baton Rouge Utility Upgrade',
+  //   description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
+  //   category: 'Utility Installation',
+  //   image: '/images//downtown-construction.png',
+  //   completionDate: '2024-02-15',
+  //   clientName: 'City of Baton Rouge',
+  //   location: 'Baton Rouge, LA',
+  //   testimonial: 'Southern Underground delivered exceptional results on schedule and within budget. Their professionalism and expertise made this complex project seamless.',
+  //   details: {
+  //     duration: '8 months',
+  //     value: '$2.4M',
+  //     scope: 'Installation of 3.2 miles of water lines, 2.8 miles of sewer lines, and fiber optic infrastructure',
+  //     challenges: 'Working in dense urban environment with minimal traffic disruption',
+  //     solution: 'Utilized directional drilling and night work schedules to minimize impact'
+  //   }
+  // },
+  // {
+  //   id: 2,
+  //   title: 'Industrial Gas Pipeline Installation at Lake Charles',
+  //   description: 'High-pressure gas pipeline installation for petrochemical facility with specialized safety protocols.',
+  //   category: 'Directional drilling',
+  //   image: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //   completionDate: '2023-11-30',
+  //   clientName: 'Gulf Coast Industries',
+  //   location: 'Lake Charles, LA',
+  //   testimonial: 'The team demonstrated exceptional safety standards and technical expertise throughout this critical infrastructure project.',
+  //   details: {
+  //     duration: '6 months',
+  //     value: '$1.8M',
+  //     scope: '2-mile high-pressure gas pipeline with specialized coating and cathodic protection',
+  //     challenges: 'Environmental sensitivity and strict safety requirements',
+  //     solution: 'Implemented enhanced safety protocols and environmental monitoring'
+  //   }
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Residential Subdivision Development',
+  //   description: 'Complete utility infrastructure for 200-home subdivision including water, sewer, gas, and electrical.',
+  //   category: 'Civil Construction',
+  //   image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
+  //   completionDate: '2024-01-20',
+  //   clientName: 'Magnolia Developments',
+  //   location: 'Zachary, LA',
+  //   testimonial: 'Outstanding work quality and attention to detail. The project was completed ahead of schedule with zero safety incidents.',
+  //   details: {
+  //     duration: '10 months',
+  //     value: '$3.2M',
+  //     scope: 'Complete infrastructure for 200-home subdivision',
+  //     challenges: 'Coordination with multiple contractors and tight timeline',
+  //     solution: 'Detailed project management and phased construction approach'
+  //   }
+  // },
+  // {
+  //   id: 4,
+  //   title: 'Water Treatment Plant Upgrade',
+  //   description: 'Major upgrade to municipal water treatment facility including new filtration systems and pipeline connections.',
+  //   category: 'Water & Sewer Treatment',
+  //   image: '/images//waterplant.png',
+  //   completionDate: '2023-09-15',
+  //   clientName: 'Central Water Works',
+  //   location: 'Central, LA',
+  //   testimonial: 'Professional execution of a complex project. The new systems are performing excellently and serving our community well.',
+  //   details: {
+  //     duration: '12 months',
+  //     value: '$4.1M',
+  //     scope: 'Filtration system upgrade and 1.5 miles of distribution pipeline',
+  //     challenges: 'Maintaining water service during construction',
+  //     solution: 'Phased construction with temporary systems to maintain service'
+  //   }
+  // }
 ];
 
 export const teamMembers = [
@@ -1571,13 +1572,13 @@ export const teamMembers = [
 export const jobOpenings = [
   {
     id: 1,
-    title: 'Directional Boring Operator',
+    title: 'Directional drilling Operator',
     department: 'Field Operations',
     location: 'Zachary, LA',
     type: 'Full-time',
-    description: 'Experienced directional boring operator needed for utility installation projects. Must have experience with HDD equipment and GPS guidance systems.',
+    description: 'Experienced directional drilling operator needed for utility installation projects. Must have experience with HDD equipment and GPS guidance systems.',
     requirements: [
-      '3+ years directional boring experience',
+      '3+ years directional drilling experience',
       'Valid CDL license',
       'OSHA 10-Hour certification',
       'Ability to work in various weather conditions',
@@ -1623,7 +1624,7 @@ export const jobOpenings = [
     department: 'Maintenance',
     location: 'Zachary, LA',
     type: 'Full-time',
-    description: 'Maintain and repair construction equipment including excavators, boring machines, and support vehicles.',
+    description: 'Maintain and repair construction equipment including excavators, drilling machines, and support vehicles.',
     requirements: [
       'Mechanical or diesel technology degree/certification',
       '3+ years heavy equipment repair experience',
@@ -1668,12 +1669,12 @@ export const blogPosts = [
   },
   {
     id: 3,
-    title: 'Directional Boring vs. Traditional Trenching',
-    excerpt: 'Comparing modern directional boring techniques with traditional excavation methods.',
+    title: 'Directional drilling vs. Traditional Trenching',
+    excerpt: 'Comparing modern directional drilling techniques with traditional excavation methods.',
     content: 'When it comes to installing underground utilities, there are several methods to consider...',
     author: 'David Thompson',
     publishDate: '2024-02-28',
-    tags: ['Directional Boring', 'Construction Methods', 'Efficiency'],
+    tags: ['Directional drilling', 'Construction Methods', 'Efficiency'],
     featuredImage: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
     readTime: 6
   }

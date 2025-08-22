@@ -21,7 +21,7 @@ const FeaturedProjects: React.FC = () => {
       title: 'Industrial Gas Pipeline Installation at Lake Charles',
       description: 'High-pressure gas pipeline installation for petrochemical facility with specialized safety protocols.',
       image: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Directional Boring',
+      category: 'Directional drilling',
       location: 'Lake Charles, LA',
       completionDate: '2023-11-30',
       value: '$1.8M'
