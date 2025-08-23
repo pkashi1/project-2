@@ -277,7 +277,7 @@ const Services: React.FC = () => {
 
                   {/* Process + CTA */}
                   <div className="bg-white dark:bg-gray-800 px-8 py-6 border-t border-gray-200 dark:border-gray-700">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                    {/* <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                       Our Process
                     </h3>
                     <div className="space-y-2 mb-6">
@@ -291,7 +291,7 @@ const Services: React.FC = () => {
                           <span className="text-gray-600 dark:text-gray-300">{step}</span>
                         </div>
                       ))}
-                    </div>
+                    </div> */}
                     <Link
                       to={`/services/${service.id}`}
                       className="inline-flex items-center bg-primary-600 dark:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors"
