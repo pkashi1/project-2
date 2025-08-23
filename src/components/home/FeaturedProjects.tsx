@@ -6,37 +6,78 @@ const FeaturedProjects: React.FC = () => {
   const [currentProject, setCurrentProject] = useState(0);
 
   const projects = [
-    // {
-    //   id: 1,
-    //   title: 'Downtown Baton Rouge Utility Upgrade',
-    //   description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
-    //   image: '/images/downtown-construction.png',
-    //   category: 'Utility Installation',
-    //   location: 'Baton Rouge, LA',
-    //   completionDate: '2024-02-15',
-    //   value: '$2.4M'
-    // },
-    {
-      id: 2,
-      title: 'Industrial Gas Pipeline Installation at Lake Charles',
-      description: 'High-pressure gas pipeline installation for petrochemical facility with specialized safety protocols.',
-      image: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Directional drilling',
-      location: 'Lake Charles, LA',
-      completionDate: '2023-11-30',
-      value: '$1.8M'
-    },
-    {
-      id: 3,
-      title: 'Residential Subdivision Development',
-      description: 'Complete utility infrastructure for 200-home subdivision including water, sewer, gas, and electrical.',
-      image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Civil Construction',
-      location: 'Zachary, LA',
-      completionDate: '2024-01-20',
-      value: '$3.2M'
+  {
+    id: 101,
+    title: 'Town of Oberlin – Sanitary Sewer System Improvements',
+    description:
+      'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).',
+    category: 'Wastewater/Sewer',
+    image: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png',
+    completionDate: '2024-12-15',
+    clientName: 'Town of Oberlin',
+    location: 'Oberlin, LA',
+    testimonial:
+      'Southern Underground executed our system rehab with professionalism and clear communication from start to finish.',
+    details: {
+      duration: 'Ongoing Program',
+      value: '$2.4M',
+      scope: [
+        'Smoke testing of ~100,000 LF of sanitary sewer mains and 322 manholes',
+        'CCTV inspection of ~100,000 LF of sanitary sewer mains',
+        'Targeted rehabilitation of mains and manholes to reduce inflow & infiltration (I&I)'
+      ],
+      challenges: 'Wide system coverage and coordination across many segments of the collection network',
+      solution: 'Sequenced testing and CCTV, then prioritized rehab for the highest I&I reduction impact'
     }
-  ];
+  },
+  {
+    id: 102,
+    title: 'Iberville Parish Council – Sewer System Improvements',
+    description:
+      'Investigation and rehabilitation to reduce I&I within the South Plaquemine Sewer Collection System.',
+    category: 'Wastewater/Sewer',
+    image: '/images/pedro-miranda-3QzMBrvCeyQ-unsplash.jpg',
+    completionDate: '2024-10-30',
+    clientName: 'Iberville Parish Council',
+    location: 'Plaquemine, LA',
+    testimonial:
+      'Exceptional field execution and documentation. The team’s approach accelerated decision‑making for rehab work.',
+    details: {
+      duration: 'Program Phase',
+      value: '$2.0M',
+      scope: [
+        'Smoke testing of ~37,000 LF of sanitary sewer mains and 121 manholes',
+        'CCTV inspection of ~37,000 LF of sanitary sewer mains',
+        'Rehabilitation of mains/manholes to reduce I&I in South Plaquemine'
+      ],
+      challenges: 'Maintaining service and access in active neighborhoods',
+      solution: 'Block‑by‑block coordination, traffic control, and staged testing to limit disruption'
+    }
+  },
+  {
+    id: 103,
+    title: 'Baker Water and Gas Distribution System Improvements',
+    description:
+      'Water and gas distribution improvements including high‑pressure gas pipeline work with enhanced safety protocols.',
+    category: 'Water / Gas Distribution',
+    image: '/images/fleur-dQf7RZhMOJU-unsplash.jpg',
+    completionDate: '2024-08-15',
+    clientName: 'City of Baker',
+    location: 'Baker, LA',
+    testimonial:
+      'Safety and quality were clearly the priority. The crews delivered a strong result on a complex scope.',
+    details: {
+      duration: '6 months',
+      value: '$1.9M',
+      scope: [
+        'High‑pressure gas pipeline installation for critical distribution',
+        'Implementation of specialized safety protocols and inspections'
+      ],
+      challenges: 'Coordinating shutdown windows and maintaining community safety around work zones',
+      solution: 'Phased tie‑ins, enhanced safety monitoring, and stakeholder communication'
+    }
+  }
+];
 
   const nextProject = () => {
     setCurrentProject((prev) => (prev + 1) % projects.length);
@@ -64,20 +105,20 @@ const FeaturedProjects: React.FC = () => {
           <div className="overflow-hidden rounded-2xl shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
               {/* Project Image */}
-              <div className="relative">
-                <img
-                  src={projects[currentProject].image}
-                  alt={projects[currentProject].title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <span className="inline-block bg-secondary-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-2">
-                    {projects[currentProject].category}
-                  </span>
-                </div>
+            <div className="relative min-h-[350px] max-h-[500px] h-[400px]">
+              <img
+                src={projects[currentProject].image}
+                alt={projects[currentProject].title}
+                className="w-full h-full object-cover rounded-l-2xl lg:rounded-l-2xl lg:rounded-r-none"
+                style={{ objectPosition: 'center' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <span className="inline-block bg-secondary-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-2">
+                  {projects[currentProject].category}
+                </span>
               </div>
-
+            </div>
               {/* Project Details */}
               <div className="bg-white dark:bg-gray-800 p-8 lg:p-12 flex flex-col justify-center">
                 <div className="space-y-6">
@@ -100,7 +141,7 @@ const FeaturedProjects: React.FC = () => {
                       <span>Completed {new Date(projects[currentProject].completionDate).toLocaleDateString()}</span>
                     </div>
                     <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                      {projects[currentProject].value}
+                      {projects[currentProject].details.value}
                     </div>
                   </div>
 
