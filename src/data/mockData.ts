@@ -1715,24 +1715,24 @@ export const companyStats = [
 ];
 
 export const certifications = [
-  {
-    name: 'OSHA Compliance',
-    description: 'Fully compliant with OSHA safety standards and regulations',
-    icon: 'Shield'
-  },
-  {
-    name: 'Licensed Contractor',
-    description: 'Licensed construction contractor in Louisiana and surrounding states',
-    icon: 'Award'
-  },
-  {
-    name: 'NUCA Member',
-    description: 'Member of National Association of Utility Contractors',
-    icon: 'Users'
-  },
-  {
-    name: 'Environmental Certified',
-    description: 'Certified for environmental compliance and protection',
-    icon: 'Leaf'
-  }
+  // {
+  //   name: 'OSHA Compliance',
+  //   description: 'Fully compliant with OSHA safety standards and regulations',
+  //   icon: 'Shield'
+  // },
+  // {
+  //   name: 'Licensed Contractor',
+  //   description: 'Licensed construction contractor in Louisiana and surrounding states',
+  //   icon: 'Award'
+  // },
+  // {
+  //   name: 'NUCA Member',
+  //   description: 'Member of National Association of Utility Contractors',
+  //   icon: 'Users'
+  // },
+  // {
+  //   name: 'Environmental Certified',
+  //   description: 'Certified for environmental compliance and protection',
+  //   icon: 'Leaf'
+  // }
 ];

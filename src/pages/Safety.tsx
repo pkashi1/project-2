@@ -233,40 +233,82 @@ const Safety: React.FC = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Safety Certifications</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Our commitment to safety is validated by industry-leading certifications
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {certifications.map((cert, i3) => {
-              const Icon =
-                cert.icon === 'Shield'
-                  ? Shield
-                  : cert.icon === 'Award'
-                  ? Award
-                  : cert.icon === 'Users'
-                  ? Users
-                  : CheckCircle;
-              return (
-                <div
-                  key={i3}
-                  className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors"
-                >
-                  <div className="flex justify-center mb-4">
-                    <Icon className="w-12 h-12 text-primary-600 dark:text-white" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{cert.name}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{cert.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+     <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        Safety Certifications
+      </h2>
+      <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Our commitment to safety is validated by industry-leading certifications
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+      {/* Drug Free Workplace */}
+      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+        <img
+          src="/images/safety/drug free.jpg"
+          alt="Drug Free Workplace Certification"
+          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
+        />
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          Drug Free Workplace
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
+          Certified Drug Free Workplace for enhanced safety and compliance.
+        </p>
+      </div>
+
+      {/* General Safety Certification */}
+      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+        <img
+          src="/images/safety/safety.webp"
+          alt="General Safety Certification"
+          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
+        />
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          General Safety Certification
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
+          Recognized for maintaining the highest safety standards in the industry.
+        </p>
+      </div>
+
+      {/* Licensed, Bonded & Insured */}
+      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+        <img
+          src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455.webp"
+          alt="Licensed Bonded Insured"
+          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
+        />
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          Licensed, Bonded & Insured
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
+          Fully licensed, bonded, and insured for your protection and confidence.
+        </p>
+      </div>
+
+      {/* OSHA / Industry Compliance */}
+      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+        <img
+          src="/images/certifications/OIP.webp"
+          alt="Industry Safety Compliance"
+          className="w-50 h-24 object-contain mb-4 rounded-lg shadow"
+        />
+        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          Industry Safety Compliance
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
+          Compliant with OSHA and industry safety regulations to ensure safe operations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Safety Contact */}
       <section className="py-20 bg-primary-600 dark:bg-primary-800 transition-colors">

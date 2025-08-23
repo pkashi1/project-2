@@ -307,33 +307,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Why Choose Southern Underground?
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Licensed, insured, and committed to safety, quality, and on-time delivery across every scope.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg text-center transition-colors">
-              <div className="w-16 h-16 bg-primary-100 dark:bg-primary-800 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 text-primary-600 dark:text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                Licensed &amp; Insured
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Full coverage and compliance for your project’s protection and peace of mind.
-              </p>
-            </div>
-            {/* Add 2 more cards if desired */}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-600 dark:bg-primary-800 transition-colors">

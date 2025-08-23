@@ -252,46 +252,6 @@ const About: React.FC = () => {
           })}
         </div>
       </section>
-
-      {/* Company Timeline */}
-      {/* <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Key milestones in our company’s growth
-            </p>
-          </div>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-200 dark:bg-primary-700"></div>
-            <div className="space-y-12">
-              {milestones.map((m, idx) => (
-                <div
-                  key={idx}
-                  className={`flex items-center ${idx % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className={`w-1/2 ${idx % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg transition-colors">
-                      <div className="text-2xl font-bold text-primary-600 mb-2">
-                        {m.year}
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                        {m.event}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300">{m.description}</p>
-                    </div>
-                  </div>
-                  <div className="w-6 h-6 bg-primary-600 dark:bg-primary-700 rounded-full border-4 border-white dark:border-gray-900 shadow-lg z-10"></div>
-                  <div className="w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* Team Section */}
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
@@ -327,54 +287,21 @@ const About: React.FC = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Certifications & Credentials
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Our commitment to excellence is backed by industry-leading certifications
-          </p>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg transition-colors text-center">
-            <Shield className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              OSHA Compliant
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-              Full compliance with safety standards
-            </p>
-          </div>
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg transition-colors text-center">
-            <Award className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              Licensed Contractor
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-              State-licensed construction contractor
-            </p>
-          </div>
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg transition-colors text-center">
-            <Users className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              NUCA Member
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-              National Association of Utility Contractors
-            </p>
-          </div>
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg transition-colors text-center">
-            <CheckCircle className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              Bonded & Insured
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-              Comprehensive insurance coverage
-            </p>
-          </div>
-        </div>
-      </section>
+     <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mb-16">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+      Our Partners
+    </h2>
+
+    {/* Responsive, centered, and capped size */}
+    <img
+      src="/images/certifications/credentials.png"
+      alt="Contractor License"
+      className="block mx-auto w-full h-auto object-contain max-w-[36rem] md:max-w-[44rem] lg:max-w-[52rem]"
+    />
+  </div>
+</section>
+
     </div>
   );
 };
