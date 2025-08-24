@@ -1572,73 +1572,163 @@ export const teamMembers = [
 export const jobOpenings = [
   {
     id: 1,
-    title: 'Directional drilling Operator',
-    department: 'Field Operations',
+    title: {
+      en: 'Directional drilling Operator',
+      es: 'Operador de Perforación Direccional'
+    },
+    department: {
+      en: 'Field Operations',
+      es: 'Operaciones de Campo'
+    },
     location: 'Zachary, LA',
-    type: 'Full-time',
-    description: 'Experienced directional drilling operator needed for utility installation projects. Must have experience with HDD equipment and GPS guidance systems.',
-    requirements: [
-      '3+ years directional drilling experience',
-      'Valid CDL license',
-      'OSHA 10-Hour certification',
-      'Ability to work in various weather conditions',
-      'Strong mechanical aptitude'
-    ],
-    benefits: [
-      'Competitive salary ($60,000 - $75,000)',
-      'Health and dental insurance',
-      '401(k) with company match',
-      'Paid time off',
-      'Professional development opportunities'
-    ],
+    type: {
+      en: 'Full-time',
+      es: 'Tiempo Completo'
+    },
+    description: {
+      en: 'Experienced directional drilling operator needed for utility installation projects. Must have experience with HDD equipment and GPS guidance systems.',
+      es: 'Se necesita operador de perforación direccional con experiencia para proyectos de instalación de servicios públicos. Debe tener experiencia con equipos HDD y sistemas de guía GPS.'
+    },
+    requirements: {
+      en: [
+        '3+ years directional drilling experience',
+        'Valid CDL license',
+        'OSHA 10-Hour certification',
+        'Ability to work in various weather conditions',
+        'Strong mechanical aptitude'
+      ],
+      es: [
+        '3+ años de experiencia en perforación direccional',
+        'Licencia CDL válida',
+        'Certificación OSHA de 10 horas',
+        'Capacidad para trabajar en diversas condiciones climáticas',
+        'Sólida aptitud mecánica'
+      ]
+    },
+    benefits: {
+      en: [
+        'Competitive salary ($60,000 - $75,000)',
+        'Health and dental insurance',
+        '401(k) with company match',
+        'Paid time off',
+        'Professional development opportunities'
+      ],
+      es: [
+        'Salario competitivo ($60,000 - $75,000)',
+        'Seguro médico y dental',
+        '401(k) con contribución de la empresa',
+        'Tiempo libre remunerado',
+        'Oportunidades de desarrollo profesional'
+      ]
+    },
     postDate: '2024-03-01',
     isActive: true
   },
   {
     id: 2,
-    title: 'Project Manager',
-    department: 'Management',
+    title: {
+      en: 'Project Manager',
+      es: 'Gerente de Proyecto'
+    },
+    department: {
+      en: 'Management',
+      es: 'Gestión'
+    },
     location: 'Zachary, LA',
-    type: 'Full-time',
-    description: 'Seeking experienced project manager to oversee construction projects from planning through completion. PMP certification preferred.',
-    requirements: [
-      'Bachelor\'s degree in Construction Management or related field',
-      '5+ years project management experience',
-      'PMP certification preferred',
-      'Strong communication and leadership skills',
-      'Experience with construction software'
-    ],
-    benefits: [
-      'Competitive salary ($75,000 - $95,000)',
-      'Health and dental insurance',
-      '401(k) with company match',
-      'Company vehicle',
-      'Professional development budget'
-    ],
+    type: {
+      en: 'Full-time',
+      es: 'Tiempo Completo'
+    },
+    description: {
+      en: 'Seeking experienced project manager to oversee construction projects from planning through completion. PMP certification preferred.',
+      es: 'Buscamos gerente de proyecto experimentado para supervisar proyectos de construcción desde la planificación hasta la finalización. Se prefiere certificación PMP.'
+    },
+    requirements: {
+      en: [
+        'Bachelor\'s degree in Construction Management or related field',
+        '5+ years project management experience',
+        'PMP certification preferred',
+        'Strong communication and leadership skills',
+        'Experience with construction software'
+      ],
+      es: [
+        'Licenciatura en Gestión de la Construcción o campo relacionado',
+        '5+ años de experiencia en gestión de proyectos',
+        'Certificación PMP preferida',
+        'Fuertes habilidades de comunicación y liderazgo',
+        'Experiencia con software de construcción'
+      ]
+    },
+    benefits: {
+      en: [
+        'Competitive salary ($75,000 - $95,000)',
+        'Health and dental insurance',
+        '401(k) with company match',
+        'Company vehicle',
+        'Professional development budget'
+      ],
+      es: [
+        'Salario competitivo ($75,000 - $95,000)',
+        'Seguro médico y dental',
+        '401(k) con contribución de la empresa',
+        'Vehículo de la empresa',
+        'Presupuesto para desarrollo profesional'
+      ]
+    },
     postDate: '2024-02-28',
     isActive: true
   },
   {
     id: 3,
-    title: 'Equipment Technician',
-    department: 'Maintenance',
+    title: {
+      en: 'Equipment Technician',
+      es: 'Técnico de Equipos'
+    },
+    department: {
+      en: 'Maintenance',
+      es: 'Mantenimiento'
+    },
     location: 'Zachary, LA',
-    type: 'Full-time',
-    description: 'Maintain and repair construction equipment including excavators, drilling machines, and support vehicles.',
-    requirements: [
-      'Mechanical or diesel technology degree/certification',
-      '3+ years heavy equipment repair experience',
-      'Hydraulic systems experience',
-      'Valid driver\'s license',
-      'Own basic tools'
-    ],
-    benefits: [
-      'Competitive salary ($50,000 - $65,000)',
-      'Health and dental insurance',
-      '401(k) with company match',
-      'Tool allowance',
-      'Overtime opportunities'
-    ],
+    type: {
+      en: 'Full-time',
+      es: 'Tiempo Completo'
+    },
+    description: {
+      en: 'Maintain and repair construction equipment including excavators, drilling machines, and support vehicles.',
+      es: 'Mantener y reparar equipos de construcción incluyendo excavadoras, máquinas perforadoras y vehículos de apoyo.'
+    },
+    requirements: {
+      en: [
+        'Mechanical or diesel technology degree/certification',
+        '3+ years heavy equipment repair experience',
+        'Hydraulic systems experience',
+        'Valid driver\'s license',
+        'Own basic tools'
+      ],
+      es: [
+        'Título/certificación en tecnología mecánica o diésel',
+        '3+ años de experiencia en reparación de equipos pesados',
+        'Experiencia en sistemas hidráulicos',
+        'Licencia de conducir válida',
+        'Herramientas básicas propias'
+      ]
+    },
+    benefits: {
+      en: [
+        'Competitive salary ($50,000 - $65,000)',
+        'Health and dental insurance',
+        '401(k) with company match',
+        'Tool allowance',
+        'Overtime opportunities'
+      ],
+      es: [
+        'Salario competitivo ($50,000 - $65,000)',
+        'Seguro médico y dental',
+        '401(k) con contribución de la empresa',
+        'Subsidio para herramientas',
+        'Oportunidades de tiempo extra'
+      ]
+    },
     postDate: '2024-02-25',
     isActive: true
   }
