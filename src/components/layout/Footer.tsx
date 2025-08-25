@@ -116,41 +116,41 @@ const handleSubscribe = async (e: React.FormEvent) => {
           </div>
         </div>
 
-<div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8">
-  <div className="text-center">
-    <h4 className="text-lg font-semibold text-white mb-2">Stay Updated</h4>
-    <p className="text-gray-300 dark:text-gray-400 text-sm mb-4">
-      Subscribe to our newsletter for industry insights and company updates.
-    </p>
-    <form className="flex max-w-md mx-auto" onSubmit={handleSubscribe}>
-      <input
-        type="email"
-        placeholder="Enter your email"
-        className="flex-1 px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-gray-700 dark:border-gray-600 rounded-l-lg text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-primary-500"
-        value={newsletterEmail}
-        onChange={e => setNewsletterEmail(e.target.value)}
-        required
-        disabled={loading}
-      />
-      <button
-        type="submit"
-        className="bg-primary-600 text-white px-6 py-2 rounded-r-lg hover:bg-primary-700 transition-colors"
-        disabled={loading}
-      >
-        {loading ? 'Subscribing...' : 'Subscribe'}
-      </button>
-    </form>
-    {newsletterMsg && (
-      <p className={`mt-2 text-center ${newsletterMsg.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
-        {newsletterMsg}
-      </p>
-    )}
-  </div>
-</div>
+        {/* <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8">
+          <div className="text-center">
+            <h4 className="text-lg font-semibold text-white mb-2">Stay Updated</h4>
+            <p className="text-gray-300 dark:text-gray-400 text-sm mb-4">
+              Subscribe to our newsletter for industry insights and company updates.
+            </p>
+            <form className="flex max-w-md mx-auto" onSubmit={handleSubscribe}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-gray-700 dark:border-gray-600 rounded-l-lg text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-primary-500"
+                value={newsletterEmail}
+                onChange={e => setNewsletterEmail(e.target.value)}
+                required
+                disabled={loading}
+              />
+              <button
+                type="submit"
+                className="bg-primary-600 text-white px-6 py-2 rounded-r-lg hover:bg-primary-700 transition-colors"
+                disabled={loading}
+              >
+                {loading ? 'Subscribing...' : 'Subscribe'}
+              </button>
+            </form>
+            {newsletterMsg && (
+              <p className={`mt-2 text-center ${newsletterMsg.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+                {newsletterMsg}
+              </p>
+            )}
+          </div>
+        </div> */}
 
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400 dark:text-gray-500">
+        {/* <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400 dark:text-gray-500">
           <p>&copy; 2024 Southern Underground of Louisiana. All rights reserved.</p>
           <div className="flex justify-center space-x-4 mt-2">
             <a href="#" className="hover:text-white dark:hover:text-gray-200 transition-colors">Privacy Policy</a>
@@ -159,7 +159,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
             <span>|</span>
             <a href="#" className="hover:text-white dark:hover:text-gray-200 transition-colors">Site Map</a>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
