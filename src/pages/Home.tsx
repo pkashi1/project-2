@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       <Hero />
       <FeaturedProjects />
       {/* <Testimonials /> */}
-      <CallToAction />
+      {/* <CallToAction /> */}
     </div>
   );
 };
