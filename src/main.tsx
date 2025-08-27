@@ -20,7 +20,6 @@ createRoot(document.getElementById('root')!).render(
     <HelmetProvider>
       <LanguageProvider>
         <ThemeProvider>
-          <GoogleAnalytics />
           <App />
         </ThemeProvider>
       </LanguageProvider>

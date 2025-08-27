@@ -10,7 +10,7 @@ const FeaturedProjects: React.FC = () => {
     id: 101,
     title: 'Town of Oberlin – Sanitary Sewer System Improvements',
     description:
-      'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).',
+      'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).          ',
     category: 'Wastewater/Sewer',
     image: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png',
     completionDate: '2024-12-15',

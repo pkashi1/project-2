@@ -10,7 +10,7 @@ const CallToAction: React.FC = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/20 dark:bg-gray-300/10 rounded-full translate-x-1/2 translate-y-1/2"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      {/* <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             Ready to Start Your Next Project?
@@ -45,7 +45,7 @@ const CallToAction: React.FC = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
