@@ -26,13 +26,12 @@ export const Certifications: React.FC = () => {
             />
           ))} */}
 
-          <img
-              src="/images/certifications/credentials.png"
-              alt="Certification 1"
-              className="w-30 h-40 object-contain aspect-square"
-              loading="lazy"
-            />
-            {/* <img
+      <img
+            src="/images/certifications/credentials.png"
+            alt="Contractor License"
+            className="block mx-auto w-full h-auto object-contain max-w-[36rem] md:max-w-[44rem] lg:max-w-[52rem]"
+          />
+            <img
               src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455.webp"
               alt="Certification 2"
               className="w-32 h-20 object-contain aspect-square"
@@ -43,7 +42,7 @@ export const Certifications: React.FC = () => {
               alt="Certification 3"
               className="w-32 h-20 object-contain aspect-square"
               loading="lazy"
-            /> */}
+            />
         </div>
         
       </div>

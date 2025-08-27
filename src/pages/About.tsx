@@ -290,7 +290,7 @@ const About: React.FC = () => {
      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mb-16">
     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-      Our Partners
+      Our Associates
     </h2>
 
     {/* Responsive, centered, and capped size */}

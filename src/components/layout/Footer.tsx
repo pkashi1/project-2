@@ -76,7 +76,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
           </div>
 
           {/* Services */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2">
               <li><Link to="/services/directional-drilling" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Directional drilling</Link></li>
@@ -85,7 +85,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
               <li><Link to="/services/civil-construction" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Civil Construction</Link></li>
               <li><Link to="/services/water-sewer-treatment" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Water & Sewer Treatment</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div>

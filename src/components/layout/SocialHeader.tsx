@@ -47,7 +47,7 @@ const SocialHeader: React.FC = () => {
     className="w-4 h-4"
     viewBox="0 0 32 32"
     fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
+    // xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
     <path d="M24.85 3H30l-10.42 11.9L32 29h-8.08l-6.35-7.75L9.23 29H4l11.13-12.72L0 3h8.23l5.76 7.08L24.85 3ZM23.46 27h2.23l-7.19-8.78 1.59-1.82 7.45 9.21ZM6.31 5l14.27 17.62-1.58 1.83L4.8 5h1.5Z" />

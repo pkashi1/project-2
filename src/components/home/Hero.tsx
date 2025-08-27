@@ -213,6 +213,48 @@ const Hero: React.FC = () => {
 
 </section>
 
+      {/* Services Navigation Section */}
+      <section className="bg-gray-50 dark:bg-gray-900 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Our Services
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Explore our comprehensive range of underground construction and foundation solutions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((service) => {
+              const IconComponent = service.icon;
+              return (
+                <Link
+                  key={service.id}
+                  to={`/services/${service.id}`}
+                  className="group bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="flex-shrink-0">
+                      <IconComponent className="w-6 h-6 text-primary-600 group-hover:text-primary-700" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                      {service.name}
+                    </h4>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+                    {service.description}
+                  </p>
+                  <div className="mt-4 flex items-center text-primary-600 group-hover:text-primary-700 transition-colors">
+                    <span className="text-sm font-medium">Learn More</span>
+                    <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Main Hero Section - Bottom */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br overflow-hidden mt-8">
