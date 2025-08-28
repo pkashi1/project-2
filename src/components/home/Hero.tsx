@@ -393,36 +393,23 @@ const Hero: React.FC = () => {
 
       {/* Services Navigation Section */}
       <section className="bg-gray-50 dark:bg-gray-900 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((service) => {
-              // const IconComponent = service.icon;
-              return (
-                <Link
-                  key={service.id}
-                  to={`/services/${service.id}`}
-                  className="group bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
-                >
-                  <div className="flex items-center space-x-3 mb-3">
-                    {/* <div className="flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-primary-600 group-hover:text-primary-700" />
-                    </div> */}
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
-                      {service.name}
-                    </h4>
-                  </div>
-                  {/* <div className="mt-4 flex items-center text-primary-600 group-hover:text-primary-700 transition-colors">
-                    <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div> */}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-wrap justify-center gap-6 border-b border-gray-300 dark:border-gray-700 pb-4">
+      {services.map((service) => (
+        <Link
+          key={service.id}
+          to={`/services/${service.id}`}
+          className="text-lg font-semibold text-gray-800 dark:text-gray-200 relative group"
+        >
+          {service.name}
+          {/* underline effect on hover */}
+          <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full" />
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Main Hero Section - Bottom */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br overflow-hidden mt-8">
