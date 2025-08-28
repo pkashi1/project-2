@@ -314,7 +314,7 @@ const Careers: React.FC = () => {
       )}
 
       {/* Equal Opportunity */}
-      <section className="py-20 bg-primary-600 dark:bg-primary-800 text-white text-center">
+      {/* <section className="py-20 bg-primary-600 dark:bg-primary-800 text-white text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-4">{t('equal')}</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">{t('equalDesc')}</p>
@@ -323,7 +323,7 @@ const Careers: React.FC = () => {
             <a href="tel:+12255550123" className="px-8 py-3 border rounded-lg border-white hover:bg-white hover:text-primary-600 transition-colors">{t('call')}</a>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
