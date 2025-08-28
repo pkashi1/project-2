@@ -84,11 +84,11 @@ const Projects: React.FC = () => {
               <p className="text-xl text-gray-600 dark:text-gray-400">No projects found matching your criteria.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
               {filteredProjects.map((project, idx) => (
                 <div
                   key={project.id}
-                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
+                  className="h-full flex flex-col bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
                   <div className="relative overflow-hidden">
@@ -105,12 +105,13 @@ const Projects: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
-                  <div className="p-6 space-y-4">
+                  {/* Make the content area flex so the footer can stick to bottom */}
+                  <div className="p-6 space-y-4 flex-1 flex flex-col">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary-600 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2 min-h-[56px]">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 min-h-[60px]">
                         {project.description}
                       </p>
                     </div>
@@ -126,7 +127,8 @@ const Projects: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                    {/* Footer pinned to the bottom */}
+                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                       <div className="text-lg font-bold text-primary-600 dark:text-primary-400">
                         {project.details?.value || 'Contact for Details'}
                       </div>
