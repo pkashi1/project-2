@@ -330,13 +330,12 @@ const Hero: React.FC = () => {
   }, [services.length]);
 
   const currentService = services[currentSlide];
-  const IconComponent = currentService.icon;
 
   return (
     <div>
       {/* Services Slideshow Section - Top */}
       <section className="relative min-h-[80vh] overflow-hidden">
-  {/* Background image */}
+      {/* Background image */}
   <div
     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
     style={{ backgroundImage: `url('${currentService.backgroundImage}')` }}
@@ -392,18 +391,21 @@ const Hero: React.FC = () => {
 </section>
 
       {/* Services Navigation Section */}
+           {/* Services Navigation Section */}
       <section className="bg-gray-50 dark:bg-gray-900 py-12">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-wrap justify-center gap-6 border-b border-gray-300 dark:border-gray-700 pb-4">
-      {services.map((service) => (
+      {services.map((service, index) => (
         <Link
           key={service.id}
           to={`/services/${service.id}`}
           className="text-lg font-semibold text-gray-800 dark:text-gray-200 relative group"
         >
           {service.name}
-          {/* underline effect on hover */}
-          <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full" />
+          {/* underline effect on hover and active state */}
+          <span className={`absolute left-0 -bottom-1 h-0.5 bg-primary-600 transition-all duration-300 ${
+            index === currentSlide ? 'w-full' : 'w-0 group-hover:w-full'
+          }`} />
         </Link>
       ))}
     </div>
