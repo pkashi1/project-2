@@ -17,7 +17,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Interactive component for Why Southern Underground section
 const WhySouthernUnderground: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'safety' | 'experience'>('experience');
+  const [activeTab, setActiveTab] = useState<'safety' | 'experience' | 'expertise'>('experience');
 
   const experienceContent = {
     title: "Decades of Underground Expertise",
@@ -31,6 +31,20 @@ const WhySouthernUnderground: React.FC = () => {
     description: "Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.",
     linkText: "Learn About Safety",
     linkTo: "/safety"
+  };
+
+  const expertiseContent = {
+    title: "Comprehensive Underground Solutions",
+    description: "From directional drilling and utility installation to deep foundations and civil construction, our expertise spans the full spectrum of underground infrastructure. We combine cutting-edge technology with proven methodologies to deliver exceptional results.",
+    linkText: "Explore Services",
+    linkTo: "/services"
+  };
+
+  const expertise = {
+    title: "Our Expertise",
+    description: "With over 35 years of experience, Southern Underground has established itself as a trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface.",
+    linkText: "Learn about Services Projects",
+    linkTo: "/services"
   };
 
   const stats = [
@@ -75,6 +89,18 @@ const WhySouthernUnderground: React.FC = () => {
           >
             <h3 className="text-xl font-semibold mb-2">Safety</h3>
             <p className="text-sm opacity-80">Uncompromising safety standards</p>
+          </button>
+          
+          <button
+            onClick={() => setActiveTab('expertise')}
+            className={`w-full text-left p-6 rounded-lg transition-all duration-300 ${
+              activeTab === 'expertise'
+                ? 'bg-primary-600/20 border border-primary-500 text-white'
+                : 'bg-white/10 border border-white/20 text-gray-300 hover:bg-white/15'
+            }`}
+          >
+            <h3 className="text-xl font-semibold mb-2">Expertise</h3>
+            <p className="text-sm opacity-80">Comprehensive underground solutions</p>
           </button>
         </div>
 
@@ -129,6 +155,48 @@ const WhySouthernUnderground: React.FC = () => {
                   className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
                 >
                   {safetyContent.linkText}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </motion.div>
+            )}
+            
+            {activeTab === 'expertise' && (
+              <motion.div
+                key="expertise"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl font-bold">{expertiseContent.title}</h2>
+                <p className="text-lg text-gray-200 leading-relaxed">{expertiseContent.description}</p>
+                
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-2">Directional Drilling</h4>
+                    <p className="text-sm text-gray-300">Precision trenchless drilling solutions</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-2">Utility Installation</h4>
+                    <p className="text-sm text-gray-300">Complete water, gas, and sewer systems</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-2">Deep Foundations</h4>
+                    <p className="text-sm text-gray-300">Structural foundation and piling solutions</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-2">Civil Construction</h4>
+                    <p className="text-sm text-gray-300">Infrastructure and site development</p>
+                  </div>
+                </div>
+                
+                <Link
+                  to={expertiseContent.linkTo}
+                  className="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
+                >
+                  {expertiseContent.linkText}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
@@ -275,27 +343,11 @@ const Hero: React.FC = () => {
   />
   {/* Readability overlay */}
   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-  <div className="relative z-10 h-full flex items-center">
-  <div className="max-w-[75%] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
-      
-      {/* Left: section heading */}
-      {/* <div className="flex flex-col justify-center h-full space-y-8 text-white">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold text-white dark:text-gray-100">
-            Strength Below the Surface.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
-              Deep Solutions. Strong Foundations.
-            </span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-200 dark:text-gray-300 leading-relaxed">
-            A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface.
-          </p>
-        </div>
-      </div> */}
-
-      {/* Right: text overlay */}
-      <div className="flex flex-col justify-center h-full relative text-white">
+  <div className="relative z-10 h-full flex items-center justify-center">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="flex flex-col justify-center items-center text-center h-full py-20">
+      {/* Centered Service Content */}
+      <div className="space-y-8 max-w-4xl mx-auto">
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentSlide}
@@ -303,23 +355,24 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="space-y-6"
           >
-            <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight drop-shadow-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight drop-shadow-2xl text-white">
               {currentService.name}
-            </h3>
+            </h1>
 
             {/* Quote/tagline */}
-            <div className="mt-8 relative">
-              <span className="absolute -top-8 -left-4 text-primary-400/90 text-9xl leading-none select-none drop-shadow-xl">"</span>
-              <span className="absolute -bottom-12 -right-6 text-primary-400/90 text-9xl leading-none select-none drop-shadow-xl">"</span>
-              <p className="relative z-[1] text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed font-medium drop-shadow-2xl">
+            <div className="relative">
+              <span className="absolute -top-6 -left-8 text-primary-400/90 text-8xl leading-none select-none drop-shadow-xl">"</span>
+              <span className="absolute -bottom-8 -right-8 text-primary-400/90 text-8xl leading-none select-none drop-shadow-xl">"</span>
+              <p className="relative z-[1] text-xl md:text-2xl lg:text-3xl leading-relaxed font-medium drop-shadow-2xl text-white px-12">
                 {currentService.quote ||
                   `Trusted ${currentService.name.toLowerCase()} you can count on.`}
               </p>
             </div>
 
             {/* CTA */}
-            <div className="mt-12">
+            <div className="pt-4">
               <Link
                 to={`/services/${currentService.id}`}
                 className="inline-flex items-center bg-primary-600/90 hover:bg-primary-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-[1.05] shadow-2xl backdrop-blur-sm border border-white/20"
