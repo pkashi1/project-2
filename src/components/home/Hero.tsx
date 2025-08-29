@@ -364,7 +364,8 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Right Content - Service Categories */}
-              <div className="lg:col-span-4 space-y-4">
+              
+              {/* <div className="lg:col-span-4 space-y-4">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`categories-${currentSlide}`}
@@ -410,6 +411,7 @@ const Hero: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
               </div>
+               */}
             </div>
           </div>
         </div>
@@ -444,7 +446,7 @@ const Hero: React.FC = () => {
       </section>
 
       {/* Company Values Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      {/* <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -457,8 +459,6 @@ const Hero: React.FC = () => {
               for each client and project.
             </p>
           </div>
-
-          {/* Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -493,10 +493,9 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Recognition Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      {/* <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             NATIONALLY RECOGNIZED.
@@ -505,10 +504,9 @@ const Hero: React.FC = () => {
             Humbly Grounded.
           </p>
         </div>
-      </section>
+      </section> */}
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600">
+      {/* <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Want More Career Options?
@@ -525,7 +523,7 @@ const Hero: React.FC = () => {
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
