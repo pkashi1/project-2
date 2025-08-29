@@ -27,14 +27,14 @@ const Contact: React.FC = () => {
     {
       icon: Phone,
       title: 'Phone Number',
-      details: ['(225) 592-1336', '24/7 Emergency Service'],
+      details: ['+1 (225) 592-1336'],
       link: 'tel:+12255921336',
     },
     {
       icon: Mail,
       title: 'Email Address',
-      details: ['info@southernunderground.com'],
-      link: 'mailto:info@southernunderground.com',
+      details: ['info@suofla.com'],
+      link: 'mailto:info@suofla.com',
     },
     // {
     //   icon: Clock,
@@ -408,42 +408,8 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                  Emergency Services
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  We provide 24/7 emergency services for critical infrastructure issues.
-                  Don't hesitate to call if you have an urgent situation.
-                </p>
-                <a
-                  href="tel:+12255550123"
-                  className="inline-flex items-center bg-red-600 dark:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 dark:hover:bg-red-600 transition-colors"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Emergency Hotline
-                </a>
-              </div>
 
-              <div className="bg-primary-50 dark:bg-primary-900 rounded-xl p-8 transition-colors">
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                  What Happens Next?
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    "We'll review your request within 24 hours",
-                    'Schedule a consultation or site visit',
-                    'Provide detailed quote and project timeline',
-                  ].map((step, idx) => (
-                    <div key={idx} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-primary-600 dark:bg-primary-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-sm font-bold">{idx + 1}</span>
-                      </div>
-                      <p className="text-gray-700 dark:text-gray-300">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

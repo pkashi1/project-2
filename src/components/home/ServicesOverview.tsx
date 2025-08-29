@@ -100,8 +100,8 @@ const ServicesOverview: React.FC = () => {
       ]
     },
     {
-      id: 'jack-and-bore',
-      name: 'Jack & Bore / Underground Tunneling',
+      id: 'Underground Tunneling',
+      name: 'Underground Tunneling',
       icon: MoveRight,
       description:
         'Steel casing jacked under roads/rails with carrier pipe pullback.',

@@ -18,7 +18,6 @@ const Home: React.FC = () => {
       </Helmet>
       <Hero />
       <FeaturedProjects />
-      <div className="h-2 bg-gradient-to-r from-primary-600 via-secondary-500 to-primary-600" />
       <Certifications/>
       {/* <Testimonials /> */}
       {/* <CallToAction /> */}

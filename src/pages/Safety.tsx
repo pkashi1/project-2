@@ -153,7 +153,7 @@ const Safety: React.FC = () => {
       </section>
 
       {/* Safety Protocols */}
-      <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
+      {/* <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Safety Protocols</h2>
@@ -181,7 +181,7 @@ const Safety: React.FC = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Training Programs */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
@@ -206,7 +206,7 @@ const Safety: React.FC = () => {
             </div>
 
             <div className="space-y-8">
-              <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
+              {/* <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Continuous Education</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
                   Safety training is an ongoing process. We conduct regular refresher courses, update training materials with the latest industry standards, and ensure all certifications remain current.
@@ -215,9 +215,9 @@ const Safety: React.FC = () => {
                   <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">3,000+</div>
                   <div className="text-gray-700 dark:text-gray-300">Safety training hours annually</div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
+              {/* <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Safety Leadership</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
                   Our safety director and certified safety professionals lead by example, conducting regular site inspections and maintaining open communication channels for safety concerns.
@@ -226,7 +226,7 @@ const Safety: React.FC = () => {
                   <Award className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
                   <span className="text-gray-700 dark:text-gray-300">Certified Safety Professional on staff</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -309,30 +309,6 @@ const Safety: React.FC = () => {
   </div>
 </section>
 
-
-      {/* Safety Contact */}
-      <section className="py-20 bg-primary-600 dark:bg-primary-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">Safety Questions or Concerns?</h2>
-          <p className="text-xl text-primary-100 dark:text-primary-200 mb-8 max-w-3xl mx-auto">
-            We encourage open communication about safety. If you have questions about our safety procedures or want to report a concern, please don't hesitate to contact us.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:safety@southernunderground.com"
-              className="inline-flex items-center bg-secondary-500 dark:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 dark:hover:bg-secondary-700 transition-colors"
-            >
-              Contact Safety Director
-            </a>
-            <a
-              href="tel:+12255550123"
-              className="inline-flex items-center border-2 border-white dark:border-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white dark:hover:bg-gray-700 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
-            >
-              Emergency Hotline
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

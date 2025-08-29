@@ -1322,8 +1322,8 @@ export const services = [
         ]
       },
       {
-        id: 'specialty-jack-bore-techniques',
-        title: 'Specialty Jack and Bore Techniques',
+        id: 'specialty-Underground-Tunneling-techniques',
+        title: 'Specialty Underground Tunneling Techniques',
         features: [
           'Handling variable soil conditions including rock, clay, and sand',
           'Using pipe bursting or sliplining in conjunction with jack and bore for rehabilitation',
