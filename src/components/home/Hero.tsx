@@ -62,7 +62,7 @@ const WhySouthernUnderground: React.FC = () => {
     <div className="relative min-h-[50vh] overflow-hidden">
       {/* Heading */}
       <h2 className="text-center text-3xl md:text-4xl font-bold text-white">
-        Why <span className="text-primary-600">Southern Underground</span>?
+        Why Southern Underground?
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[50vh] py-12">
@@ -141,6 +141,31 @@ const WhySouthernUnderground: React.FC = () => {
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  // refs to control the horizontal scroll on mobile
+const tabsWrapRef = React.useRef<HTMLDivElement | null>(null);
+
+// helper: scroll the tab rail so the active item is visible on mobile
+const scrollTabsToActive = React.useCallback((index: number) => {
+  const rail = tabsWrapRef.current;
+  if (!rail) return;
+
+  // only do this below md breakpoint
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  // each item is 50% width on mobile, so compute scrollLeft
+  const perView = 2; // two tabs visible
+  const itemWidth = rail.clientWidth / perView;
+  rail.scrollTo({
+    left: Math.max(0, index * itemWidth),
+    behavior: 'smooth',
+  });
+}, []);
+
+// keep the rail synced when currentSlide changes
+useEffect(() => {
+  scrollTabsToActive(currentSlide);
+}, [currentSlide, scrollTabsToActive]);
 
   // Services data inspired by Moore USA's service categories
   const services = [
@@ -267,28 +292,65 @@ const Hero: React.FC = () => {
   </div>
 
   {/* Service Tabs (underline style, like Moore) */}
-  <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm z-20">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap justify-center gap-8 py-4 overflow-x-auto">
-        {services.map((service, index) => (
+  {/* Service Tabs (mobile: 2-per-view slider; desktop: inline tabs) */}
+<div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm z-20">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Mobile rail (≤ md): horizontal slider, 2 items per view */}
+    <div
+      ref={tabsWrapRef}
+      className="md:hidden flex gap-0 overflow-x-auto snap-x snap-mandatory no-scrollbar py-3 -mx-4 px-4"
+    >
+      {services.map((service, index) => {
+        const active = index === currentSlide;
+        return (
           <button
             key={service.id}
             onClick={() => setCurrentSlide(index)}
-            className={`relative text-lg font-semibold whitespace-nowrap ${
-              index === currentSlide ? 'text-primary-400' : 'text-gray-200'
-            }`}
+            className="shrink-0 basis-1/2 snap-start pr-6 text-left"
           >
-            {service.name}
+            <span
+              className={`relative text-lg font-semibold whitespace-nowrap ${
+                active ? 'text-primary-400' : 'text-gray-200'
+              }`}
+            >
+              {service.name}
+              <span
+                className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
+                  active ? 'w-full' : 'w-0'
+                }`}
+              />
+            </span>
+          </button>
+        );
+      })}
+    </div>
+
+    {/* Desktop rail (≥ md): centered inline tabs, no scrolling */}
+    <div className="hidden md:flex flex-wrap justify-center gap-8 py-4">
+      {services.map((service, index) => {
+        const active = index === currentSlide;
+        return (
+          <button
+            key={service.id}
+            onClick={() => setCurrentSlide(index)}
+            className="relative text-lg font-semibold whitespace-nowrap group"
+          >
+            <span className={active ? 'text-primary-400' : 'text-gray-200'}>
+              {service.name}
+            </span>
             <span
               className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
-                index === currentSlide ? 'w-full' : 'w-0 group-hover:w-full'
+                active ? 'w-full' : 'w-0 group-hover:w-full'
               }`}
+              style={{ right: 0 }}
             />
           </button>
-        ))}
-      </div>
+        );
+      })}
     </div>
   </div>
+</div>
+
 </section>
 
 

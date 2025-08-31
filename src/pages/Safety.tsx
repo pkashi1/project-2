@@ -66,25 +66,29 @@ const Safety: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 text-white">
+      <section className="relative py-20 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/images/umit-yildirim-9OB46apMbC4-unsplash.jpg)' }}
         >
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
         </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
-              <Shield className="w-10 h-10 text-white" />
-            </div>
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent leading-tight pb-2">
+              Safety <span className="text-secondary-300">First</span>, Always
+            </h1>
+            <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">
+              Our unwavering commitment to safety ensures every team member returns home safely while delivering exceptional construction results
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Safety <span className="text-secondary-400 dark:text-secondary-300">First</span>, Always
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Our unwavering commitment to safety ensures every team member returns home safely while delivering exceptional construction results
-          </p>
         </div>
       </section>
 
@@ -132,19 +136,19 @@ const Safety: React.FC = () => {
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   Our safety culture is built on the foundation that all incidents are preventable. Through proactive hazard identification, rigorous safety protocols, and ongoing education, we maintain one of the industry's best safety records.
                 </p>
-                <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-6 transition-colors">
+                {/* <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-6 transition-colors">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Zero Incident Goal</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     Our ultimate goal is zero incidents. Every decision we make, every procedure we implement, and every training session we conduct is designed to achieve and maintain this standard.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="relative">
               <img
-                src="/images/dean-bennett-aBV8pVODWiM-unsplash.jpg"
+                src="/images/downtown-construction.png"
                 alt="Safety equipment and construction site"
-                className="rounded-2xl shadow-xl"
+                className="rounded-2xl shadow-xl w-full h-80 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
             </div>
@@ -152,88 +156,50 @@ const Safety: React.FC = () => {
         </div>
       </section>
 
-      {/* Safety Protocols */}
-      {/* <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Safety Protocols</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Comprehensive safety measures implemented across all our projects
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {safetyProtocols.map((protocol, idx) => {
-              const Icon = protocol.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group hover:-translate-y-2"
-                >
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-primary-100 dark:bg-primary-800 rounded-full flex items-center justify-center group-hover:bg-primary-600 transition-colors duration-300">
-                      <Icon className="w-8 h-8 text-primary-600 dark:text-white group-hover:text-white transition-colors duration-300" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 text-center">{protocol.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">{protocol.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section> */}
 
       {/* Training Programs */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+
+      <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Safety Training Programs</h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Our comprehensive training programs ensure every team member is equipped with the knowledge and skills necessary to maintain the highest safety standards.
+            </p>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Safety Training Programs</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-                Our comprehensive training programs ensure every team member is equipped with the knowledge and skills necessary to maintain the highest safety standards.
-              </p>
-              <div className="space-y-4">
-                {trainingPrograms.map((prog, i2) => (
-                  <div
-                    key={i2}
-                    className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-700 rounded-lg shadow-sm transition-colors"
-                  >
-                    <CheckCircle className="w-6 h-6 text-accent-500 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">{prog}</span>
-                  </div>
-                ))}
-              </div>
+            {/* Left Column - First 4 programs */}
+            <div className="space-y-4">
+              {trainingPrograms.slice(0, 4).map((prog, i2) => (
+                <div
+                  key={i2}
+                  className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm transition-colors"
+                >
+                  <CheckCircle className="w-6 h-6 text-accent-500 flex-shrink-0" />
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">{prog}</span>
+                </div>
+              ))}
             </div>
-
-            <div className="space-y-8">
-              {/* <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Continuous Education</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Safety training is an ongoing process. We conduct regular refresher courses, update training materials with the latest industry standards, and ensure all certifications remain current.
-                </p>
-                <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-4 transition-colors">
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">3,000+</div>
-                  <div className="text-gray-700 dark:text-gray-300">Safety training hours annually</div>
+            
+            {/* Right Column - Last 4 programs */}
+            <div className="space-y-4">
+              {trainingPrograms.slice(4, 8).map((prog, i2) => (
+                <div
+                  key={i2 + 4}
+                  className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm transition-colors"
+                >
+                  <CheckCircle className="w-6 h-6 text-accent-500 flex-shrink-0" />
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">{prog}</span>
                 </div>
-              </div> */}
-
-              {/* <div className="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg transition-colors">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Safety Leadership</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Our safety director and certified safety professionals lead by example, conducting regular site inspections and maintaining open communication channels for safety concerns.
-                </p>
-                <div className="flex items-center space-x-3">
-                  <Award className="w-6 h-6 text-secondary-500 dark:text-secondary-400" />
-                  <span className="text-gray-700 dark:text-gray-300">Certified Safety Professional on staff</span>
-                </div>
-              </div> */}
+              ))}
             </div>
           </div>
         </div>
       </section>
 
+
       {/* Certifications */}
-     <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
+     <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
       <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -264,7 +230,7 @@ const Safety: React.FC = () => {
       {/* General Safety Certification */}
       <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
         <img
-          src="/images/safety/safety.webp"
+          src="/images/certifications/alliance-logo.webp"
           alt="General Safety Certification"
           className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
         />
@@ -279,7 +245,7 @@ const Safety: React.FC = () => {
       {/* Licensed, Bonded & Insured */}
       <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
         <img
-          src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455.webp"
+          src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455-removebg-preview.png"
           alt="Licensed Bonded Insured"
           className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
         />

@@ -170,16 +170,24 @@ const Careers: React.FC = () => {
       </div>
 
       {/* Hero */}
-      <section className="relative py-20 text-white">
+      <section className="relative py-20 text-white overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/Gemini_Generated_Image_bjxysubjxysubjxy.png)' }}>
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
         </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
         <div className="relative max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('joinTeam')}</h1>
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-3xl mx-auto">{t('joinTeamDesc')}</p>
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent leading-tight pb-2">{t('joinTeam')}</h1>
+            <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">{t('joinTeamDesc')}</p>
+          </div>
         </div>
       </section>
-
       {/* Company Culture */}
       <section className="py-20 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
@@ -193,7 +201,7 @@ const Careers: React.FC = () => {
             </div>
           </div>
           <div className="relative">
-            <img src="/images/pedro-miranda-3QzMBrvCeyQ-unsplash.jpg" alt="Construction team at work" className="rounded-2xl shadow-xl" />
+            <img src="/images/pedro-miranda-3QzMBrvCeyQ-unsplash.jpg" alt="Construction team at work" className="rounded-2xl shadow-xl w-full h-64 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
           </div>
         </div>

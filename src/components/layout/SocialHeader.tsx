@@ -16,11 +16,11 @@ const SocialHeader: React.FC = () => {
               <span className="hidden sm:inline">(225) 555-0123</span>
             </a>
             <a 
-              href="mailto:info@southernunderground.com" 
+              href="mailto:info@suofla.com" 
               className="flex items-center space-x-2 hover:text-secondary-400 transition-colors"
             >
               <Mail className="w-4 h-4" />
-              <span className="hidden sm:inline">info@southernunderground.com</span>
+              <span className="hidden sm:inline">info@suofla.com</span>
             </a>
           </div>
 
@@ -55,7 +55,7 @@ const SocialHeader: React.FC = () => {
 </a>
 
             <a
-              href="mailto:info@southernunderground.com"
+              href="mailto:info@suofla.com"
               className="text-gray-300 hover:text-secondary-400 transition-colors"
               aria-label="Email"
             >

@@ -19,7 +19,7 @@ const Projects: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 text-white">
+      {/* <section className="relative py-20 text-white">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
@@ -33,6 +33,32 @@ const Projects: React.FC = () => {
           <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Explore our successful project completions across Louisiana and beyond, showcasing our expertise in construction and utility services
           </p>
+        </div>
+      </section> */}
+      {/* Hero Section */}
+      <section className="relative py-20 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+        </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+              Our <span className="text-secondary-300">Project Portfolio</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">
+              Explore our successful project completions across Louisiana and beyond, showcasing our expertise in construction and utility services
+            </p>
+          </div>
         </div>
       </section>
 
@@ -129,12 +155,12 @@ const Projects: React.FC = () => {
 
                     {/* Footer pinned to the bottom */}
                     <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
-                      <div className="text-lg font-bold text-primary-600 dark:text-primary-400">
+                      <div className="text-lg font-bold text-secondary-600 dark:text-secondary-400">
                         {project.details?.value || 'Contact for Details'}
                       </div>
                       <Link
                         to={`/projects/${project.id}`}
-                        className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group"
+                        className="inline-flex items-center text-black dark:text-white font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors group"
                       >
                         View Details
                         <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -158,13 +184,13 @@ const Projects: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '500+', label: 'Projects Completed' },
-              { value: '$50M+', label: 'Total Project Value' },
-              { value: '1,200+', label: 'Miles Installed' },
+              { value: '800+', label: 'Projects Completed' },
+              { value: '99.9% ', label: 'Safety Record' },
+              { value: '98%', label: 'Client Retention Rate' },
               { value: '99.9%', label: 'Safety Record' },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{stat.value}</div>
+                <div className="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2">{stat.value}</div>
                 <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
               </div>
             ))}

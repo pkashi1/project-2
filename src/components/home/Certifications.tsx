@@ -15,7 +15,7 @@ export const Certifications: React.FC = () => {
             Certifications & Associations
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-0">
           {/* {certImages.map((src, i) => (
             <img
               key={i}
@@ -25,24 +25,31 @@ export const Certifications: React.FC = () => {
               loading="lazy"
             />
           ))} */}
+       <div className="flex flex-wrap items-center justify-center gap-6">
+  <img
+    src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455-removebg-preview.png"
+    alt="Bonded and Insured"
+    className="w-32 h-30 object-contain"
+    loading="lazy"
+  />
+  <img
+    src="/images/certifications/OIP.png"
+    alt="OSHA"
+    className="w-28 h-28 object-contain"
+    loading="lazy"
+  />
 
-      <img
-            src="/images/certifications/credentials.png"
-            alt="Contractor License"
-            className="block mx-auto w-full h-auto object-contain max-w-[36rem] md:max-w-[44rem] lg:max-w-[52rem]"
-          />
-            <img
-              src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455.webp"
-              alt="Certification 2"
-              className="w-32 h-20 object-contain aspect-square"
-              loading="lazy"
-            />
-            <img
-              src="/images/certifications/OIP.webp"
-              alt="Certification 3"
-              className="w-32 h-20 object-contain aspect-square"
-              loading="lazy"
-            />
+  <img
+    src="/images/certifications/credentials.png"
+    alt="Contractor License"
+    className="w-45 h-40 object-contain"
+    loading="lazy"
+  />
+
+  
+</div>
+
+            
         </div>
         
       </div>
