@@ -360,7 +360,7 @@ const Services: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedService, setExpandedService] = useState<string | null>(null);
-
+  const [expandedServiceGroups, setExpandedServiceGroups] = useState<{ [key: string]: boolean }>({});
   const filteredServices = services.filter(service => {
     const matchesCategory = selectedCategory === 'All' || service.category === selectedCategory;
     const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -378,6 +378,13 @@ const Services: React.FC = () => {
 
   const toggleServiceExpansion = (serviceId: string) => {
     setExpandedService(expandedService === serviceId ? null : serviceId);
+  };
+  const toggleServiceGroupExpansion = (serviceId: string, groupIdx: number) => {
+    const key = `${serviceId}-${groupIdx}`;
+    setExpandedServiceGroups(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
   };
 
   return (
@@ -406,25 +413,6 @@ const Services: React.FC = () => {
               From precision trenchless technology to comprehensive civil works—delivered safely, on time, and on budget.
             </p>
             
-            {/* Quick stats */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-300">500+</div>
-                <div className="text-sm text-primary-200">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-300">15+</div>
-                <div className="text-sm text-primary-200">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-300">24/7</div>
-                <div className="text-sm text-primary-200">Emergency Service</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-300">100%</div>
-                <div className="text-sm text-primary-200">Safety Record</div>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>
@@ -485,12 +473,9 @@ const Services: React.FC = () => {
                     isExpanded ? 'md:col-span-2 lg:col-span-3' : ''
                   }`}
                 >
-                  {/* Popular badge */}
-                  
-
                   {/* Service Card Header */}
                   <div 
-                    className="bg-gradient-to-br from-primary-50 via-primary-100 to-secondary-50 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 p-6 cursor-pointer"
+                    className="bg-gradient-to-br from-primary-50 via-primary-100 to-secondary-50 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 p-8 cursor-pointer aspect-rectangle flex flex-col justify-center"
                     onClick={() => toggleServiceExpansion(service.id)}
                   >
                     <div className="flex items-start justify-between mb-4">
@@ -514,9 +499,9 @@ const Services: React.FC = () => {
                       </div>
                     </div>
 
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {/* <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {service.shortDescription}
-                    </p>
+                    </p> */}
                   </div>
 
                   {/* Expanded Content */}
@@ -530,28 +515,45 @@ const Services: React.FC = () => {
 
                       {/* Services Offered */}
                       <div className="space-y-6">
-                        <h4 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                        {/* <h4 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                           Services Offered
-                        </h4>
+                        </h4> */}
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {service.services?.map((serviceGroup, idx) => (
-                            <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
-                              <h5 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                                {serviceGroup.title}
-                              </h5>
-                              <ul className="space-y-2">
-                                {serviceGroup.features.map((feature, featureIdx) => (
-                                  <li key={featureIdx} className="flex items-start space-x-3">
-                                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700 dark:text-gray-300 text-sm">
-                                      {feature}
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
+                          {service.services?.map((serviceGroup, idx) => {
+                            const groupKey = `${service.id}-${idx}`;
+                            const isGroupExpanded = expandedServiceGroups[groupKey];
+                            
+                            return (
+                              <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+                                <div 
+                                  className="flex items-center justify-between cursor-pointer"
+                                  onClick={() => toggleServiceGroupExpansion(service.id, idx)}
+                                >
+                                  <h5 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                                    {serviceGroup.title}
+                                  </h5>
+                                  {isGroupExpanded ? (
+                                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                                  ) : (
+                                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                                  )}
+                                </div>
+                                {isGroupExpanded && (
+                                  <ul className="space-y-2 mt-4">
+                                    {serviceGroup.features.map((feature, featureIdx) => (
+                                      <li key={featureIdx} className="flex items-start space-x-3">
+                                        <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5" />
+                                        <span className="text-gray-700 dark:text-gray-300 text-sm">
+                                          {feature}
+                                        </span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            );
+                          })}
                         </div>
 
                         {/* Action Buttons */}
@@ -572,16 +574,6 @@ const Services: React.FC = () => {
                   )}
 
                   {/* Collapsed Footer */}
-                  {!isExpanded && (
-                    <div className="p-6 mt-auto">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm">
-                          Learn More
-                          <ChevronDown className="ml-1 w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               );
             })}
