@@ -8,10 +8,6 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import * as Icons from 'lucide-react';
-
-/* =========================
-   Services data (unchanged)
-   ========================= */
 const services = [
   {
     id: 'directional-drilling',
