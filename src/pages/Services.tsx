@@ -28,7 +28,7 @@ const services = [
         title: 'Utility Conduit & Pipeline Installation',
         features: [
           'Installing water, sewer, gas, and drainage lines via directional drilling',
-          'Installing underground electrical conduits and fiber optic ducts',
+          'Installing underground electrical conduits and telecom/fiber optic ducts',
           'Installing multiple conduits in a single bore (multi-duct installation)',
           'Installing casing pipes for future utility use',
         ],
@@ -37,7 +37,7 @@ const services = [
         title: 'Crossings & Specialty Bores',
         features: [
           'Road, railway, and airport runway crossings without open-cut trenching',
-          'Water and wetland crossings',
+          'Waterway and wetland crossings',
           'Urban, high-traffic, or environmentally sensitive area installations',
           'Long-distance bores for transmission mains or trunk lines',
         ],
@@ -47,8 +47,7 @@ const services = [
         features: [
           'Utility locates and potholing to avoid conflicts',
           'Bore path engineering based on soil conditions, depth, and bend radius',
-          'Pre-reaming and sizing for bore hole installations',
-          'Pullback & Product Installation',
+          'Pre-reaming and sizing of bore holes for large-diameter installations',
         ],
       },
       {
@@ -83,6 +82,14 @@ const services = [
           'Pipe bursting or sliplining using HDD access points',
         ],
       },
+      {
+        title: 'Site Work & Restoration',
+        features: [
+          'Entry and exit pit excavation',
+          'Backfilling and compaction to specification',
+          'Pavement, curb, sidewalk, and landscape restoration',
+        ],
+      },
     ],
     popular: true,
   },
@@ -100,28 +107,71 @@ const services = [
       {
         title: 'Water System Installation',
         features: [
-          'Water mains, services, meters, valves, hydrants',
+          'Installing new potable, raw, and reclaimed water mains',
+          'Tapping water mains for new service lines',
+          'Installing individual water service laterals from main to meter',
+          'Setting water meters (residential, commercial, industrial)',
+          'Installing curb stops, corporation stops, and meter yokes',
+          'Installing control valves, air release valves, and pressure reducing valves',
+          'Installing fire hydrants and hydrant laterals',
+          'Fire service lines for sprinkler systems',
+          'Thrust blocks and joint restraints',
           'Backflow prevention devices',
-          'Air release valves and monitoring equipment',
-          'Hydrostatic testing and chlorination',
+          'Hydrostatic pressure testing and chlorination',
+          'Bacteriological testing prior to service',
         ],
       },
       {
         title: 'Gas System Installation',
         features: [
-          'Gas mains and services installation',
-          'Meters and regulators setup',
-          'Cathodic protection systems',
-          'Pressure testing and leak detection',
+          'Installing new underground or aboveground natural gas mains',
+          'Installing gas service laterals from main to meter or building connection',
+          'Tapping existing gas mains for new services',
+          'Installing cathodic protection for steel pipelines',
+          'Setting gas meters for residential, commercial, and industrial customers',
+          'Installing pressure regulators to adjust delivery pressure',
+          'Installing meter manifolds for multi-unit development',
+          'Installing risers and transition fittings for above/below ground connections',
+          'Installing excess flow valves (EFVs) and shut-off valves',
+          'Pressure/leak testing to code requirements',
+          'Purging lines of air before service start-up',
         ],
       },
       {
-        title: 'Wastewater Systems',
+        title: 'Wastewater/Sewer Systems',
         features: [
-          'Gravity and force mains installation',
-          'Manholes and lift stations',
-          'Pump stations and controls',
-          'Flow testing and CCTV inspection',
+          'Installing sanitary sewer mains (gravity or force mains)',
+          'Installing storm sewer mains and drainage systems',
+          'Installing low-pressure sewer lines',
+          'Connecting building sewer laterals from structure to main',
+          'Constructing and setting precast or cast-in-place manholes',
+          'Installing cleanouts, lamp holes, and inspection ports',
+          'Installing wastewater lift stations and force mains',
+          'Installing grinder pumps for low-pressure systems',
+          'Installing drop connections, wyes, tees, and reducers',
+          'Air testing or vacuum testing sewer mains and manholes',
+          'CCTV inspection of installed lines',
+        ],
+      },
+      {
+        title: 'Wastewater Collection & Lift Systems',
+        features: [
+          'Installing gravity and force main sewer pipelines connected to lift stations',
+          'Integrating manholes, cleanouts, and service laterals for maintenance access',
+          'Coordinating collection system design with lift station capacity and hydraulics',
+          'Installing backup power generators for continuous lift station operation',
+          'Integrating automatic transfer switches for seamless power transition',
+          'Testing and commissioning generators to meet capacity requirements',
+        ],
+      },
+      {
+        title: 'Pipe Rehabilitation Services',
+        features: [
+          'Installing cured-in-place pipe (CIPP) liners to rehabilitate existing sewer lines',
+          'Installing sectional liners for spot repairs without replacing entire runs',
+          'Breaking and displacing existing pipes while installing new pipe',
+          'Increasing pipe diameter to improve capacity where required',
+          'Addressing cracks, root intrusion, or minor structural defects',
         ],
       },
     ],
@@ -139,30 +189,45 @@ const services = [
       'Primary/secondary conduit systems, duct banks, handholes/pull boxes, vaults and transformer pads with trenchless crossings where required.',
     services: [
       {
-        title: 'Conduit Systems',
+        title: 'Main & Service Conduit Installation',
         features: [
-          'PVC, HDPE, and steel conduits installation',
-          'Risers and transitions',
-          'Duct banks and concrete encasement',
-          'Joint trench with other utilities',
+          'Installing primary and secondary electrical conduits (PVC, HDPE, steel)',
+          'Installing service laterals from main feeder to buildings, transformers, or panels',
+          'Installing duct banks for multi-conduit runs',
+          'Installing risers and transitions for above- to below-ground connections',
         ],
       },
       {
-        title: 'Electrical Infrastructure',
+        title: 'Structures, Boxes & Access Points',
         features: [
-          'Handholes, pull boxes, and vaults',
-          'Electrical manholes',
-          'Transformer and equipment pads',
-          'Warning tape and tracer wire installation',
+          'Installing handholes, pull boxes, vaults, and manholes for electrical systems',
+          'Setting transformer pads and electrical equipment pads',
+          'Installing conduit terminations in structures',
         ],
       },
       {
-        title: 'Testing & Commissioning',
+        title: 'Specialty Installation Methods',
         features: [
-          'Mandrel and pull-string installation',
-          'Continuity and grounding tests',
-          'Grounding and bonding systems',
-          'Final restoration and cleanup',
+          'Directional boring, jack-and-bore, or trenchless conduit installation',
+          'Installing casing pipes and carrier conduits for protected crossings',
+          'Conduit encasement in concrete for added protection',
+          'Installation in joint trench configurations with other utilities',
+        ],
+      },
+      {
+        title: 'Cable Protection & Appurtenances',
+        features: [
+          'Installing warning tape and tracer wire above conduit runs',
+          'Installing grounding and bonding systems',
+          'Sealing conduit ends for moisture and pest prevention',
+        ],
+      },
+      {
+        title: 'Testing & Verification',
+        features: [
+          'Mandrel testing to verify conduit clearance',
+          'Pull string installation for cable pulling',
+          'Conduit continuity and grounding tests',
         ],
       },
     ],
@@ -179,30 +244,54 @@ const services = [
       'Drilled shafts, piles and specialty supports for bridges, buildings and heavy structures—delivered with certified testing and QA/QC.',
     services: [
       {
-        title: 'Drilled Foundations',
+        title: 'Drilled Shaft / Caisson Installation',
         features: [
-          'Drilled shafts and caissons',
-          'Belled shafts and rock sockets',
-          'Slurry drilling and tremie concrete placement',
-          'Reinforcing cages and corrosion protection',
+          'Drilling and installing concrete drilled shafts for bridges, buildings, and heavy structures',
+          'Installing belled shafts for increased bearing capacity',
+          'Temporary or permanent casing installation for shaft stability',
+          'Rock socket drilling for hard strata conditions',
         ],
       },
       {
         title: 'Pile Installation',
         features: [
-          'Steel H-piles, pipe, and sheet piles',
-          'Precast and timber piles',
-          'Auger cast (ACIP) and continuous flight auger piles',
-          'Helical piles and micro-piles',
+          'Driving steel H-piles, pipe piles, or sheet piles',
+          'Installing precast concrete piles',
+          'Installing timber piles for marine or light-load structures',
+          'Installing auger cast piles (ACIP) or continuous flight auger piles',
         ],
       },
       {
-        title: 'Testing & Quality Control',
+        title: 'Foundation Support Systems',
         features: [
-          'Static and dynamic load testing',
-          'Cross-hole sonic logging (CSL)',
+          'Installing helical piles or screw anchors for foundation stabilization',
+          'Installing micro-piles for restricted-access or retrofit work',
+          'Underpinning existing foundations for load support or settlement correction',
+        ],
+      },
+      {
+        title: 'Specialty Excavation & Drilling',
+        features: [
+          'Core drilling through rock or obstructions',
+          'Slurry drilling and tremie concrete placement in wet conditions',
+          'Drilling in limited access or low-headroom environments',
+        ],
+      },
+      {
+        title: 'Load Testing & Verification',
+        features: [
+          'Static load testing for piles or shafts',
+          'Dynamic pile testing (PDA – Pile Driving Analyzer)',
+          'Cross-hole sonic logging (CSL) for shaft integrity',
           'Thermal integrity profiling (TIP)',
-          'Pile driving analysis (PDA)',
+        ],
+      },
+      {
+        title: 'Foundation Protection & Reinforcement',
+        features: [
+          'Installing reinforcing cages and structural steel within deep foundations',
+          'Applying corrosion protection measures for steel piles',
+          'Installing base grouting or tip grouting for load enhancement',
         ],
       },
     ],
@@ -219,30 +308,65 @@ const services = [
       'Full-scope sitework, roads, structural concrete, drainage, and public infrastructure with strict schedule and safety control.',
     services: [
       {
-        title: 'Site Development',
+        title: 'Site Preparation & Earthwork',
         features: [
-          'Clearing, demolition, and excavation',
-          'Grading and soil stabilization',
-          'Topsoil and fine grading',
+          'Land clearing, grubbing, and demolition of existing structures',
+          'Excavation, grading, and site leveling',
+          'Soil stabilization and compaction',
+          'Importing and exporting fill material',
+        ],
+      },
+      {
+        title: 'Roadway & Pavement Construction',
+        features: [
+          'Subgrade preparation and aggregate base installation',
+          'Asphalt paving and concrete paving',
+          'Curb, gutter, and sidewalk installation',
+          'Driveway and parking lot construction',
+        ],
+      },
+      {
+        title: 'Structural Concrete & Foundations',
+        features: [
+          'Building and bridge foundations',
+          'Retaining walls and headwalls',
+          'Deep foundation systems (drilled shafts, piles, caissons)',
+          'Slabs, pads, and structural flatwork',
+        ],
+      },
+      {
+        title: 'Drainage & Erosion Control',
+        features: [
+          'Culverts, swales, and stormwater management systems',
+          'Retention and detention ponds',
+          'Erosion control matting, riprap, and slope stabilization',
+          'Outfall structures and energy dissipators',
+        ],
+      },
+      {
+        title: 'Transportation & Public Infrastructure',
+        features: [
+          'Road, highway, and intersection improvements',
+          'Sidewalks, bike paths, and pedestrian facilities',
+          'Bridge approaches and abutments',
+          'Traffic control devices and striping',
+        ],
+      },
+      {
+        title: 'Specialty Civil Works',
+        features: [
+          'Site concrete for utilities, equipment pads, and bollards',
+          'Concrete channels, ditches, and spillways',
+          'Industrial site development and heavy civil projects',
+          'Marine and waterfront civil structures',
+        ],
+      },
+      {
+        title: 'Site Restoration & Finishing',
+        features: [
+          'Topsoil placement and fine grading',
           'Landscaping and sod installation',
-        ],
-      },
-      {
-        title: 'Roadway Construction',
-        features: [
-          'Subgrade preparation and base installation',
-          'Asphalt and concrete paving',
-          'Transportation infrastructure',
-          'Public infrastructure development',
-        ],
-      },
-      {
-        title: 'Structural Work',
-        features: [
-          'Structural concrete foundations',
-          'Walls and flatwork',
-          'Industrial and marine heavy civil specialties',
-          'Surface restoration after utility work',
+          'Pavement, curb, and surface restoration after utility work',
         ],
       },
     ],
@@ -260,30 +384,52 @@ const services = [
       'Storm drain mains/laterals, culverts, inlets/structures, open channels and hydrologic controls—installed, inspected and restored.',
     services: [
       {
-        title: 'Storm Drainage Systems',
+        title: 'Main & Lateral Line Installation',
         features: [
-          'Storm mains and laterals installation',
-          'Roadside and cross drains',
-          'Catch basins and curb inlets',
-          'Drop inlets and junction boxes',
+          'Installing storm drain mains and laterals',
+          'Installing culverts (concrete, HDPE, metal) for roadways and site drainage',
+          'Installing roadside and cross-drain pipes',
+          'Installing roof drain or area drain connections to storm systems',
         ],
       },
       {
-        title: 'Culvert Installation',
+        title: 'Inlets, Structures & Access Points',
         features: [
-          'Concrete, HDPE, and metal culverts',
-          'Directional and jack-and-bore crossings',
-          'Protective casing installation',
-          'Headwalls and wingwalls',
+          'Installing catch basins, drop inlets, and curb inlets',
+          'Installing junction boxes and manholes for storm systems',
+          'Adjusting inlet and manhole frames and grates to grade',
         ],
       },
       {
-        title: 'Water Management',
+        title: 'Open Channel & Surface Drainage',
         features: [
-          'Ditches, swales, and channels',
-          'Riprap installation',
-          'Retention and detention systems',
-          'Outfalls and erosion control',
+          'Grading and shaping ditches, swales, and channels',
+          'Installing riprap or erosion control lining',
+          'Constructing retention/detention ponds and outfall structures',
+        ],
+      },
+      {
+        title: 'Specialty Installation Methods',
+        features: [
+          'Directional boring or jack-and-bore under roads, railways, or waterways',
+          'Installing casing pipes for protected crossings',
+          'Trenchless rehabilitation (lining, pipe bursting, or sliplining)',
+        ],
+      },
+      {
+        title: 'Appurtenances & Fittings',
+        features: [
+          'Installing headwalls, wingwalls, and end sections',
+          'Installing flap gates, check valves, or tide gates',
+          'Installing energy dissipators or stilling basins at outfalls',
+        ],
+      },
+      {
+        title: 'Testing & Commissioning',
+        features: [
+          'Flow testing and verification',
+          'Cleaning and inspection of drainage systems prior to service',
+          'CCTV inspection of installed systems',
         ],
       },
     ],
@@ -300,37 +446,62 @@ const services = [
       'Custom cutting, welding, fitting, coating and assembly with documentation, NDT and field support.',
     services: [
       {
-        title: 'Fabrication Services',
+        title: 'Specialized Gas Services',
         features: [
-          'Cutting and beveling',
-          'Surface preparation',
-          'MIG/TIG/SMAW/FCAW welding',
-          'Orbital welding where required',
+          'Metering Stations',
+          'Purchase Point Stations',
+          'Hot Taps on Steel and Poly',
+          'Regulator Stations',
+          'Line Stops',
         ],
       },
       {
-        title: 'Custom Fittings',
+        title: 'Pipe Cutting & Preparation',
         features: [
-          'Elbows, tees, and reducers',
-          'Custom fittings fabrication',
-          'Spool pieces and racks',
-          'Modular assemblies',
+          'Cutting pipe to specified lengths using saws, torches, or automated cutters',
+          'Beveling pipe ends for welding or joint preparation',
+          'Cleaning and surface preparation (grinding, sandblasting)',
         ],
       },
       {
-        title: 'Quality Control',
+        title: 'Welding & Joining',
         features: [
-          'Dimensional checks and NDT',
-          'Ultrasonic and X-ray testing',
-          'Material handling and storage',
-          'Documentation and certifications',
+          'Butt welding of pipe sections (MIG, TIG, SMAW, FCAW)',
+          'Socket welding, flange welding, and attachment of fittings',
+          'Specialty welding such as orbital welding for stainless steel or critical piping',
+          'Weld inspection and non-destructive testing (NDT) such as X-ray or ultrasonic testing',
+        ],
+      },
+      {
+        title: 'Fabrication of Fittings & Assemblies',
+        features: [
+          'Bending pipe to specified radii and angles',
+          'Fabricating elbows, tees, reducers, and custom fittings',
+          'Assembly of spool pieces and pipe racks',
+          'Prefabricating piping assemblies for modular installation',
+        ],
+      },
+      {
+        title: 'Coating & Protection',
+        features: [
+          'Applying internal and external pipe coatings (epoxy, fusion bonded epoxy, polyethylene)',
+          'Insulation installation and jacketing',
+          'Corrosion protection and cathodic protection application',
+        ],
+      },
+      {
+        title: 'Quality Control & Documentation',
+        features: [
+          'Dimensional checks and verification of pipe assemblies',
+          'Documentation of weld procedures, inspection reports, and material certifications',
+          'Compliance with project specifications and industry standards (ASME, ASTM, API)',
         ],
       },
     ],
   },
   {
-    id: 'underground-tunneling',
-    name: 'Underground Tunneling',
+    id: 'jack-and-bore',
+    name: 'Jack and Bore/Underground Tunneling',
     icon: 'MoveRight',
     category: 'Trenchless',
     difficulty: 'Advanced',
@@ -340,36 +511,64 @@ const services = [
       'Steel casing jacked beneath roads/rails/obstructions with precise grade control and carrier pipe pullback.',
     services: [
       {
-        title: 'Tunneling Operations',
+        title: 'Bore Pit Excavation & Preparation',
         features: [
-          'Bore pit excavation and shoring',
-          'Dewatering systems',
-          'Hydraulic jacking of steel casing pipe',
-          'Variable soil handling including rock',
+          'Excavating entry and receiving pits to specified dimensions',
+          'Shoring and bracing pits for safety and stability',
+          'Dewatering and site preparation for bore operations',
         ],
       },
       {
-        title: 'Installation Services',
+        title: 'Jacking Pipe Installation',
         features: [
-          'Carrier pipe installation (water/gas/sewer/electrical)',
-          'Multi-duct installations',
-          'Alignment and grade verification',
-          'Weld and seal inspection',
+          'Installing steel casing pipes under roads, railways, and other obstructions',
+          'Pushing or "jacking" casing pipes through soil using hydraulic jacks',
+          'Ensuring precise alignment and grade control during jacking operations',
         ],
       },
       {
-        title: 'Quality Assurance',
+        title: 'Product Installation (Carrier Pipe Pullback)',
         features: [
-          'Pressure and leak testing',
-          'Documentation and reporting',
-          'Backfill and compaction',
-          'Surface restoration',
+          'Pulling in water, sewer, gas, or electrical carrier pipes inside the jacked casing',
+          'Installing multiple carrier pipes in a single casing (multi-duct installations)',
+          'Joining and sealing carrier pipes within casing',
+        ],
+      },
+      {
+        title: 'Specialty Jack and Bore Techniques',
+        features: [
+          'Handling variable soil conditions including rock, clay, and sand',
+          'Using pipe bursting or sliplining in conjunction with jack and bore for rehabilitation',
+          'Installing casing pipes with reinforced or composite materials as required',
+        ],
+      },
+      {
+        title: 'Site & Equipment Management',
+        features: [
+          'Mobilizing and operating jacking rigs, drilling equipment, and support machinery',
+          'Monitoring and controlling hydraulic jacks and bore alignment systems',
+          'Managing drill mud and spoil removal',
+        ],
+      },
+      {
+        title: 'Testing & Quality Control',
+        features: [
+          'Verifying pipe alignment, grade, and structural integrity',
+          'Inspecting welds and seals on casing and carrier pipes',
+          'Conducting pressure or leak testing where applicable',
+        ],
+      },
+      {
+        title: 'Site Restoration & Cleanup',
+        features: [
+          'Backfilling and compacting bore pits after installation',
+          'Restoring pavement, sidewalks, and landscaping to original condition',
+          'Removing all equipment and debris from the site',
         ],
       },
     ],
   },
 ] as const;
-
 /* ================================
    Utility: resolve lucide icon name
    ================================ */
@@ -570,8 +769,8 @@ const Services: React.FC = () => {
         </div>
         {/* Thumb strip — sits at the bottom of this section */}
 <div className="mt-8">
-  {/* On mobile it’s a smooth horizontal scroller; on md+ it’s a 5-up grid */}
-  <div className="flex md:grid md:grid-cols-5 gap-2 overflow-x-auto no-scrollbar">
+  {/* On mobile it's a smooth horizontal scroller; on md+ it's a 5-up grid */}
+  <div className="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto no-scrollbar">
     {[
       { src: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png', alt: 'Construction project' },
       { src: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg', alt: 'Construction work' },
@@ -579,12 +778,12 @@ const Services: React.FC = () => {
       { src: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg', alt: 'Construction site' },
       { src: '/images/di-F1MlxlEpaOk-unsplash.jpg', alt: 'Construction equipment' },
     ].map((img, i) => (
-      <div key={i} className="min-w-[9rem] md:min-w-0">
+      <div key={i} className="min-w-[12rem] md:min-w-0 group">
         <img
           src={img.src}
           alt={img.alt}
           loading="lazy"
-          className="w-full h-50 md:h-16 object-cover rounded-md ring-1 ring-black/5 dark:ring-white/10 hover:opacity-95 transition"
+          className="w-full h-32 md:h-32 lg:h-40 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
         />
       </div>
     ))}

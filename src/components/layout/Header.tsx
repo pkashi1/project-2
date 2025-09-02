@@ -176,14 +176,16 @@ const Header: React.FC = () => {
               <DarkModeToggle />
                 <div id="google_translate_element" className="translate-widget" />
 
-              {/* {isCareers && (
+            </div>
+            <div>
+              {isCareers && (
                 <button
                   onClick={toggleLang}
                   className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
                 >
                   {lang === 'en' ? 'Español' : 'English'}
                 </button>
-              )} */}
+              )}
             </div>
           </nav>
 

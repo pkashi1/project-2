@@ -504,11 +504,11 @@ const Careers: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 min-h-screen">
       {/* Language toggle */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* <div className="fixed top-4 right-4 z-50">
         <button onClick={toggleLang} className="px-4 py-2 rounded bg-primary-600 text-white hover:bg-primary-700 transition-colors">
           {lang === 'en' ? t('spanish') : t('english')}
         </button>
-      </div>
+      </div> */}
 
       {/* Hero */}
       <section className="relative py-20 text-white overflow-hidden">
