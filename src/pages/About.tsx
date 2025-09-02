@@ -62,9 +62,39 @@ const About: React.FC = () => {
           content="Learn about Southern Underground, our history and dedication to quality utility construction."
         />
       </Helmet>
+    <section className="relative py-20 text-white overflow-hidden">
+  {/* Background image + gradient overlay */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')" }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+  </div>
+
+  {/* Animated background accents */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse" />
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
+  </div>
+
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="animate-fade-in-up">
+      <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+        Building Louisiana’s <span className="text-secondary-300">Future</span>
+      </h1>
+      <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
+        Since 2015, Southern Underground has specialized in the critical infrastructure 
+        that forms the backbone of our communities and industries — from underground utilities 
+        to civil construction, delivered safely and on time.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* Hero + Company Stats */}
-      <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
+      {/* <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -107,101 +137,7 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Services Overview */}
-      <section className="py-16 bg-white dark:bg-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Underground Utilities Card */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300 cursor-pointer group">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
-                Underground Utilities
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
-                Complete water, sewer, storm drainage, and gas line installation with advanced directional
-                drilling and trenchless technology.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Water & sewer infrastructure
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Storm drainage systems
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Natural gas distribution
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Telecommunications installation
-                </div>
-              </div>
-            </div>
-
-            {/* Site Development Card */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300 cursor-pointer group">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
-                Site Development
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
-                From initial site preparation to final grading, we handle all aspects of civil construction and earthwork.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Site prep & excavation
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Road construction & paving
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Concrete foundations
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Environmental remediation
-                </div>
-              </div>
-            </div>
-
-            {/* Specialized Services Card */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300 cursor-pointer group">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
-                Specialized Services
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
-                Emergency utility repairs, industrial maintenance, and tailored solutions for unique project challenges.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Emergency repairs
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Industrial plant utilities
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Municipal upgrades
-                </div>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                  Flood mitigation
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
+      </section> */}
 
       {/* Mission Statement */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
@@ -282,8 +218,97 @@ const About: React.FC = () => {
               Comprehensive construction and utility services built on decades of Louisiana experience
             </p>
           </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Underground Utilities Card */}
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
+                Underground Utilities
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                Complete water, sewer, storm drainage, and gas line installation with advanced directional
+                drilling and trenchless technology.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Water & sewer infrastructure
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Storm drainage systems
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Natural gas distribution
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Telecommunications installation
+                </div>
+              </div>
+            </div>
+
+            {/* Site Development Card */}
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
+                Site Development
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                From initial site preparation to final grading, we handle all aspects of civil construction and earthwork.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Site prep & excavation
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Road construction & paving
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Concrete foundations
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Environmental remediation
+                </div>
+              </div>
+            </div>
+
+            {/* Specialized Services Card */}
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
+                Specialized Services
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">
+                Emergency utility repairs, industrial maintenance, and tailored solutions for unique project challenges.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Emergency repairs
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Industrial plant utilities
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Municipal upgrades
+                </div>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
+                  Flood mitigation
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </section>
+   
       {/* Team Section */}
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -322,7 +347,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
