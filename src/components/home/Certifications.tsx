@@ -29,13 +29,13 @@ export const Certifications: React.FC = () => {
   <img
     src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455-removebg-preview.png"
     alt="Bonded and Insured"
-    className="w-32 h-30 object-contain"
+    className="w-28 h-30 object-contain"
     loading="lazy"
   />
   <img
     src="/images/certifications/OIP.png"
     alt="OSHA"
-    className="w-28 h-28 object-contain"
+    className="w-28 h-24 object-contain"
     loading="lazy"
   />
 
