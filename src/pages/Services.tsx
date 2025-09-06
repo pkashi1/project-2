@@ -496,8 +496,8 @@ const services = [
     ],
   },
   {
-    id: 'jack-and-bore',
-    name: 'Jack and Bore/Underground Tunneling',
+    id: 'Underground Tunneling',
+    name: 'Underground Tunneling',
     icon: 'MoveRight',
     category: 'Trenchless',
     difficulty: 'Advanced',
@@ -575,18 +575,28 @@ const getIcon = (name?: string): IconType => {
   return (maybe as IconType) || (Icons.Wrench as IconType);
 };
 
+const groupKey = (serviceId: string, title: string) =>
+  `${serviceId}__${title.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`;
+
 /* ============================
    Page Component (Tabs layout)
    ============================ */
 const Services: React.FC = () => {
   // show first service by default
   const [activeId, setActiveId] = useState<string>(services[0]?.id ?? '');
-  const [expandedServiceGroups, setExpandedServiceGroups] = useState<Record<string, boolean>>({});
+
+  // single-open accordion state
+  const [openGroupKey, setOpenGroupKey] = useState<string | null>(null);
 
   const activeService = useMemo(
     () => services.find((s) => s.id === activeId) ?? services[0],
     [activeId]
   );
+
+  // when switching tabs, close any open accordion
+  useEffect(() => {
+    setOpenGroupKey(null);
+  }, [activeId]);
 
   // auto-scroll tab rail on mobile so active tab stays in view
   const railRef = useRef<HTMLDivElement | null>(null);
@@ -603,11 +613,6 @@ const Services: React.FC = () => {
     const itemWidth = rail.clientWidth / perView;
     rail.scrollTo({ left: Math.max(0, activeIndex * itemWidth - itemWidth), behavior: 'smooth' });
   }, [activeId]);
-
-  const toggleServiceGroupExpansion = (serviceId: string, groupIdx: number) => {
-    const key = `${serviceId}-${groupIdx}`;
-    setExpandedServiceGroups((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
 
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -638,7 +643,6 @@ const Services: React.FC = () => {
       {/* Tabs + panel */}
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           {/* Tab rail */}
           <div role="tablist" aria-label="Services" className="relative">
             <div
@@ -703,38 +707,30 @@ const Services: React.FC = () => {
                       <p className="mt-2 text-gray-700 dark:text-gray-300 max-w-3xl">
                         {activeService.detailedDescription}
                       </p>
-                      
                     </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <button
-                      onClick={() => (window.location.href = '/contact')}
-                      className="inline-flex items-center bg-secondary-500 text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl group"
-                    >
-                      Get Quote
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
                   </div>
                 </div>
               </div>
 
-                           {/* Services Offered (accordions) */}
+              {/* Services Offered (accordions) */}
               {activeService.services?.length ? (
                 <div className="p-6 lg:p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {activeService.services.map((group, idx) => {
-                      const key = `${activeService.id}-${idx}`;
-                      const isOpen = !!expandedServiceGroups[key];
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                    {activeService.services.map((group) => {
+                      const k = groupKey(activeService.id, group.title);
+                      const isOpen = openGroupKey === k;
+
                       return (
-                        <div key={idx} className="bg-gray-50 dark:bg-gray-700 rounded-xl">
+                        <div key={k} className="bg-gray-50 dark:bg-gray-700 rounded-xl h-full flex flex-col">
                           <button
                             type="button"
-                            onClick={() => setExpandedServiceGroups((p) => ({ ...p, [key]: !p[key] }))}
                             aria-expanded={isOpen}
+                            onClick={() => setOpenGroupKey(isOpen ? null : k)}
                             className="w-full flex items-center justify-between text-left p-5"
                           >
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{group.title}</h3>
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 min-h-[28px]">
+                              {group.title}
+                            </h3>
                             {isOpen ? (
                               <ChevronUp className="w-5 h-5 text-gray-400" />
                             ) : (
@@ -743,12 +739,14 @@ const Services: React.FC = () => {
                           </button>
 
                           {isOpen && (
-                            <div className="px-5 pb-5">
+                            <div className="px-5 pb-5 flex-1">
                               <ul className="space-y-2">
                                 {group.features.map((feature, i) => (
                                   <li key={i} className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0" />
-                                    <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
+                                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 shrink-0" />
+                                    <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                      {feature}
+                                    </span>
                                   </li>
                                 ))}
                               </ul>
@@ -763,29 +761,29 @@ const Services: React.FC = () => {
             </div>
           )}
         </div>
-        {/* Thumb strip — sits at the bottom of this section */}
-<div className="mt-8">
-  {/* On mobile it's a smooth horizontal scroller; on md+ it's a 5-up grid */}
-  <div className="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto no-scrollbar">
-    {[
-      { src: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png', alt: 'Construction project' },
-      { src: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg', alt: 'Construction work' },
-      { src: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg', alt: 'Industrial construction' },
-      { src: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg', alt: 'Construction site' },
-      { src: '/images/di-F1MlxlEpaOk-unsplash.jpg', alt: 'Construction equipment' },
-    ].map((img, i) => (
-      <div key={i} className="min-w-[12rem] md:min-w-0 group">
-        <img
-          src={img.src}
-          alt={img.alt}
-          loading="lazy"
-          className="w-full h-32 md:h-32 lg:h-40 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
-        />
-      </div>
-    ))}
-  </div>
-</div>
 
+        {/* Thumb strip — sits at the bottom of this section */}
+        <div className="mt-8">
+          {/* On mobile it's a smooth horizontal scroller; on md+ it's a 5-up grid */}
+          <div className="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto no-scrollbar">
+            {[
+              { src: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png', alt: 'Construction project' },
+              { src: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg', alt: 'Construction work' },
+              { src: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg', alt: 'Industrial construction' },
+              { src: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg', alt: 'Construction site' },
+              { src: '/images/di-F1MlxlEpaOk-unsplash.jpg', alt: 'Construction equipment' },
+            ].map((img, i) => (
+              <div key={i} className="min-w-[12rem] md:min-w-0 group">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className="w-full h-32 md:h-32 lg:h-40 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}

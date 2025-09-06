@@ -73,7 +73,6 @@ const WhySouthernUnderground: React.FC = () => {
               const isActive = key === activeTab;
               return (
                 <li key={key} className="flex items-center">
-                  {/* left red/orange pointer when active */}
                   <span
                     className={`mr-4 hidden md:inline-block transition-all ${
                       isActive ? "text-secondary-500" : "text-transparent"
@@ -121,9 +120,9 @@ const WhySouthernUnderground: React.FC = () => {
               <div className="mt-8">
                 <Link
                   to={active.to}
-                  className="group inline-flex items-center font-semibold text-white hover:text-white"
+                  className="group inline-flex items-center font-semibold text-secondary-500"
                 >
-                  <span className="underline underline-offset-4 decoration-white/30 group-hover:decoration-white transition">
+                  <span className="underline underline-offset-4 decoration-secondary-500/30 group-hover:decoration-secondary-500 transition">
                     {active.cta}
                   </span>
                   <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -275,13 +274,13 @@ useEffect(() => {
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed max-w-4xl font-light">
                 {currentService.description}
               </p>
-              <div className="pt-6">
+              <div className="pt-4">
                 <Link
                   to={currentService.ctaLink}
                   className="inline-flex items-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   {currentService.ctaText}
-                  <ArrowRight className="ml-3 w-6 h-6" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
             </motion.div>

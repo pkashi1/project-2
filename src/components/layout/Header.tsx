@@ -198,7 +198,7 @@ const Header: React.FC = () => {
                 onClick={() => { console.log('🔄 toggling lang from', lang); toggleLang(); }}
                 className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
               >
-                {lang === 'en' ? 'Español' : 'English'}
+                {lang === 'en' ? 'ES' : 'EN'}
               </button>
             )}
             <button
