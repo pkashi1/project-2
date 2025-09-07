@@ -140,37 +140,33 @@ const Header: React.FC = () => {
               )
             )}
 
-            {/* Dark & Language Toggles */}
-            <div className="flex items-center space-x-4">
+            {/* Dark Mode Toggle and Language Toggle */}
+            <div className="flex items-center space-x-2">
               <DarkModeToggle />
-              <div id="google_translate_element" className="translate-widget" />
-            </div>
-            <div>
               {isCareers && (
                 <button
                   onClick={toggleLang}
                   className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
                 >
-                  {lang === 'en' ? 'Español' : 'English'}
+                  {lang === 'en' ? 'ES' : 'EN'}
                 </button>
               )}
+              <div id="google_translate_element" className="translate-widget" />
             </div>
           </nav>
 
           {/* Mobile Hamburger & Toggles */}
-          <div className="flex items-center space-x-4 lg:hidden">
+          <div className="flex items-center space-x-2 lg:hidden">
             <DarkModeToggle />
-            <div id="google_translate_element" className="translate-widget" />
             {isCareers && (
               <button
-                onClick={() => {
-                  toggleLang();
-                }}
+                onClick={toggleLang}
                 className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
               >
                 {lang === 'en' ? 'ES' : 'EN'}
               </button>
             )}
+            <div id="google_translate_element" className="translate-widget" />
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-gray-700 dark:text-gray-200" />

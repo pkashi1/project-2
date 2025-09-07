@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Shield,
   Award,
@@ -8,10 +8,16 @@ import {
   HardHat,
   FileText,
   Clock,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
-import { certifications } from '../data/mockData';
+// keep your data import if needed elsewhere
+// import { certifications } from '../data/mockData';
 
 const Safety: React.FC = () => {
+  const [showAllProtocols, setShowAllProtocols] = useState(false);
+  const [showAllTraining, setShowAllTraining] = useState(false);
+
   const safetyStats = [
     { label: 'Safety Record', value: '99.9%', icon: Shield },
     { label: 'Work Hours Without Incident', value: '1M+', icon: Clock },
@@ -22,32 +28,32 @@ const Safety: React.FC = () => {
   const safetyProtocols = [
     {
       title: 'Pre-Job Safety Planning',
-      description: 'Comprehensive safety assessment and planning before every project begins',
+      description: 'Comprehensive safety assessment and planning before every project begins.',
       icon: FileText,
     },
     {
       title: 'Daily Safety Briefings',
-      description: 'Morning safety meetings to review hazards and safety procedures',
+      description: 'Morning safety meetings to review hazards and procedures.',
       icon: Users,
     },
     {
       title: 'Personal Protective Equipment',
-      description: 'Mandatory PPE requirements enforced on all job sites',
+      description: 'Mandatory PPE requirements enforced on all job sites.',
       icon: HardHat,
     },
     {
       title: 'Hazard Identification',
-      description: 'Continuous monitoring and identification of potential safety hazards',
+      description: 'Continuous monitoring and identification of potential hazards.',
       icon: AlertTriangle,
     },
     {
       title: 'Emergency Response',
-      description: 'Trained emergency response teams and procedures on every site',
+      description: 'Trained emergency response teams and procedures on every site.',
       icon: Shield,
     },
     {
       title: 'Safety Audits',
-      description: 'Regular safety audits and inspections to maintain high standards',
+      description: 'Regular audits and inspections to maintain high standards.',
       icon: CheckCircle,
     },
   ];
@@ -63,59 +69,90 @@ const Safety: React.FC = () => {
     'First Aid/CPR Certification',
   ];
 
+  // Certifications (kept inline for simplicity; swap with your data if desired)
+  const certs = [
+    {
+      img: '/images/safety/drug free.jpg',
+      alt: 'Drug Free Workplace Certification',
+      title: 'Drug Free Workplace',
+      blurb: 'Certified Drug Free Workplace for enhanced safety and compliance.',
+    },
+    {
+      img: '/images/certifications/alliance-logo.webp',
+      alt: 'General Safety Certification',
+      title: 'General Safety Certification',
+      blurb: 'Recognized for maintaining industry-leading safety standards.',
+    },
+    {
+      img: '/images/certifications/licensed-bonded-insured-vector-icon-business-86546455-removebg-preview.png',
+      alt: 'Licensed, Bonded & Insured',
+      title: 'Licensed, Bonded & Insured',
+      blurb: 'Fully licensed, bonded, and insured for your protection and confidence.',
+    },
+    {
+      img: '/images/certifications/OIP.png',
+      alt: 'Industry Safety Compliance',
+      title: 'Industry Safety Compliance',
+      blurb: 'Compliant with OSHA and industry regulations to ensure safe operations.',
+    },
+  ];
+
+  // Helpers for mobile collapses
+  const visibleProtocols = showAllProtocols ? safetyProtocols : safetyProtocols.slice(0, 3);
+  const visibleTraining = showAllTraining ? trainingPrograms : trainingPrograms.slice(0, 4);
+
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 text-white overflow-hidden">
+      {/* Hero (mobile-first height) */}
+      <section className="relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/umit-yildirim-9OB46apMbC4-unsplash.jpg)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
-        </div>
-        
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent leading-tight pb-2">
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/50" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="py-14 sm:py-20 text-center text-white">
+            <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight mb-3">
               Safety <span className="text-secondary-300">First</span>, Always
             </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">
-              Our unwavering commitment to safety ensures every team member returns home safely while delivering exceptional construction results
+            <p className="text-base sm:text-xl text-primary-100 max-w-3xl mx-auto">
+              Our unwavering commitment to safety ensures every team member returns home safely while
+              delivering exceptional construction results.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Safety Stats */}
-      <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
+      {/* Safety Stats (stack on mobile, grid on md+) */}
+      <section className="py-12 sm:py-16 bg-white dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Safety Record</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Numbers that reflect our dedication to maintaining the highest safety standards
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              Our Safety Record
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Numbers that reflect our dedication to the highest safety standards.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {safetyStats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={idx}
-                  className="text-center bg-gray-50 dark:bg-gray-700 rounded-xl p-8 hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors"
+                  className="text-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 sm:p-8 hover:bg-primary-50/80 dark:hover:bg-primary-900/40 transition-colors"
                 >
-                  <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 bg-primary-100 dark:bg-primary-800 rounded-full flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-primary-600 dark:text-white" />
+                  <div className="flex justify-center mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-100 dark:bg-primary-800 rounded-full grid place-items-center">
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-600 dark:text-white" />
                     </div>
                   </div>
-                  <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">{stat.value}</div>
-                  <div className="text-gray-700 dark:text-gray-300 font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-1 sm:mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               );
             })}
@@ -123,158 +160,192 @@ const Safety: React.FC = () => {
         </div>
       </section>
 
-      {/* Safety Philosophy */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+      {/* Safety Philosophy (image stacks below on mobile) */}
+      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Our Safety Philosophy</h2>
-              <div className="space-y-6">
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  At Southern Underground, safety isn't just a priority—it's our core value. We believe that every worker has the right to return home safely at the end of each day, and we make this possible through comprehensive safety programs, continuous training, and unwavering commitment to best practices.
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
+                Our Safety Philosophy
+              </h2>
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  At Southern Underground, safety isn't just a priority—it's our core value. We believe
+                  every worker has the right to return home safely, enabled by comprehensive programs,
+                  continuous training, and best practices.
                 </p>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Our safety culture is built on the foundation that all incidents are preventable. Through proactive hazard identification, rigorous safety protocols, and ongoing education, we maintain one of the industry's best safety records.
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Our culture is built on the belief that all incidents are preventable. Through proactive
+                  hazard identification, rigorous protocols, and ongoing education, we maintain one of the
+                  industry's best safety records.
                 </p>
-                {/* <div className="bg-primary-50 dark:bg-primary-900 rounded-lg p-6 transition-colors">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Zero Incident Goal</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    Our ultimate goal is zero incidents. Every decision we make, every procedure we implement, and every training session we conduct is designed to achieve and maintain this standard.
-                  </p>
-                </div> */}
               </div>
             </div>
             <div className="relative">
               <img
                 src="/images/downtown-construction.png"
                 alt="Safety equipment and construction site"
-                className="rounded-2xl shadow-xl w-full h-80 object-cover"
+                className="rounded-2xl shadow-xl w-full h-56 sm:h-80 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
-
-      {/* Training Programs */}
-
-      <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
+      {/* Safety Protocols (cards; collapsible on mobile) */}
+      <section className="py-12 sm:py-16 bg-white dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Safety Training Programs</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Our comprehensive training programs ensure every team member is equipped with the knowledge and skills necessary to maintain the highest safety standards.
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
+              Safety Protocols
+            </h2>
+            <button
+              className="sm:hidden text-primary-600 dark:text-primary-400 font-medium inline-flex items-center"
+              onClick={() => setShowAllProtocols((v) => !v)}
+              aria-expanded={showAllProtocols}
+            >
+              {showAllProtocols ? 'Show Less' : 'Show All'}
+              {showAllProtocols ? <ChevronUp className="w-4 h-4 ml-1" /> : <ChevronDown className="w-4 h-4 ml-1" />}
+            </button>
+          </div>
+
+          {/* Mobile: 3 visible, expand to all. Desktop: always all in grid. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {(showAllProtocols || typeof window === 'undefined'
+              ? safetyProtocols
+              : visibleProtocols
+            ).map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={i}
+                  className="bg-gray-50 dark:bg-gray-700 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-100 dark:bg-primary-800 grid place-items-center">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600 dark:text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-1">
+                        {p.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop show-all is implicit; mobile button below grid */}
+          <div className="sm:hidden mt-4">
+            <button
+              className="w-full text-center text-primary-600 dark:text-primary-400 font-medium py-2 rounded-lg border border-primary-200 dark:border-primary-800"
+              onClick={() => setShowAllProtocols((v) => !v)}
+            >
+              {showAllProtocols ? 'Show Fewer Protocols' : 'Show All Protocols'}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Training Programs (chips; collapsible on mobile) */}
+      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
+              Safety Training Programs
+            </h2>
+            <button
+              className="sm:hidden text-primary-600 dark:text-primary-400 font-medium inline-flex items-center"
+              onClick={() => setShowAllTraining((v) => !v)}
+              aria-expanded={showAllTraining}
+            >
+              {showAllTraining ? 'Show Less' : 'Show All'}
+              {showAllTraining ? <ChevronUp className="w-4 h-4 ml-1" /> : <ChevronDown className="w-4 h-4 ml-1" />}
+            </button>
+          </div>
+
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-5 sm:mb-8 max-w-3xl">
+            Our comprehensive training ensures every team member is equipped to maintain the highest safety standards.
+          </p>
+
+          {/* Mobile: 4 visible then expand; Desktop: grid of chips */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {(showAllTraining || typeof window === 'undefined'
+              ? trainingPrograms
+              : visibleTraining
+            ).map((prog, i) => (
+              <div
+                key={i}
+                className="flex items-center space-x-3 p-3 sm:p-4 bg-white dark:bg-gray-700 rounded-lg shadow-sm"
+              >
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent-500 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-medium">{prog}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="sm:hidden mt-4">
+            <button
+              className="w-full text-center text-primary-600 dark:text-primary-400 font-medium py-2 rounded-lg border border-primary-200 dark:border-primary-800"
+              onClick={() => setShowAllTraining((v) => !v)}
+            >
+              {showAllTraining ? 'Show Fewer Programs' : 'Show All Programs'}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications (horizontal scroll on mobile, grid on md+) */}
+      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">Safety Certifications</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-sm sm:text-base mt-2">
+              Our commitment to safety is validated by industry-leading certifications.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Left Column - First 4 programs */}
-            <div className="space-y-4">
-              {trainingPrograms.slice(0, 4).map((prog, i2) => (
+
+          {/* Mobile carousel-like strip */}
+          <div className="md:hidden -mx-4 px-4 overflow-x-auto no-scrollbar">
+            <div className="flex gap-4">
+              {certs.map((c, i) => (
                 <div
-                  key={i2}
-                  className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm transition-colors"
+                  key={i}
+                  className="min-w-[260px] bg-gray-50 dark:bg-gray-700 rounded-xl p-5 shadow-lg"
                 >
-                  <CheckCircle className="w-6 h-6 text-accent-500 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">{prog}</span>
-                </div>
-              ))}
-            </div>
-            
-            {/* Right Column - Last 4 programs */}
-            <div className="space-y-4">
-              {trainingPrograms.slice(4, 8).map((prog, i2) => (
-                <div
-                  key={i2 + 4}
-                  className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm transition-colors"
-                >
-                  <CheckCircle className="w-6 h-6 text-accent-500 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">{prog}</span>
+                  <img
+                    src={c.img}
+                    alt={c.alt}
+                    className="w-full h-24 object-contain mb-3 rounded-lg shadow"
+                  />
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">{c.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{c.blurb}</p>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Desktop grid */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {certs.map((c, i) => (
+              <div key={i} className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+                <img
+                  src={c.img}
+                  alt={c.alt}
+                  className="w-full h-24 object-contain mb-4 rounded-lg shadow"
+                />
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 text-center">{c.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm text-center">{c.blurb}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-
-      {/* Certifications */}
-     <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-        Safety Certifications
-      </h2>
-      <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-        Our commitment to safety is validated by industry-leading certifications
-      </p>
-    </div>
-
-    {/* Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
-      {/* Drug Free Workplace */}
-      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
-        <img
-          src="/images/safety/drug free.jpg"
-          alt="Drug Free Workplace Certification"
-          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
-        />
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          Drug Free Workplace
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
-          Certified Drug Free Workplace for enhanced safety and compliance.
-        </p>
-      </div>
-
-      {/* General Safety Certification */}
-      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
-        <img
-          src="/images/certifications/alliance-logo.webp"
-          alt="General Safety Certification"
-          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
-        />
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          General Safety Certification
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
-          Recognized for maintaining the highest safety standards in the industry.
-        </p>
-      </div>
-
-      {/* Licensed, Bonded & Insured */}
-      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
-        <img
-          src="/images/certifications/licensed-bonded-insured-vector-icon-business-86546455-removebg-preview.png"
-          alt="Licensed Bonded Insured"
-          className="2-40 h-24 object-contain mb-4 rounded-lg shadow"
-        />
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          Licensed, Bonded & Insured
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
-          Fully licensed, bonded, and insured for your protection and confidence.
-        </p>
-      </div>
-
-      {/* OSHA / Industry Compliance */}
-      <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
-        <img
-          src="/images/certifications/OIP.webp"
-          alt="Industry Safety Compliance"
-          className="w-50 h-24 object-contain mb-4 rounded-lg shadow"
-        />
-        <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-          Industry Safety Compliance
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
-          Compliant with OSHA and industry safety regulations to ensure safe operations.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
     </div>
   );
 };

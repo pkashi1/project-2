@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, MapPin, ArrowRight, Filter } from 'lucide-react';
 import { projects } from '../data/mockData';
-
+import { CheckCircle, Shield, Users, Award } from 'lucide-react'
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedYear, setSelectedYear] = useState('All');
@@ -175,7 +175,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
+      {/* <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Project Achievements</h2>
@@ -194,6 +194,44 @@ const Projects: React.FC = () => {
                 <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section> */}
+
+      <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              Project Achievements
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">
+              Our track record speaks for itself
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: '800+', label: 'Projects Completed', icon: CheckCircle },
+              { value: '99.9%', label: 'Safety Record', icon: Shield },
+              { value: '98%', label: 'Client Retention Rate', icon: Users },
+              { value: '35+', label: 'Years of Experience', icon: Award },
+            ].map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col items-center text-center bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition"
+                >
+                  <div className="w-14 h-14 flex items-center justify-center rounded-full bg-primary-100 dark:bg-primary-700 mb-4">
+                    <Icon className="w-7 h-7 text-primary-600 dark:text-white" />
+                  </div>
+                  <div className="text-3xl font-bold text-secondary-600 dark:text-secondary-400 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-700 dark:text-gray-300">{stat.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
