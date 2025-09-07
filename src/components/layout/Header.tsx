@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
-import { enhancedServices, projects } from '../../data/mockData';
+// ↓ removed enhancedServices, keep projects
+import { projects } from '../../data/mockData';
 import DarkModeToggle from '../common/DarkModeToggle';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -18,11 +19,13 @@ interface Service {
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
+  // ↓ removed Services dropdown state
+  // const [showDropdown, setShowDropdown] = useState(false);
   const [showProjectsDropdown, setShowProjectsDropdown] = useState(false);
   const { lang, toggleLang } = useLanguage();
   const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  // ↓ removed Services dropdown ref
+  // const dropdownRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,11 +36,9 @@ const Header: React.FC = () => {
 
   useEffect(() => setIsMenuOpen(false), [location]);
 
+  // Click outside only for Projects dropdown now
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowDropdown(false);
-      }
       if (projectsRef.current && !projectsRef.current.contains(event.target as Node)) {
         setShowProjectsDropdown(false);
       }
@@ -48,7 +49,7 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
+    { name: 'Services', path: '/services' }, // simple link now
     { name: 'Projects', path: '/projects' },
     { name: 'Safety', path: '/safety' },
     { name: 'Careers', path: '/careers' },
@@ -60,64 +61,29 @@ const Header: React.FC = () => {
   const isCareers = location.pathname.toLowerCase().startsWith('/careers');
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm'
-    }`}>
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white dark:bg-gray-900 shadow-lg'
+          : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
           <Link to="/" className="flex items-center space-x-3">
-  <img
-    src="/images/logo.jpg"
-    alt="Southern Underground Construction Company Logo"
-    className="w-70 h-16 rounded-lg object-contain bg-white"
-    style={{ maxWidth: 200 }}
-  />
-</Link>
-
+            <img
+              src="/images/logo.jpg"
+              alt="Southern Underground Construction Company Logo"
+              className="w-70 h-16 rounded-lg object-contain bg-white"
+              style={{ maxWidth: 200 }}
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 relative">
-            {navLinks.map(link =>
-              link.name === 'Services' ? (
-                <div
-                  key="services"
-                  className="relative"
-                  ref={dropdownRef}
-                  onMouseEnter={() => setShowDropdown(true)}
-                  onMouseLeave={() => setShowDropdown(false)}
-                >
-                  <Link
-                    to="/services"
-                    className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-primary-600 dark:hover:text-primary-400 ${
-                      location.pathname === '/services'
-                        ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400'
-                        : 'text-gray-700 dark:text-gray-200'
-                    }`}
-                  >
-                    <span>Services</span>
-                    <ChevronDown
-                      className={`w-4 h-4 mt-0.5 transform transition-transform duration-200 ${
-                        showDropdown ? 'rotate-180' : 'rotate-0'
-                      }`}
-                    />
-                  </Link>
-                  <div
-                    className={`absolute left-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-in-out ${
-                      showDropdown ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                    }`}
-                  >
-                    {enhancedServices.map(service => (
-                      <Link
-                        key={service.id}
-                        to={`/services/${service.id}`}
-                        className="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary-600 dark:hover:text-primary-400 text-sm border-b dark:border-gray-700 last:border-b-0"
-                      >
-                        {service.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : link.name === 'Projects' ? (
+            {navLinks.map((link) =>
+              link.name === 'Projects' ? (
+                // Keep Projects dropdown
                 <div
                   key="projects"
                   className="relative"
@@ -142,10 +108,12 @@ const Header: React.FC = () => {
                   </Link>
                   <div
                     className={`absolute left-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-in-out ${
-                      showProjectsDropdown ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                      showProjectsDropdown
+                        ? 'opacity-100 visible translate-y-0'
+                        : 'opacity-0 invisible -translate-y-2'
                     }`}
                   >
-                    {projects.map(project => (
+                    {projects.map((project) => (
                       <Link
                         key={project.id}
                         to={`/projects/${project.id}`}
@@ -157,6 +125,7 @@ const Header: React.FC = () => {
                   </div>
                 </div>
               ) : (
+                // All other links (including Services) are simple links
                 <Link
                   key={link.name}
                   to={link.path}
@@ -174,8 +143,7 @@ const Header: React.FC = () => {
             {/* Dark & Language Toggles */}
             <div className="flex items-center space-x-4">
               <DarkModeToggle />
-                <div id="google_translate_element" className="translate-widget" />
-
+              <div id="google_translate_element" className="translate-widget" />
             </div>
             <div>
               {isCareers && (
@@ -192,20 +160,23 @@ const Header: React.FC = () => {
           {/* Mobile Hamburger & Toggles */}
           <div className="flex items-center space-x-4 lg:hidden">
             <DarkModeToggle />
-              <div id="google_translate_element" className="translate-widget" />
+            <div id="google_translate_element" className="translate-widget" />
             {isCareers && (
               <button
-                onClick={() => { console.log('🔄 toggling lang from', lang); toggleLang(); }}
+                onClick={() => {
+                  toggleLang();
+                }}
                 className="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors"
               >
                 {lang === 'en' ? 'ES' : 'EN'}
               </button>
             )}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="w-6 h-6 text-gray-700 dark:text-gray-200" /> : <Menu className="w-6 h-6 text-gray-700 dark:text-gray-200" />}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+              {isMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700 dark:text-gray-200" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700 dark:text-gray-200" />
+              )}
             </button>
           </div>
         </div>
@@ -215,7 +186,7 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
           <div className="px-4 py-4 space-y-4">
-            {navLinks.map(link => (
+            {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
