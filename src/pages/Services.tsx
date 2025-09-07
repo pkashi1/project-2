@@ -568,6 +568,247 @@ const services = [
 /* ================================
    Utility: resolve lucide icon name
    ================================ */
+// type IconType = React.ComponentType<{ className?: string }>;
+// const getIcon = (name?: string): IconType => {
+//   if (!name) return Icons.Wrench as IconType;
+//   const maybe = (Icons as unknown as Record<string, IconType>)[name];
+//   return (maybe as IconType) || (Icons.Wrench as IconType);
+// };
+
+// const groupKey = (serviceId: string, title: string) =>
+//   `${serviceId}__${title.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`;
+
+// /* ============================
+//    Page Component (Tabs layout)
+//    ============================ */
+// const Services: React.FC = () => {
+//   // show first service by default
+//   const [activeId, setActiveId] = useState<string>(services[0]?.id ?? '');
+
+//   // single-open accordion state
+//   const [openGroupKey, setOpenGroupKey] = useState<string | null>(null);
+
+//   const activeService = useMemo(
+//     () => services.find((s) => s.id === activeId) ?? services[0],
+//     [activeId]
+//   );
+
+//   // when switching tabs, close any open accordion
+//   useEffect(() => {
+//     setOpenGroupKey(null);
+//   }, [activeId]);
+
+//   // auto-scroll tab rail on mobile so active tab stays in view
+//   const railRef = useRef<HTMLDivElement | null>(null);
+//   useEffect(() => {
+//     const rail = railRef.current;
+//     if (!rail) return;
+//     const isMobile = window.matchMedia('(max-width: 767px)').matches;
+//     if (!isMobile) return;
+
+//     const activeIndex = services.findIndex((s) => s.id === activeId);
+//     if (activeIndex < 0) return;
+
+//     const perView = 3; // approximate; we’ll center-ish the selection
+//     const itemWidth = rail.clientWidth / perView;
+//     rail.scrollTo({ left: Math.max(0, activeIndex * itemWidth - itemWidth), behavior: 'smooth' });
+//   }, [activeId]);
+
+//   return (
+//     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+//       {/* Hero (kept consistent with your Services hero style) */}
+//       <section className="relative py-20 text-white overflow-hidden">
+//         <div
+//           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+//           style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
+//         >
+//           <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+//         </div>
+
+//         <div className="absolute inset-0 overflow-hidden">
+//           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse" />
+//           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
+//         </div>
+
+//         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+//             Expert Construction <span className="text-secondary-300">Solutions</span>
+//           </h1>
+//           <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
+//             From precision trenchless technology to comprehensive civil works—delivered safely, on time, and on budget.
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* Tabs + panel */}
+//       <section className="py-14">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           {/* Tab rail */}
+//           <div role="tablist" aria-label="Services" className="relative">
+//             <div
+//               ref={railRef}
+//               className="flex gap-6 overflow-x-auto no-scrollbar md:flex-wrap md:justify-center pb-4 -mx-4 px-4"
+//             >
+//               {services.map((s) => {
+//                 const Icon = getIcon(s.icon);
+//                 const active = s.id === activeId;
+//                 return (
+//                   <button
+//                     key={s.id}
+//                     role="tab"
+//                     aria-selected={active}
+//                     aria-controls={`panel-${s.id}`}
+//                     id={`tab-${s.id}`}
+//                     onClick={() => setActiveId(s.id)}
+//                     className={`group relative shrink-0 whitespace-nowrap px-3 py-2 text-base font-semibold transition-colors
+//                       ${active ? 'text-primary-700 dark:text-primary-300' : 'text-gray-700 dark:text-gray-200'}
+//                     `}
+//                   >
+//                     <span className="inline-flex items-center gap-2">
+//                       <span
+//                         className={`w-7 h-7 rounded-md grid place-items-center ${
+//                           active ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
+//                         }`}
+//                       >
+//                         <Icon className={`w-4 h-4 ${active ? 'text-white' : 'text-gray-700 dark:text-gray-200'}`} />
+//                       </span>
+//                       {s.name}
+//                     </span>
+//                     <span
+//                       className={`absolute left-0 -bottom-1 h-0.5 bg-primary-600 transition-all duration-300 ${
+//                         active ? 'w-full' : 'w-0 group-hover:w-full'
+//                       }`}
+//                     />
+//                   </button>
+//                 );
+//               })}
+//             </div>
+//           </div>
+
+//           {/* Active service panel */}
+//           {activeService && (
+//             <div
+//               role="tabpanel"
+//               id={`panel-${activeService.id}`}
+//               aria-labelledby={`tab-${activeService.id}`}
+//               className="mt-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden"
+//             >
+//               {/* Header strip */}
+//               <div className="bg-gradient-to-br from-primary-50 via-primary-100 to-secondary-50 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 p-8">
+//                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+//                   <div className="flex items-start gap-4">
+//                     <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 dark:from-primary-500 dark:to-primary-600 rounded-xl grid place-items-center shadow-lg">
+//                       {React.createElement(getIcon(activeService.icon), { className: 'w-8 h-8 text-white' })}
+//                     </div>
+//                     <div>
+//                       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+//                         {activeService.name}
+//                       </h2>
+//                       <p className="mt-2 text-gray-700 dark:text-gray-300 max-w-3xl">
+//                         {activeService.detailedDescription}
+//                       </p>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               {/* Services Offered (accordions) */}
+//               {activeService.services?.length ? (
+//                 <div className="p-6 lg:p-8">
+//                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+//                     {activeService.services.map((group) => {
+//                       const k = groupKey(activeService.id, group.title);
+//                       const isOpen = openGroupKey === k;
+
+//                       return (
+//                         <div key={k} className="bg-gray-50 dark:bg-gray-700 rounded-xl h-full flex flex-col">
+//                           <button
+//                             type="button"
+//                             aria-expanded={isOpen}
+//                             onClick={() => setOpenGroupKey(isOpen ? null : k)}
+//                             className="w-full flex items-center justify-between text-left p-5"
+//                           >
+//                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 min-h-[28px]">
+//                               {group.title}
+//                             </h3>
+//                             {isOpen ? (
+//                               <ChevronUp className="w-5 h-5 text-gray-400" />
+//                             ) : (
+//                               <ChevronDown className="w-5 h-5 text-gray-400" />
+//                             )}
+//                           </button>
+
+//                           {isOpen && (
+//                             <div className="px-5 pb-5 flex-1">
+//                               <ul className="space-y-2">
+//                                 {group.features.map((feature, i) => (
+//                                   <li key={i} className="flex items-start gap-3">
+//                                     <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 shrink-0" />
+//                                     <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+//                                       {feature}
+//                                     </span>
+//                                   </li>
+//                                 ))}
+//                               </ul>
+//                             </div>
+//                           )}
+//                         </div>
+//                       );
+//                     })}
+//                   </div>
+//                 </div>
+//               ) : null}
+//             </div>
+//           )}
+//         </div>
+
+//         {/* Thumb strip — sits at the bottom of this section */}
+//         <div className="mt-8">
+//           {/* On mobile it's a smooth horizontal scroller; on md+ it's a 5-up grid */}
+//           <div className="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto no-scrollbar">
+//             {[
+//               { src: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png', alt: 'Construction project' },
+//               { src: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg', alt: 'Construction work' },
+//               { src: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg', alt: 'Industrial construction' },
+//               { src: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg', alt: 'Construction site' },
+//               { src: '/images/di-F1MlxlEpaOk-unsplash.jpg', alt: 'Construction equipment' },
+//             ].map((img, i) => (
+//               <div key={i} className="min-w-[12rem] md:min-w-0 group">
+//                 <img
+//                   src={img.src}
+//                   alt={img.alt}
+//                   loading="lazy"
+//                   className="w-full h-32 md:h-32 lg:h-40 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+//                 />
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA */}
+//       <section className="bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 dark:from-primary-800 dark:via-primary-900 dark:to-secondary-800 py-16">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+//           <p className="text-xl text-primary-100 dark:text-primary-200 mb-8 max-w-2xl mx-auto">
+//             Contact our experts for a free consultation and detailed project quote.
+//           </p>
+//           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//             <button
+//               onClick={() => (window.location.href = 'mailto:info@company.com?subject=General Inquiry')}
+//               className="inline-flex items-center bg-secondary-400 text-white px-8 py-4 rounded-lg font-semibold text-lg "
+//             >
+//               Get Quote
+//               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+//             </button>
+//           </div>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Services;
 type IconType = React.ComponentType<{ className?: string }>;
 const getIcon = (name?: string): IconType => {
   if (!name) return Icons.Wrench as IconType;
@@ -585,18 +826,32 @@ const Services: React.FC = () => {
   // show first service by default
   const [activeId, setActiveId] = useState<string>(services[0]?.id ?? '');
 
-  // single-open accordion state
-  const [openGroupKey, setOpenGroupKey] = useState<string | null>(null);
+  // Row/card expansion state
+  const [openRow, setOpenRow] = useState<number | null>(null);          // md+ : which row is open (both cards)
+  const [openCardKey, setOpenCardKey] = useState<string | null>(null);  // <md : which single card is open
+  const [isMdUp, setIsMdUp] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
+  );
 
   const activeService = useMemo(
     () => services.find((s) => s.id === activeId) ?? services[0],
     [activeId]
   );
 
-  // when switching tabs, close any open accordion
+  // when switching tabs, close anything open
   useEffect(() => {
-    setOpenGroupKey(null);
+    setOpenRow(null);
+    setOpenCardKey(null);
   }, [activeId]);
+
+  // keep responsive state in sync
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const handler = () => setIsMdUp(mq.matches);
+    handler();
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   // auto-scroll tab rail on mobile so active tab stays in view
   const railRef = useRef<HTMLDivElement | null>(null);
@@ -716,16 +971,27 @@ const Services: React.FC = () => {
               {activeService.services?.length ? (
                 <div className="p-6 lg:p-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                    {activeService.services.map((group) => {
+                    {activeService.services.map((group, idx) => {
                       const k = groupKey(activeService.id, group.title);
-                      const isOpen = openGroupKey === k;
+                      const rowIdx = Math.floor(idx / 2); // 2 columns per row on md+
+                      const isOpen = isMdUp ? openRow === rowIdx : openCardKey === k;
+
+                      const handleClick = () => {
+                        if (isMdUp) {
+                          setOpenRow((prev) => (prev === rowIdx ? null : rowIdx)); // open/close both cards in row
+                          setOpenCardKey(null);
+                        } else {
+                          setOpenCardKey((prev) => (prev === k ? null : k)); // mobile: single card
+                          setOpenRow(null);
+                        }
+                      };
 
                       return (
                         <div key={k} className="bg-gray-50 dark:bg-gray-700 rounded-xl h-full flex flex-col">
                           <button
                             type="button"
                             aria-expanded={isOpen}
-                            onClick={() => setOpenGroupKey(isOpen ? null : k)}
+                            onClick={handleClick}
                             className="w-full flex items-center justify-between text-left p-5"
                           >
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 min-h-[28px]">
@@ -795,7 +1061,7 @@ const Services: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => (window.location.href = 'mailto:info@company.com?subject=General Inquiry')}
+              onClick={() => (window.location.href = '/contact')}
               className="inline-flex items-center bg-secondary-400 text-white px-8 py-4 rounded-lg font-semibold text-lg "
             >
               Get Quote
