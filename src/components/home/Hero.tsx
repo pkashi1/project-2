@@ -2,20 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
-  Play,
   Drill,
-  Zap,
   Hammer,
   Building,
-  Droplets,
   Layers,
   Wrench,
-  MoveRight,
-  Quote,
-  Shield,
-  Award,
-  Clock,
-  Users
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -140,98 +131,85 @@ const WhySouthernUnderground: React.FC = () => {
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  // refs to control the horizontal scroll on mobile
-const tabsWrapRef = React.useRef<HTMLDivElement | null>(null);
+  const tabsWrapRef = React.useRef<HTMLDivElement | null>(null);
 
-// helper: scroll the tab rail so the active item is visible on mobile
-const scrollTabsToActive = React.useCallback((index: number) => {
-  const rail = tabsWrapRef.current;
-  if (!rail) return;
+  const scrollTabsToActive = React.useCallback((index: number) => {
+    const rail = tabsWrapRef.current;
+    if (!rail) return;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobile) return;
+    const perView = 2;
+    const itemWidth = rail.clientWidth / perView;
+    rail.scrollTo({ left: Math.max(0, index * itemWidth), behavior: 'smooth' });
+  }, []);
 
-  // only do this below md breakpoint
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (!isMobile) return;
+  useEffect(() => {
+    scrollTabsToActive(currentSlide);
+  }, [currentSlide, scrollTabsToActive]);
 
-  // each item is 50% width on mobile, so compute scrollLeft
-  const perView = 2; // two tabs visible
-  const itemWidth = rail.clientWidth / perView;
-  rail.scrollTo({
-    left: Math.max(0, index * itemWidth),
-    behavior: 'smooth',
-  });
-}, []);
-
-// keep the rail synced when currentSlide changes
-useEffect(() => {
-  scrollTabsToActive(currentSlide);
-}, [currentSlide, scrollTabsToActive]);
-
-  // Services data inspired by Moore USA's service categories
+  // UPDATED: CTA links now point to /services#<service-id>
   const services = [
     {
-    id: 'drilling',
-    name: 'DRILLING SERVICES',
-    subtitle: 'SERVICES',
-    icon: Drill,
-    description:
-      'Minimize disruption, maximize precision—HDD, jack & bore, and tunneling.',
-    backgroundImage: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg',
-    ctaText: 'MORE ABOUT DRILLING SERVICES',
-    ctaLink: '/services/directional-drilling',
-  },
-  {
-    id: 'deep-foundations',
-    name: 'DEEP FOUNDATIONS',
-    subtitle: 'SERVICES',
-    icon: Hammer,
-    description:
-      'Drilled shafts, piles, and specialty supports for long-term stability.',
-    backgroundImage: '/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg',
-    ctaText: 'MORE ABOUT DEEP FOUNDATIONS',
-    ctaLink: '/services/deep-foundation',
-  },
-  {
-    id: 'civil-construction',
-    name: 'CIVIL CONSTRUCTION',
-    subtitle: 'SERVICES',
-    icon: Building,
-    description:
-      'From site prep to final grade—roads, concrete, drainage, and public works.',
-    backgroundImage: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
-    ctaText: 'MORE ABOUT CIVIL CONSTRUCTION',
-    ctaLink: '/services/civil-construction',
-  },
-  {
-    id: 'utility-services',
-    name: 'UTILITY SERVICES',
-    subtitle: 'SERVICES',
-    icon: Layers,
-    description:
-      'Water, sewer, gas, and electrical conduit systems installed and commissioned.',
-    backgroundImage: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg',
-    ctaText: 'MORE ABOUT UTILITY SERVICES',
-    ctaLink: '/services/utility-installation',
-  },
-  {
-    id: 'pipe-fabrication',
-    name: 'PIPE FABRICATION SERVICES',
-    subtitle: 'SERVICES',
-    icon: Wrench,
-    description:
-      'Custom cutting, welding, coatings, and certified assemblies—ready for field install.',
-    // Replace with your shop image if you have one
-    backgroundImage: '/images/di-F1MlxlEpaOk-unsplash.jpg',
-    ctaText: 'MORE ABOUT PIPE FABRICATION',
-    ctaLink: '/services/pipe-fabrication',
-  },
+      id: 'drilling',
+      name: 'DRILLING SERVICES',
+      subtitle: 'SERVICES',
+      icon: Drill,
+      description:
+        'Minimize disruption, maximize precision—HDD, jack & bore, and tunneling.',
+      backgroundImage: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg',
+      ctaText: 'MORE ABOUT DRILLING SERVICES',
+      ctaLink: '/services#directional-drilling', // ← updated
+    },
+    {
+      id: 'deep-foundations',
+      name: 'DEEP FOUNDATIONS',
+      subtitle: 'SERVICES',
+      icon: Hammer,
+      description:
+        'Drilled shafts, piles, and specialty supports for long-term stability.',
+      backgroundImage: '/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg',
+      ctaText: 'MORE ABOUT DEEP FOUNDATIONS',
+      ctaLink: '/services#deep-foundation', // ← updated
+    },
+    {
+      id: 'civil-construction',
+      name: 'CIVIL CONSTRUCTION',
+      subtitle: 'SERVICES',
+      icon: Building,
+      description:
+        'From site prep to final grade—roads, concrete, drainage, and public works.',
+      backgroundImage: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
+      ctaText: 'MORE ABOUT CIVIL CONSTRUCTION',
+      ctaLink: '/services#civil-construction', // ← updated
+    },
+    {
+      id: 'utility-services',
+      name: 'UTILITY SERVICES',
+      subtitle: 'SERVICES',
+      icon: Layers,
+      description:
+        'Water, sewer, gas, and electrical conduit systems installed and commissioned.',
+      backgroundImage: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg',
+      ctaText: 'MORE ABOUT UTILITY SERVICES',
+      ctaLink: '/services#utility-installation', // ← updated
+    },
+    {
+      id: 'pipe-fabrication',
+      name: 'PIPE FABRICATION SERVICES',
+      subtitle: 'SERVICES',
+      icon: Wrench,
+      description:
+        'Custom cutting, welding, coatings, and certified assemblies—ready for field install.',
+      backgroundImage: '/images/di-F1MlxlEpaOk-unsplash.jpg',
+      ctaText: 'MORE ABOUT PIPE FABRICATION',
+      ctaLink: '/services#pipe-fabrication', // ← updated
+    },
   ];
 
-  // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % services.length);
     }, 8000);
-    
     return () => clearInterval(interval);
   }, [services.length]);
 
@@ -239,118 +217,113 @@ useEffect(() => {
 
   return (
     <div>
-      {/* Main Hero Section - Inspired by Moore USA */}
-           {/* Main Hero Section - Inspired by Moore USA */}
+      {/* Main Hero Section */}
       <section className="relative min-h-[70vh] overflow-hidden">
-  {/* Background image with overlay */}
-  <div
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-    style={{ backgroundImage: `url('${currentService.backgroundImage}')` }}
-  />
-  <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
+        {/* Background image with overlay */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+          style={{ backgroundImage: `url('${currentService.backgroundImage}')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
 
-  {/* Content */}
-  <div className="relative z-10 h-full flex items-center">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[70vh] py-12">
-        
-        {/* Left Content */}
-        <div className="lg:col-span-8 space-y-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="space-y-6"
-            >
-              {/* Service Name */}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-none">
-                {currentService.name}
-              </h1>
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[70vh] py-12">
+              {/* Left Content */}
+              <div className="lg:col-span-8 space-y-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className="space-y-6"
+                  >
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-none">
+                      {currentService.name}
+                    </h1>
 
-              {/* Description */}
-              <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed max-w-4xl font-light">
-                {currentService.description}
-              </p>
-              <div className="pt-4">
-                <Link
-                  to={currentService.ctaLink}
-                  className="inline-flex items-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  {currentService.ctaText}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+                    <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed max-w-4xl font-light">
+                      {currentService.description}
+                    </p>
+
+                    <div className="pt-4">
+                      <Link
+                        to={currentService.ctaLink}
+                        className="inline-flex items-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                      >
+                        {currentService.ctaText}
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  {/* Service Tabs (underline style, like Moore) */}
-  {/* Service Tabs (mobile: 2-per-view slider; desktop: inline tabs) */}
-<div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm z-20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Mobile rail (≤ md): horizontal slider, 2 items per view */}
-    <div
-      ref={tabsWrapRef}
-      className="md:hidden flex gap-0 overflow-x-auto snap-x snap-mandatory no-scrollbar py-3 -mx-4 px-4"
-    >
-      {services.map((service, index) => {
-        const active = index === currentSlide;
-        return (
-          <button
-            key={service.id}
-            onClick={() => setCurrentSlide(index)}
-            className="shrink-0 basis-1/2 snap-start pr-6 text-left"
-          >
-            <span
-              className={`relative text-lg font-semibold whitespace-nowrap ${
-                active ? 'text-primary-400' : 'text-gray-200'
-              }`}
+        {/* Service Tabs (mobile & desktop) */}
+        <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Mobile rail */}
+            <div
+              ref={tabsWrapRef}
+              className="md:hidden flex gap-0 overflow-x-auto snap-x snap-mandatory no-scrollbar py-3 -mx-4 px-4"
             >
-              {service.name}
-              <span
-                className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
-                  active ? 'w-full' : 'w-0'
-                }`}
-              />
-            </span>
-          </button>
-        );
-      })}
-    </div>
+              {services.map((service, index) => {
+                const active = index === currentSlide;
+                return (
+                  <button
+                    key={service.id}
+                    onClick={() => setCurrentSlide(index)}
+                    className="shrink-0 basis-1/2 snap-start pr-6 text-left"
+                  >
+                    <span
+                      className={`relative text-lg font-semibold whitespace-nowrap ${
+                        active ? 'text-primary-400' : 'text-gray-200'
+                      }`}
+                    >
+                      {service.name}
+                      <span
+                        className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
+                          active ? 'w-full' : 'w-0'
+                        }`}
+                      />
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
-    {/* Desktop rail (≥ md): centered inline tabs, no scrolling */}
-    <div className="hidden md:flex flex-wrap justify-center gap-8 py-4">
-      {services.map((service, index) => {
-        const active = index === currentSlide;
-        return (
-          <button
-            key={service.id}
-            onClick={() => setCurrentSlide(index)}
-            className="relative text-lg font-semibold whitespace-nowrap group"
-          >
-            <span className={active ? 'text-primary-400' : 'text-gray-200'}>
-              {service.name}
-            </span>
-            <span
-              className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
-                active ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}
-              style={{ right: 0 }}
-            />
-          </button>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
-</section>
+            {/* Desktop rail */}
+            <div className="hidden md:flex flex-wrap justify-left gap-8 py-4">
+              {services.map((service, index) => {
+                const active = index === currentSlide;
+                return (
+                  <button
+                    key={service.id}
+                    onClick={() => setCurrentSlide(index)}
+                    className="relative text-lg font-semibold whitespace-nowrap group"
+                  >
+                    <span className={active ? 'text-primary-400' : 'text-gray-200'}>
+                      {service.name}
+                    </span>
+                    <span
+                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
+                        active ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                      style={{ right: 0 }}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       {/* Why Southern Underground Section */}

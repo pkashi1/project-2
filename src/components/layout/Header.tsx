@@ -70,12 +70,12 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-end space-x-3">
             <img
               src="/images/logo.jpg"
               alt="Southern Underground Construction Company Logo"
-              className="w-70 h-16 rounded-lg object-contain bg-white"
-              style={{ maxWidth: 200 }}
+              className="w-80 h-20 rounded-lg object-contain bg-white"
+              style={{ maxWidth: 280 }}
             />
           </Link>
 
