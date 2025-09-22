@@ -7,6 +7,8 @@ import {
   ChevronDown,
   ChevronUp,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import * as Icons from 'lucide-react';
 const services = [
@@ -736,6 +738,7 @@ useEffect(() => {
   const [isHovered, setIsHovered] = useState(false);
   const [serviceImages, setServiceImages] = useState<string[]>([]);
   const [isLoadingImages, setIsLoadingImages] = useState(false);
+  const [isManualNavigation, setIsManualNavigation] = useState(false);
 
   // Row/card expansion state
   const [openRow, setOpenRow] = useState<number | null>(null);          // md+ : which row is open (both cards)
@@ -748,6 +751,36 @@ useEffect(() => {
     () => services.find((s) => s.id === activeId) ?? services[0],
     [activeId]
   );
+
+  // Manual navigation functions
+  const handleManualNavigation = (direction: 'left' | 'right') => {
+    const itemWidth = 320; // Match the animation itemWidth
+    const totalImages = Math.max(serviceImages.length, 5);
+    const maxScroll = -(itemWidth * totalImages);
+    
+    setIsManualNavigation(true);
+    
+    setScrollPosition(prev => {
+      let newPosition;
+      if (direction === 'left') {
+        newPosition = prev + itemWidth;
+        if (newPosition > 0) {
+          newPosition = maxScroll + itemWidth; // Wrap to end
+        }
+      } else {
+        newPosition = prev - itemWidth;
+        if (newPosition <= maxScroll) {
+          newPosition = 0; // Wrap to beginning
+        }
+      }
+      return newPosition;
+    });
+    
+    // Resume automatic scrolling after a delay
+    setTimeout(() => {
+      setIsManualNavigation(false);
+    }, 3000); // 3 seconds delay before resuming auto-scroll
+  };
 
   // when switching tabs, close anything open
   useEffect(() => {
@@ -775,6 +808,24 @@ useEffect(() => {
     setScrollPosition(0);
   }, [activeId]);
 
+  // Keyboard navigation support
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (serviceImages.length === 0) return;
+      
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handleManualNavigation('left');
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleManualNavigation('right');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [serviceImages.length]);
+
   // keep responsive state in sync
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)');
@@ -786,7 +837,7 @@ useEffect(() => {
 
   // Infinite scroll for images
   useEffect(() => {
-    if (isHovered || serviceImages.length === 0) return;
+    if (isHovered || serviceImages.length === 0 || isManualNavigation) return;
     
     const interval = setInterval(() => {
       setScrollPosition(prev => {
@@ -801,7 +852,7 @@ useEffect(() => {
     }, 16); // ~60fps for smooth animation
 
     return () => clearInterval(interval);
-  }, [isHovered, serviceImages.length]);
+  }, [isHovered, serviceImages.length, isManualNavigation]);
 
   // auto-scroll tab rail on mobile so active tab stays in view
   const railRef = useRef<HTMLDivElement | null>(null);
@@ -986,6 +1037,24 @@ useEffect(() => {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
+              {/* Left Navigation Button */}
+              <button
+                onClick={() => handleManualNavigation('left')}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                aria-label="Previous images"
+              >
+                <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+              </button>
+              
+              {/* Right Navigation Button */}
+              <button
+                onClick={() => handleManualNavigation('right')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                aria-label="Next images"
+              >
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
               {/* Continuous scrolling container */}
               <div 
                 className="flex gap-4 transition-none"
@@ -1037,11 +1106,14 @@ useEffect(() => {
               <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
             </div>
             
-            {/* Pause indicator when hovered */}
-            {isHovered && (
+            {/* Pause indicator when hovered or manually navigating */}
+            {(isHovered || isManualNavigation) && (
               <div className="text-center mt-4">
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Hover to pause • Move away to resume
+                  {isManualNavigation 
+                    ? 'Manual navigation • Auto-scroll resumes in 3 seconds'
+                    : 'Hover to pause • Move away to resume'
+                  }
                 </span>
               </div>
             )}
@@ -1050,6 +1122,13 @@ useEffect(() => {
             <div className="text-center mt-2">
               <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 {activeService.name} Project Gallery ({serviceImages.length} images)
+              </span>
+            </div>
+            
+            {/* Navigation instructions */}
+            <div className="text-center mt-1">
+              <span className="text-xs text-gray-400 dark:text-gray-500">
+                Use arrow buttons or ←/→ keys to navigate manually
               </span>
             </div>
           </div>
