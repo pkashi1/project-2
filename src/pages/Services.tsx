@@ -568,7 +568,107 @@ const services = [
 ] as const;
 
 
-// export default Services;
+// Mapping service IDs to their directory names
+const getServiceDirectory = (serviceId: string): string => {
+  const directoryMap: Record<string, string> = {
+    'directional-drilling': 'Directional Drilling',
+    'civil-construction': 'Civil Construction',
+    'deep-foundation': 'Deep Foundation',
+    'drainage': 'Drainage',
+    'Underground Tunneling': 'Jack&Bore - Tunneling',
+    'utility-installation': 'Utilites',
+    'underground-electrical': 'Utilites', // Maps to utilities since they're related
+    'pipe-fabrication': 'Civil Construction', // Fallback to civil construction
+  };
+  return directoryMap[serviceId] || 'Civil Construction'; // Default fallback
+};
+
+// Function to get images for a specific service
+const getServiceImages = async (serviceId: string): Promise<string[]> => {
+  const directory = getServiceDirectory(serviceId);
+  
+  try {
+    // For now, we'll define known images for each service
+    // In a real-world scenario, you might want to dynamically fetch this list
+    const imageMap: Record<string, string[]> = {
+      'Directional Drilling': [
+        'down-net_http20250912-127-gh773e.jpg',
+        'down-net_http20250912-137-1r4lb3.jpg',
+        'down-net_http20250912-144-eyooq1.jpg',
+        'down-net_http20250912-161-5whxnz.jpg',
+        'down-net_http20250912-165-x4wftm.jpg',
+        'down-net_http20250912-175-8ut3xj.jpg',
+        'down-net_http20250912-175-rzog2v.jpg',
+        'down-net_http20250912-190-z59lu.jpg',
+        'down-net_http20250912-198-fkd4q2.jpg',
+        'down-net_http20250912-205-iteedj.jpg',
+      ],
+      'Civil Construction': [
+        'down-net_http20250911-109-uhtwxe.jpg',
+        'down-net_http20250911-122-4kanyl.jpg',
+        'down-net_http20250911-160-ou0v6t.jpg',
+        'down-net_http20250911-162-v6ta0w.jpg',
+        'down-net_http20250911-179-fh5cfp.jpg',
+        'down-net_http20250911-207-l0qx25.jpg',
+        'down-net_http20250911-246-1gmpof.jpg',
+        'down-net_http20250911-96-11t083.jpg',
+        'down-net_http20250912-125-o2zd82.jpg',
+        'down-net_http20250912-236-n4pumu.jpg',
+      ],
+      'Deep Foundation': [
+        'IMG_0415.jpg',
+        'IMG_0434.jpg',
+        'IMG_4328.JPG',
+        'IMG_4360.JPG',
+        'IMG_4365.JPG',
+        'IMG_4385.JPG',
+        'IMG_4394.JPG',
+        'IMG_4410.JPG',
+        'thumbnail_IMG_2473.jpg',
+        'thumbnail_IMG_7665.jpg',
+      ],
+      'Drainage': [
+        'down-net_http20250911-137-o2qt0c.jpg',
+        'down-net_http20250911-148-7a561.jpg',
+        'down-net_http20250911-163-4onhln.jpg',
+        'down-net_http20250911-171-nayggv.jpg',
+        'down-net_http20250911-91-8744ar.jpg',
+      ],
+      'Jack&Bore - Tunneling': [
+        'down-net_http20250912-105-8ak2go.jpg',
+        'down-net_http20250912-105-l563tg.jpg',
+        'down-net_http20250912-107-1dvg26.jpg',
+        'down-net_http20250912-116-kqu90f.jpg',
+        'down-net_http20250912-126-k3qg8w.jpg',
+        'down-net_http20250912-130-mbgxq6.jpg',
+        'down-net_http20250912-145-wp33ip.jpg',
+        'down-net_http20250912-147-q42v8p.jpg',
+        'down-net_http20250912-169-j491tb.jpg',
+        'down-net_http20250912-175-jij4mo.jpg',
+      ],
+      'Utilites': [
+        'Water System Installation/down-net_http20250911-125-y4rprp.jpg',
+        'Water System Installation/down-net_http20250911-135-69fimn.jpg',
+        'Water System Installation/down-net_http20250911-152-i74o87.jpg',
+        'Water System Installation/down-net_http20250911-162-zrc1k3.jpg',
+        'Water System Installation/down-net_http20250911-165-nh5ffb.jpg',
+        'Gas System Installation/down-net_http20250912-105-dh3cqs.jpg',
+        'Gas System Installation/down-net_http20250912-125-hkgir.jpg',
+        'Gas System Installation/down-net_http20250912-209-dxghan.jpg',
+        'Gas System Installation/down-net_http20250912-267-o6u13q.jpg',
+        'Water System Installation/down-net_http20250911-235-ah34n3.jpg',
+      ],
+      'Logos': [],
+    };
+    
+    const images = imageMap[directory] || [];
+    return images.map(img => `/${encodeURIComponent(directory)}/${img}`);
+  } catch (error) {
+    console.warn(`Failed to load images for service: ${serviceId}`, error);
+    return [];
+  }
+};
+
 type IconType = React.ComponentType<{ className?: string }>;
 const getIcon = (name?: string): IconType => {
   if (!name) return Icons.Wrench as IconType;
@@ -634,6 +734,8 @@ useEffect(() => {
   // Image carousel state
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [serviceImages, setServiceImages] = useState<string[]>([]);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
 
   // Row/card expansion state
   const [openRow, setOpenRow] = useState<number | null>(null);          // md+ : which row is open (both cards)
@@ -653,6 +755,26 @@ useEffect(() => {
     setOpenCardKey(null);
   }, [activeId]);
 
+  // Load images for the active service
+  useEffect(() => {
+    const loadImages = async () => {
+      setIsLoadingImages(true);
+      try {
+        const images = await getServiceImages(activeId);
+        setServiceImages(images);
+      } catch (error) {
+        console.error('Failed to load service images:', error);
+        setServiceImages([]);
+      } finally {
+        setIsLoadingImages(false);
+      }
+    };
+    
+    loadImages();
+    // Reset scroll position when switching services
+    setScrollPosition(0);
+  }, [activeId]);
+
   // keep responsive state in sync
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)');
@@ -664,12 +786,13 @@ useEffect(() => {
 
   // Infinite scroll for images
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || serviceImages.length === 0) return;
     
     const interval = setInterval(() => {
       setScrollPosition(prev => {
-        const itemWidth = 256; // 16rem width + gap
-        const resetPoint = -(itemWidth * 5); // Reset after 5 images
+        const itemWidth = 320; // Increased from 256 to account for larger images (20rem + gap)
+        const totalImages = Math.max(serviceImages.length, 5); // At least 5 for smooth scrolling
+        const resetPoint = -(itemWidth * totalImages); // Reset after all images
         if (prev <= resetPoint) {
           return 0; // Reset to start for seamless loop
         }
@@ -678,7 +801,7 @@ useEffect(() => {
     }, 16); // ~60fps for smooth animation
 
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, serviceImages.length]);
 
   // auto-scroll tab rail on mobile so active tab stays in view
   const railRef = useRef<HTMLDivElement | null>(null);
@@ -856,62 +979,100 @@ useEffect(() => {
         </div>
 
         {/* Infinite Scrolling Thumb Strip */}
-        <div className="mt-8 overflow-hidden">
-          <div 
-            className="relative"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {/* Continuous scrolling container */}
+        {serviceImages.length > 0 && (
+          <div className="mt-8 overflow-hidden">
             <div 
-              className="flex gap-4 transition-none"
-              style={{
-                transform: `translateX(${scrollPosition}px)`,
-                width: 'max-content'
-              }}
+              className="relative"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
-              {/* Create multiple copies for seamless infinite scroll */}
-              {Array.from({ length: 6 }, (_, setIndex) => (
-                <React.Fragment key={setIndex}>
-                  {[
-                    { src: '/images/Gemini_Generated_Image_bjxysubjxysubjxy.png', alt: 'Construction project' },
-                    { src: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg', alt: 'Construction work' },
-                    { src: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg', alt: 'Industrial construction' },
-                    { src: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg', alt: 'Construction site' },
-                    { src: '/images/di-F1MlxlEpaOk-unsplash.jpg', alt: 'Construction equipment' },
-                  ].map((img, i) => {
-                    const resetPosition = -(5 * (16 * 5 + 4 * 4)); // Reset after one complete set
-                    const currentPosition = scrollPosition % resetPosition;
-                    
-                    return (
-                      <div key={`${setIndex}-${i}`} className="min-w-[12rem] md:min-w-[16rem] group flex-shrink-0">
+              {/* Continuous scrolling container */}
+              <div 
+                className="flex gap-4 transition-none"
+                style={{
+                  transform: `translateX(${scrollPosition}px)`,
+                  width: 'max-content'
+                }}
+              >
+                {/* Create multiple copies for seamless infinite scroll */}
+                {Array.from({ length: 6 }, (_, setIndex) => (
+                  <React.Fragment key={setIndex}>
+                    {serviceImages.slice(0, 5).map((imageSrc, i) => (
+                      <div key={`${setIndex}-${i}`} className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
                         <img
-                          src={img.src}
-                          alt={img.alt}
+                          src={imageSrc}
+                          alt={`${activeService.name} project ${i + 1}`}
                           loading="lazy"
-                          className="w-full h-32 md:h-32 lg:h-40 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+                          onError={(e) => {
+                            // Fallback to a default image if service image fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                          }}
                         />
                       </div>
-                    );
-                  })}
-                </React.Fragment>
-              ))}
+                    ))}
+                    {/* If less than 5 images, fill with fallback images */}
+                    {serviceImages.length < 5 && Array.from({ length: 5 - serviceImages.length }, (_, i) => (
+                      <div key={`fallback-${setIndex}-${i}`} className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
+                        <img
+                          src={[
+                            '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg',
+                            '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg',
+                            '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
+                            '/images/di-F1MlxlEpaOk-unsplash.jpg',
+                          ][i % 4]}
+                          alt={`${activeService.name} construction work`}
+                          loading="lazy"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
+                        />
+                      </div>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </div>
+              
+              {/* Gradient overlays for smooth edges */}
+              <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
+              <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
             </div>
             
-            {/* Gradient overlays for smooth edges */}
-            <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
-            <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
-          </div>
-          
-          {/* Pause indicator when hovered */}
-          {isHovered && (
-            <div className="text-center mt-4">
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                Hover to pause • Move away to resume
+            {/* Pause indicator when hovered */}
+            {isHovered && (
+              <div className="text-center mt-4">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Hover to pause • Move away to resume
+                </span>
+              </div>
+            )}
+            
+            {/* Service name indicator */}
+            <div className="text-center mt-2">
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                {activeService.name} Project Gallery ({serviceImages.length} images)
               </span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+        
+        {/* Loading state for images */}
+        {isLoadingImages && (
+          <div className="mt-8 text-center">
+            <div className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <div className="w-4 h-4 border-2 border-gray-300 border-t-primary-600 rounded-full animate-spin"></div>
+              Loading {activeService.name} images...
+            </div>
+          </div>
+        )}
+        
+        {/* No images available state */}
+        {!isLoadingImages && serviceImages.length === 0 && (
+          <div className="mt-8 text-center">
+            <p className="text-gray-500 dark:text-gray-400">
+              No images available for {activeService.name} at the moment.
+            </p>
+          </div>
+        )}
       </section>
 
       {/* CTA */}
