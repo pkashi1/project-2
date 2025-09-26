@@ -135,9 +135,9 @@ const NewHero: React.FC = () => {
     <section className="relative min-h-screen flex items-center bg-gradient-to-br overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-75"
         style={{
-          backgroundImage: 'url(/images/pexels-ywanphoto-188679.jpg)',
+          backgroundImage: 'url(/Deep%20Foundation/thumbnail_image002.jpg)',
         }}
       >
         <div className="absolute inset-0 bg-black/60" /> 
@@ -149,7 +149,7 @@ const NewHero: React.FC = () => {
         <div className="absolute top-1/2 -left-20 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-white space-y-8 animate-slide-in-left">
@@ -193,6 +193,23 @@ const NewHero: React.FC = () => {
             </div>
 
             {/* Stats */}
+            
+          </div>
+
+          {/* Feature Cards */}
+          <div className="space-y-6 animate-slide-in-right">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
+              <p className="text-gray-300">
+                Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <h3 className="text-xl font-semibold text-white mb-3">Quality Guaranteed</h3>
+              <p className="text-gray-300">
+                We stand behind the quality of our work and take pride in delivering dependable, high-quality work on every project. Our team is committed to precision, safety, and lasting results—guaranteed.
+              </p>
+            </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary-400">35+</div>
@@ -210,22 +227,6 @@ const NewHero: React.FC = () => {
                 <div className="text-3xl font-bold text-secondary-400">98%</div>
                 <div className="text-gray-300 text-sm">Client Retention Rate</div>
               </div>
-            </div>
-          </div>
-
-          {/* Feature Cards */}
-          <div className="space-y-6 animate-slide-in-right">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
-              <p className="text-gray-300">
-                Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <h3 className="text-xl font-semibold text-white mb-3">Quality Guaranteed</h3>
-              <p className="text-gray-300">
-                We stand behind the quality of our work and take pride in delivering dependable, high-quality work on every project. Our team is committed to precision, safety, and lasting results—guaranteed.
-              </p>
             </div>
           </div>
         </div>
@@ -269,7 +270,7 @@ const ServicesHero: React.FC = () => {
       icon: Drill,
       description:
         'Minimize disruption, maximize precision—HDD, jack & bore, and tunneling.',
-      backgroundImage: '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg',
+      backgroundImage: '/Directional%20Drilling/down-net_http20250912-127-gh773e.jpg',
       ctaText: 'MORE ABOUT DRILLING SERVICES',
       ctaLink: '/services#directional-drilling', // ← updated
     },
@@ -280,7 +281,7 @@ const ServicesHero: React.FC = () => {
       icon: Hammer,
       description:
         'Drilled shafts, piles, and specialty supports for long-term stability.',
-      backgroundImage: '/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg',
+      backgroundImage: '/Deep%20Foundation/IMG_0415.jpg',
       ctaText: 'MORE ABOUT DEEP FOUNDATIONS',
       ctaLink: '/services#deep-foundation', // ← updated
     },
@@ -291,7 +292,7 @@ const ServicesHero: React.FC = () => {
       icon: Building,
       description:
         'From site prep to final grade—roads, concrete, drainage, and public works.',
-      backgroundImage: '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
+      backgroundImage: '/Civil%20Construction/down-net_http20250911-109-uhtwxe.jpg',
       ctaText: 'MORE ABOUT CIVIL CONSTRUCTION',
       ctaLink: '/services#civil-construction', // ← updated
     },
@@ -302,20 +303,20 @@ const ServicesHero: React.FC = () => {
       icon: Layers,
       description:
         'Water, sewer, gas, and electrical conduit systems installed and commissioned.',
-      backgroundImage: '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg',
+      backgroundImage: '/Utilites/Water%20System%20Installation/down-net_http20250911-125-y4rprp.jpg',
       ctaText: 'MORE ABOUT UTILITY SERVICES',
       ctaLink: '/services#utility-installation', // ← updated
     },
     {
-      id: 'pipe-fabrication',
-      name: 'PIPE FABRICATION SERVICES',
+      id: 'drainage',
+      name: 'DRAINAGE SERVICES',
       subtitle: 'SERVICES',
       icon: Wrench,
       description:
-        'Custom cutting, welding, coatings, and certified assemblies—ready for field install.',
-      backgroundImage: '/images/di-F1MlxlEpaOk-unsplash.jpg',
-      ctaText: 'MORE ABOUT PIPE FABRICATION',
-      ctaLink: '/services#pipe-fabrication', // ← updated
+        'Comprehensive drainage solutions for municipal and commercial projects.',
+      backgroundImage: '/Drainage/down-net_http20250911-137-o2qt0c.jpg',
+      ctaText: 'MORE ABOUT DRAINAGE',
+      ctaLink: '/services#drainage', // ← updated
     },
   ];
 
@@ -443,7 +444,7 @@ const ServicesHero: React.FC = () => {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"
-          style={{ backgroundImage: `url('/images/pexels-ywanphoto-188679.jpg')` }}
+          style={{ backgroundImage: `url('/Civil%20Construction/down-net_http20250911-122-4kanyl.jpg')` }}
         />
 
         {/* Gradient Overlay: bottom (dark) → top (lighter dark) */}
