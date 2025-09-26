@@ -107,11 +107,11 @@ const ProjectDetail: React.FC = () => {
                     label: 'Location',
                     value: project.location,
                   },
-                  {
-                    icon: Calendar,
-                    label: 'Completed',
-                    value: new Date(project.completionDate).toLocaleDateString(),
-                  },
+                  // {
+                  //   icon: Calendar,
+                  //   label: 'Completed',
+                  //   value: new Date(project.completionDate).toLocaleDateString(),
+                  // },
                   {
                     icon: User,
                     label: 'Client',
@@ -176,14 +176,14 @@ const ProjectDetail: React.FC = () => {
                     Project Highlights
                   </h3>
                   <div className="space-y-3">
-                    {project.details.duration && (
+                    {/* {project.details.duration && (
                       <div className="flex items-center space-x-3">
                         <Clock className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                         <span className="text-gray-700 dark:text-gray-300">
                           Duration: {project.details.duration}
                         </span>
                       </div>
-                    )}
+                    )} */}
 
                     {/* NEW: scope can be string or array */}
                     {project.details.scope && (
@@ -216,12 +216,11 @@ const ProjectDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* Challenges & Testimonial */}
+      {/* Challenges & Testimonial 
       {project.details && (
         <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Challenges */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
                   Project Challenges
@@ -243,7 +242,6 @@ const ProjectDetail: React.FC = () => {
                 </div>
               </div>
 
-              {/* Testimonial */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
                   Client Feedback
@@ -266,7 +264,7 @@ const ProjectDetail: React.FC = () => {
           </div>
         </section>
       )}
-
+      */}
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
         <section className="py-20 bg-white dark:bg-gray-900 transition-colors">

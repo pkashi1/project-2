@@ -93,68 +93,24 @@ const About: React.FC = () => {
     </div>
   </section>
 
-
-        {/* Hero + Company Stats */}
-        {/* <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
-                  Building Louisiana's <span className="text-primary-600 dark:text-primary-400">Future</span> Since 2015
-                </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                  At Southern Underground, we specialize in the critical infrastructure services
-                  that form the backbone of Louisiana's communities and industries. With expertise
-                  in underground utilities, site development, and civil construction, we deliver
-                  comprehensive solutions tailored to our region's unique demands.
-                </p>
-
-                <div className="grid grid-cols-4 gap-2lg:grid-cols-4 lg:gap-4">
-                  {companyStats.map((stat, idx) => {
-                    const IconComponent =
-                      iconMap[stat.icon] || CheckCircle;
-                    return (
-                      <div key={idx} className="text-center">
-                        <IconComponent className="w-8 h-8 text-primary-600 dark:text-primary-400 mx-auto mb-2" />
-                        <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                          {stat.value}
-                        </div>
-                        <div className="text-gray-600 dark:text-gray-300 text-sm">
-                          {stat.label}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="relative self-start">
-                <img
-                  src="/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg"
-                  alt="Construction team at work"
-                  className="rounded-2xl shadow-xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* Mission Statement */}
         <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
               Our Mission
             </h2>
-            <blockquote className="text-2xl text-gray-700 dark:text-gray-300 italic leading-relaxed mb-8">
+            {/* <blockquote className="text-2xl text-gray-700 dark:text-gray-300 italic leading-relaxed mb-8">
               "To provide exceptional construction and utility services that build stronger
               communities while maintaining the highest standards of safety, quality, and
               environmental responsibility."
+            </blockquote> */}
+            <blockquote className="text-xl text-gray-700 dark:text-gray-300 italic leading-relaxed mb-8">
+              "At Southern Underground of Louisiana, LLC, our mission is to deliver dependable, high-quality underground utility and infrastructure solutions that strengthen Louisiana’s communities. We are committed to building with integrity—driven by safety, precision, and long-term performance. Through innovation, skilled craftsmanship, and a dedication to excellence, we aim to be the trusted partner for municipal, commercial, and industrial development across the region."
             </blockquote>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            {/* <p className="text-lg text-gray-600 dark:text-gray-300">
               Every project is an opportunity to improve the communities we serve and build infrastructure
               that stands the test of time. We're dedicated to realizing your vision with precision and care.
-            </p>
+            </p> */}
           </div>
         </section>
 
@@ -325,11 +281,11 @@ const About: React.FC = () => {
                   key={member.id}
                   className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
                 >
-                  <img
+                  {/* <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  /> */}
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {member.name}

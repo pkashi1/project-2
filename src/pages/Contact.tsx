@@ -342,7 +342,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex items-center space-x-3">
+                {/* <div className="flex items-center space-x-3">
                   <input
                     type="checkbox"
                     name="newsletter"
@@ -353,7 +353,7 @@ const Contact: React.FC = () => {
                   <label className="text-sm text-gray-700 dark:text-gray-300">
                     Subscribe to our newsletter for industry updates and company news
                   </label>
-                </div>
+                </div> */}
 
                 <button
                   type="submit"

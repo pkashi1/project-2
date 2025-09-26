@@ -17,8 +17,8 @@ const services = [
     name: 'Directional Drilling',
     icon: 'Drill',
     category: 'Trenchless',
-    difficulty: 'Advanced',
-    timeEstimate: '2-5 days',
+    
+    
     shortDescription: 'Precision underground installations without surface disruption',
     detailedDescription:
       'Trenchless HDD installs conduits and pipelines beneath roads, railways, waterways, and sensitive areas—minimizing disruption while meeting strict alignment and depth tolerances.',
@@ -97,8 +97,8 @@ const services = [
     name: 'Utility Installation',
     icon: 'Layers',
     category: 'Utilities',
-    difficulty: 'Standard',
-    timeEstimate: '1-3 days',
+    
+    
     shortDescription: 'Complete water, gas, and wastewater system installations',
     detailedDescription:
       'End-to-end installation for water, gas, and wastewater systems including appurtenances, testing/commissioning, and restoration.',
@@ -181,8 +181,8 @@ const services = [
     name: 'Underground Electrical Conduit',
     icon: 'Zap',
     category: 'Electrical',
-    difficulty: 'Standard',
-    timeEstimate: '1-4 days',
+    
+    
     shortDescription: 'Primary/secondary conduit systems and electrical infrastructure',
     detailedDescription:
       'Primary/secondary conduit systems, duct banks, handholes/pull boxes, vaults and transformer pads with trenchless crossings where required.',
@@ -229,6 +229,22 @@ const services = [
           'Conduit continuity and grounding tests',
         ],
       },
+      {
+        title: 'Repair & Replacement',
+        features: [
+          'Replacement of damaged or collapsed conduits',
+          'Rerouting or extending existing conduit systems',
+          'Emergency conduit repair work',
+        ],
+      },
+      {
+        title: 'Site Work & Restoration',
+        features: [
+          'Excavation, trenching, and shoring as required',
+          'Backfilling and compaction to specification',
+          'Pavement, curb, sidewalk, and landscaping restoration',
+        ],
+      },
     ],
   },
   {
@@ -236,8 +252,8 @@ const services = [
     name: 'Deep Foundation',
     icon: 'Hammer',
     category: 'Foundation',
-    difficulty: 'Advanced',
-    timeEstimate: '3-10 days',
+    
+    
     shortDescription: 'Drilled shafts, piles and specialty supports for heavy structures',
     detailedDescription:
       'Drilled shafts, piles and specialty supports for bridges, buildings and heavy structures—delivered with certified testing and QA/QC.',
@@ -293,6 +309,22 @@ const services = [
           'Installing base grouting or tip grouting for load enhancement',
         ],
       },
+      {
+        title: 'Repair & Rehabilitation',
+        features: [
+          'Strengthening or replacing damaged piles or shafts',
+          'Jacketing or encasing deteriorated piles',
+          'Grouting to fill voids or stabilize soil around deep foundations',
+        ],
+      },
+      {
+        title: 'Site Work & Restoration',
+        features: [
+          'Excavation and spoil management for drilled foundations',
+          'Backfilling and compaction to specification',
+          'Surface restoration including pavement, curbs, and grading',
+        ],
+      },
     ],
   },
   {
@@ -300,8 +332,8 @@ const services = [
     name: 'Civil Construction',
     icon: 'Building',
     category: 'Civil',
-    difficulty: 'Standard',
-    timeEstimate: '5-20 days',
+    
+    
     shortDescription: 'Full-scope sitework, roads, and structural concrete',
     detailedDescription:
       'Full-scope sitework, roads, structural concrete, drainage, and public infrastructure with strict schedule and safety control.',
@@ -376,8 +408,8 @@ const services = [
     name: 'Drainage',
     icon: 'Droplets',
     category: 'Utilities',
-    difficulty: 'Standard',
-    timeEstimate: '2-7 days',
+    
+    
     shortDescription: 'Storm drain systems and water management solutions',
     detailedDescription:
       'Storm drain mains/laterals, culverts, inlets/structures, open channels and hydrologic controls—installed, inspected and restored.',
@@ -431,6 +463,22 @@ const services = [
           'CCTV inspection of installed systems',
         ],
       },
+      {
+        title: 'Repair & Replacement',
+        features: [
+          'Emergency storm drain or culvert repairs',
+          'Replacement of damaged or collapsed drainage structures or piping',
+          'Regrading or restoring eroded drainage features',
+        ],
+      },
+      {
+        title: 'Site Work & Restoration',
+        features: [
+          'Excavation, trenching, and shoring as needed',
+          'Backfilling and compaction to specification',
+          'Pavement, curb, sidewalk, landscaping, and erosion control restoration',
+        ],
+      },
     ],
   },
   {
@@ -438,8 +486,8 @@ const services = [
     name: 'Pipe Fabrication',
     icon: 'Wrench',
     category: 'Fabrication',
-    difficulty: 'Advanced',
-    timeEstimate: '1-5 days',
+    
+    
     shortDescription: 'Custom cutting, welding, fitting, and coating services',
     detailedDescription:
       'Custom cutting, welding, fitting, coating and assembly with documentation, NDT and field support.',
@@ -496,6 +544,14 @@ const services = [
           'Compliance with project specifications and industry standards (ASME, ASTM, API)',
         ],
       },
+      {
+        title: 'Repair & Rework',
+        features: [
+          'Repairing weld defects or damaged pipe sections',
+          'Modifying fabricated pipe assemblies to meet changing project needs',
+          'Field support for pipe fabrication and installation issues',
+        ],
+      },
     ],
   },
   {
@@ -503,8 +559,8 @@ const services = [
     name: 'Underground Tunneling',
     icon: 'MoveRight',
     category: 'Trenchless',
-    difficulty: 'Advanced',
-    timeEstimate: '3-7 days',
+    
+    
     shortDescription: 'Steel casing jacked beneath roads and obstructions',
     detailedDescription:
       'Steel casing jacked beneath roads/rails/obstructions with precise grade control and carrier pipe pullback.',
@@ -1154,24 +1210,6 @@ useEffect(() => {
         )}
       </section>
 
-      {/* CTA */}
-      <section className="bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 dark:from-primary-800 dark:via-primary-900 dark:to-secondary-800 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-primary-100 dark:text-primary-200 mb-8 max-w-2xl mx-auto">
-            Contact our experts for a free consultation and detailed project quote.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => (window.location.href = '/contact')}
-              className="inline-flex items-center bg-secondary-400 text-white px-8 py-4 rounded-lg font-semibold text-lg "
-            >
-              Get Quote
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

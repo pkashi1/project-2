@@ -1382,9 +1382,9 @@ export const projects = [
       duration: 'Ongoing Program',
       value: '$2.4M',
       scope: [
-        'Smoke testing of ~100,000 LF of sanitary sewer mains and 322 manholes',
-        'CCTV inspection of ~100,000 LF of sanitary sewer mains',
-        'Targeted rehabilitation of mains and manholes to reduce inflow & infiltration (I&I)'
+        'Smoke testing of approximately 100,000 linear feet of sanitary sewer mains and 322 manholes',
+        'Television inspection of approximately 100,000 linear feet of sanitary sewer mains',
+        'Sewer main and manhole rehabilitation to reduce inflow and infiltration'
       ],
       challenges: 'Wide system coverage and coordination across many segments of the collection network',
       solution: 'Sequenced testing and CCTV, then prioritized rehab for the highest I&I reduction impact'
@@ -1406,9 +1406,9 @@ export const projects = [
       duration: 'Program Phase',
       value: '$2.0M',
       scope: [
-        'Smoke testing of ~37,000 LF of sanitary sewer mains and 121 manholes',
-        'CCTV inspection of ~37,000 LF of sanitary sewer mains',
-        'Rehabilitation of mains/manholes to reduce I&I in South Plaquemine'
+        'Smoke testing of approximately 37,000 linear feet of sanitary sewer mains and 121 manholes',
+        'Television inspection of approximately 37,000 linear feet of sanitary sewer mains',
+        'Sewer main and manhole rehabilitation to reduce inflow and infiltration within the South Plaquemine Sewer Collection System'
       ],
       challenges: 'Maintaining service and access in active neighborhoods',
       solution: 'Block‑by‑block coordination, traffic control, and staged testing to limit disruption'
@@ -1430,8 +1430,8 @@ export const projects = [
       duration: '6 months',
       value: '$1.9M',
       scope: [
-        'High‑pressure gas pipeline installation for critical distribution',
-        'Implementation of specialized safety protocols and inspections'
+        'High-pressure gas pipeline for petrochemical facility',
+        'Specialized safety protocol implementation'
       ],
       challenges: 'Coordinating shutdown windows and maintaining community safety around work zones',
       solution: 'Phased tie‑ins, enhanced safety monitoring, and stakeholder communication'

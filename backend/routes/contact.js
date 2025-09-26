@@ -2,6 +2,7 @@ const NewsletterSubscriber = require('../models/NewsletterSubscriber');
 const ContactSubmission = require('../models/ContactSubmission');
 const express = require('express');
 const router = express.Router();
+const { sendContactSubmissionEmail } = require('../services/emailService');
 
 router.post('/submit', async (req, res) => {
   try {
@@ -17,6 +18,11 @@ router.post('/submit', async (req, res) => {
         await newSub.save();
       }
     }
+
+    // Send manager notification email (fire-and-forget)
+    sendContactSubmissionEmail(req.body).catch((e) => {
+      console.error('Failed to send contact notification email:', e);
+    });
 
     res.status(200).json({ msg: 'Thank you! Your request has been submitted.' });
   } catch (err) {

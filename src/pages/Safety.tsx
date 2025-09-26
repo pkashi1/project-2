@@ -124,7 +124,7 @@ const Safety: React.FC = () => {
       </section>
 
       {/* Safety Stats (stack on mobile, grid on md+) */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-800 transition-colors">
+      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -161,7 +161,7 @@ const Safety: React.FC = () => {
       </section>
 
       {/* Safety Philosophy (image stacks below on mobile) */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800 transition-colors">
+      <section className="py-1 sm:py-16 bg-gray-100 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
@@ -170,14 +170,10 @@ const Safety: React.FC = () => {
               </h2>
               <div className="space-y-4 sm:space-y-6">
                 <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  At Southern Underground, safety isn't just a priority—it's our core value. We believe
-                  every worker has the right to return home safely, enabled by comprehensive programs,
-                  continuous training, and best practices.
+                  At Southern Underground of Louisiana, LLC, safety is not just a priority—it is the foundation of everything we do. We believe every employee, subcontractor, and visitor has the right to return home safely each day. Our commitment to safety is embedded in our company culture, guiding every decision, action, and procedure on every job site.
                 </p>
                 <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Our culture is built on the belief that all incidents are preventable. Through proactive
-                  hazard identification, rigorous protocols, and ongoing education, we maintain one of the
-                  industry's best safety records.
+                  Our ultimate goal is to cultivate a workplace where safety excellence supports quality, efficiency, and the well-being of our entire team—because at Southern Underground, safety is everyone’s responsibility.
                 </p>
               </div>
             </div>
@@ -192,8 +188,40 @@ const Safety: React.FC = () => {
           </div>
         </div>
       </section>
+      {/* Adjusted Section: Safety Commitments */}
+      <section className="py-8 sm:py-12 bg-gray-50 dark:bg-gray-700 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              Our Safety Commitments
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Principles that guide our unwavering dedication to safety excellence.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              "Promoting continuous training and education to ensure all personnel are equipped to recognize and mitigate hazards.",
+              "Enforcing strict compliance with all local, state, and federal safety regulations and industry best practices.",
+              "Encouraging open communication, where every team member feels empowered to speak up and contribute to a safer workplace.",
+              "Implementing thorough planning, hazard assessments, and regular safety audits to prevent incidents before they occur.",
+              "Fostering personal accountability and leadership in safety at all levels of the organization."
+            ].map((commitment, idx) => (
+              <div
+                key={idx}
+                className="bg-white dark:bg-gray-800 p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all flex items-start gap-3"
+              >
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent-500 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {commitment}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Safety Protocols (cards; collapsible on mobile) */}
+      {/* Safety Protocols (cards; collapsible on mobile)
       <section className="py-12 sm:py-16 bg-white dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6 sm:mb-8">
@@ -210,7 +238,6 @@ const Safety: React.FC = () => {
             </button>
           </div>
 
-          {/* Mobile: 3 visible, expand to all. Desktop: always all in grid. */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {(showAllProtocols || typeof window === 'undefined'
               ? safetyProtocols
@@ -240,7 +267,6 @@ const Safety: React.FC = () => {
             })}
           </div>
 
-          {/* Desktop show-all is implicit; mobile button below grid */}
           <div className="sm:hidden mt-4">
             <button
               className="w-full text-center text-primary-600 dark:text-primary-400 font-medium py-2 rounded-lg border border-primary-200 dark:border-primary-800"
@@ -250,10 +276,10 @@ const Safety: React.FC = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Training Programs (chips; collapsible on mobile) */}
-      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800 transition-colors">
+      {/* Safety Training Programs (chips; collapsible on mobile) */}
+      <section className="py-12 sm:py-16 bg-gray-100 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -301,7 +327,7 @@ const Safety: React.FC = () => {
       </section>
 
       {/* Certifications (horizontal scroll on mobile, grid on md+) */}
-      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900 transition-colors">
+      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">Safety Certifications</h2>
@@ -346,6 +372,8 @@ const Safety: React.FC = () => {
           </div>
         </div>
       </section>
+
+      
     </div>
   );
 };

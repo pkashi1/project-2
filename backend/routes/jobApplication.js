@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { uploadToAzureBlob, generateSASUrl } = require('../services/azureBlobService');
-const { sendJobApplicationEmail } = require('../services/emailService');
+const { sendJobApplicationEmail, sendApplicantConfirmationEmail } = require('../services/emailService');
 
 // Use local /uploads/resumes for temp storage
 const upload = multer({
@@ -39,7 +39,7 @@ console.log('📦 MIME type:', resumeFile?.mimetype);
     // Generate SAS download link
     const sasUrl = generateSASUrl(blobInfo.blobName, 168); // 7 days
 
-    // Send email with resume link
+    // Send manager email with resume link
     await sendJobApplicationEmail({
       name,
       email,
@@ -49,6 +49,11 @@ console.log('📦 MIME type:', resumeFile?.mimetype);
       message,
       resumeName: resumeFile.originalname,
       sasUrl,
+    });
+
+    // Send applicant confirmation email (non-blocking)
+    sendApplicantConfirmationEmail({ name, email, position }).catch((e) => {
+      console.error('⚠️ Failed to send applicant confirmation:', e);
     });
 
     // Delete local file
