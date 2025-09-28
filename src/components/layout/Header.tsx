@@ -53,7 +53,7 @@ const Header: React.FC = () => {
     { name: 'Projects', path: '/projects' },
     { name: 'Safety', path: '/safety' },
     { name: 'Careers', path: '/careers' },
-    { name: 'Blog', path: '/blog' },
+    // { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
   ];
 

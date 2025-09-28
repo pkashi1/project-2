@@ -132,7 +132,8 @@ const WhySouthernUnderground: React.FC = () => {
 // New Hero Section Component
 const NewHero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br overflow-hidden pt-10 pb-30">
+
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-75"
@@ -192,12 +193,11 @@ const NewHero: React.FC = () => {
              
             </div>
 
-            {/* Stats */}
             
           </div>
 
           {/* Feature Cards */}
-          <div className="space-y-6 animate-slide-in-right">
+          <div className="space-y-2 animate-slide-in-right">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
               <p className="text-gray-300">
@@ -457,7 +457,8 @@ const ServicesHero: React.FC = () => {
       </section>
 
       {/* Career Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600">
+      <section className="py-20 bg-gradient-to-r from-primary-700 via-primary-300 to-secondary-300 dark:from-gray-200 dark:via-gray-400 dark:to-gray-700">
+      {/* <section className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" /> */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Accelerate Your Career, Join a Winning Team

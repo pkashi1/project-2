@@ -104,7 +104,7 @@ const Safety: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
       {/* Hero (mobile-first height) */}
-      <section className="relative overflow-hidden">
+      {/* <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/umit-yildirim-9OB46apMbC4-unsplash.jpg)' }}
@@ -116,6 +116,33 @@ const Safety: React.FC = () => {
               Safety <span className="text-secondary-300">First</span>, Always
             </h1>
             <p className="text-base sm:text-xl text-primary-100 max-w-3xl mx-auto">
+              Our unwavering commitment to safety ensures every team member returns home safely while
+              delivering exceptional construction results.
+            </p>
+          </div>
+        </div>
+      </section> */}
+      <section className="relative py-20 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(public/Jack&Bore-Tunneling/down-net_http20250912-116-kqu90f.jpg)' }}
+        >
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-400/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
+        </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+              Safety <span className="text-secondary-300">First</span>, Always
+            </h1>
+            <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">
               Our unwavering commitment to safety ensures every team member returns home safely while
               delivering exceptional construction results.
             </p>
@@ -179,7 +206,8 @@ const Safety: React.FC = () => {
             </div>
             <div className="relative">
               <img
-                src="/images/downtown-construction.png"
+                // src="/images/downtown-construction.png"
+                src="public/Jack&Bore-Tunneling/down-net_http20250912-130-mbgxq6.jpg"
                 alt="Safety equipment and construction site"
                 className="rounded-2xl shadow-xl w-full h-56 sm:h-80 object-cover"
               />

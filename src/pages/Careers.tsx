@@ -525,7 +525,8 @@ const Careers: React.FC = () => {
       {/* Hero */}
       <section className="relative py-20 text-white overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/Gemini_Generated_Image_bjxysubjxysubjxy.png)' }}>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
         
         {/* Animated background elements */}

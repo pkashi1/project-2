@@ -633,7 +633,7 @@ const getServiceDirectory = (serviceId: string): string => {
     'civil-construction': 'Civil Construction',
     'deep-foundation': 'Deep Foundation',
     'drainage': 'Drainage',
-    'Underground Tunneling': 'Jack&Bore - Tunneling',
+    'Underground Tunneling': 'Jack&Bore-Tunneling',
     'utility-installation': 'Utilites',
     'underground-electrical': 'Utilites', // Maps to utilities since they're related
     'pipe-fabrication': 'Civil Construction', // Fallback to civil construction
@@ -692,7 +692,7 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
         'down-net_http20250911-171-nayggv.jpg',
         'down-net_http20250911-91-8744ar.jpg',
       ],
-      'Jack&Bore - Tunneling': [
+      'Jack&Bore-Tunneling': [
         'down-net_http20250912-105-8ak2go.jpg',
         'down-net_http20250912-105-l563tg.jpg',
         'down-net_http20250912-107-1dvg26.jpg',
@@ -932,9 +932,12 @@ useEffect(() => {
       <section className="relative py-20 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
+          // style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
+          style={{ backgroundImage: "url('public/Deep Foundation/IMG_4394.JPG')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+          
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-300/90 via-primary-800/80 to-secondary-900/90" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-400/90 via-primary-300/80 to-secondary-200/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
 
         <div className="absolute inset-0 overflow-hidden">

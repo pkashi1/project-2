@@ -132,7 +132,8 @@ const Contact: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg)' }}
         >
-          <div className="absolute inset-0 bg-black/60" />
+          {/* <div className="absolute inset-0 bg-black/60" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">

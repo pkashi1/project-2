@@ -71,7 +71,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
               <li><Link to="/projects" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Projects</Link></li>
               <li><Link to="/safety" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Safety</Link></li>
               <li><Link to="/careers" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Careers</Link></li>
-              <li><Link to="/blog" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Blog</Link></li>
+              {/* <li><Link to="/blog" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Blog</Link></li> */}
             </ul>
           </div>
 

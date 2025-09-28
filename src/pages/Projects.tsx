@@ -39,9 +39,11 @@ const Projects: React.FC = () => {
       <section className="relative py-20 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
+          // style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
+          style={{ backgroundImage: "url('public/Deep Foundation/thumbnail_image002.jpg')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-400/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
         
         {/* Animated background elements */}

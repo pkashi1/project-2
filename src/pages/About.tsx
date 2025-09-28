@@ -67,16 +67,18 @@ const About: React.FC = () => {
     {/* Background image + gradient overlay */}
     <div
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')" }}
+      // style={{ backgroundImage: "url('/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')" }}
+      style={{ backgroundImage: "url('/Civil Construction/down-net_http20250912-125-o2zd82.jpg')" }  }
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" />
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
+<div className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
     </div>
 
     {/* Animated background accents */}
-    <div className="absolute inset-0 overflow-hidden">
+    {/* <div className="absolute inset-0 overflow-hidden">
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
-    </div>
+    </div> */}
 
     {/* Content */}
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
