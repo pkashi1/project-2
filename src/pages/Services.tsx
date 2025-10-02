@@ -1019,7 +1019,7 @@ useEffect(() => {
                       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
                         {activeService.name}
                       </h2>
-                      <p className="mt-2 text-gray-700 dark:text-gray-300 max-w-3xl">
+                      <p className="mt-2 text-gray-700 dark:text-gray-300 w-full">
                         {activeService.detailedDescription}
                       </p>
                     </div>

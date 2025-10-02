@@ -84,7 +84,7 @@ const About: React.FC = () => {
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div className="animate-fade-in-up">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
-          Building Louisiana’s <span className="text-secondary-300">Future</span>
+          Building the Invisible, all over the country
         </h1>
         <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
           Since 2015, Southern Underground has specialized in the critical infrastructure 

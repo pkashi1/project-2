@@ -132,23 +132,15 @@ const WhySouthernUnderground: React.FC = () => {
 // New Hero Section Component
 const NewHero: React.FC = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br overflow-hidden pt-10 pb-30">
+    <section className="relative min-h-[80vh] overflow-hidden pt-12 pb-10">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"
+        style={{ backgroundImage: `url('/Deep Foundation/IMG_0415.jpg')` }}
+      />
 
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-75"
-        style={{
-          backgroundImage: 'url(/Deep%20Foundation/thumbnail_image002.jpg)',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" /> 
-      </div>
-
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-10 -right-10 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 -left-20 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      {/* Gradient Overlay: bottom (dark) → top (lighter dark) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/90 to-gray-800/70" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -163,19 +155,18 @@ const NewHero: React.FC = () => {
                 of Tomorrow
               </h1> */}
 
-              <div className="flex items-center mb-6">
-                <img 
-                  src="/Logos/Logo-black.png" 
+              <div className="flex justify-center items-center">
+                {/* <img 
+                  src="public/Logos/BADGE LOGO PNG .png" 
                   alt="Southern Underground Badge Logo" 
                   className="h-16 md:h-24 w-auto object-contain -mt-6 md:-mt-20"
-                />
-                {/* <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                  Building the{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
+                /> */}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  Southern Underground of Louisiana{' '}
+                  {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
                     Foundations
-                  </span>{' '}
-                  of Tomorrow
-                </h1> */}
+                  </span>{' '} */}
+                </h1>
               </div>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl">
                 A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface. 
@@ -184,29 +175,28 @@ const NewHero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-2">
               <Link
-                to="/contact"
+                to="/about"
                 className="inline-flex items-center justify-center bg-secondary-500 text-white px-4 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
               >
-                Book Appointment
+                Know more about us
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
              
             </div>
-
-            
           </div>
+          
 
           {/* Feature Cards */}
           <div className="space-y-2 animate-slide-in-right">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
-              <p className="text-gray-300">
+              <p className="text-gray-200">
                 Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3">Quality Guaranteed</h3>
-              <p className="text-gray-300">
+              <p className="text-gray-200">
                 We stand behind the quality of our work and take pride in delivering dependable, high-quality work on every project. Our team is committed to precision, safety, and lasting results—guaranteed.
               </p>
             </div>
@@ -232,10 +222,43 @@ const NewHero: React.FC = () => {
         </div>
       </div>
 
+
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* <div className="absolute bottom left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div> */}
+      
+    </section>
+    
+    
+  );
+};
+
+// Contact Section Component
+const ContactSection: React.FC = () => {
+  return (
+    <section className="py-16 bg-gray-100 dark:bg-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              Ready to Start Your Project?
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Contact us for your project
+            </p>
+          </div>
+          <div className="mt-6 md:mt-0">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Contact Us
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -438,25 +461,6 @@ const ServicesHero: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Why Southern Underground Section */}
-      <section className="relative py-16 overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"
-          style={{ backgroundImage: `url('/Civil%20Construction/down-net_http20250911-122-4kanyl.jpg')` }}
-        />
-
-        {/* Gradient Overlay: bottom (dark) → top (lighter dark) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/90 to-gray-800/70" />
-
-        {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <WhySouthernUnderground />
-        </div>
-      </section>
-
-      {/* Career Section */}
       <section className="py-20 bg-gradient-to-r from-primary-700 via-primary-300 to-secondary-300 dark:from-gray-200 dark:via-gray-400 dark:to-gray-700">
       {/* <section className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" /> */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -476,6 +480,26 @@ const ServicesHero: React.FC = () => {
           </Link>
         </div>
       </section>
+     
+      {/* Why Southern Underground Section */}
+      <section className="relative py-15 overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"
+          style={{ backgroundImage: `url('/Civil%20Construction/down-net_http20250911-122-4kanyl.jpg')` }}
+        />
+
+        {/* Gradient Overlay: bottom (dark) → top (lighter dark) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/90 to-gray-800/70" />
+
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <WhySouthernUnderground />
+        </div>
+      </section>
+
+      {/* Career Section */}
+      
     </div>
   );
 };
@@ -486,6 +510,9 @@ const Hero: React.FC = () => {
     <div>
       {/* New Hero Section */}
       <NewHero />
+      
+      {/* Contact Section */}
+      <ContactSection />
       
       {/* Services Hero Section */}
       <ServicesHero />
