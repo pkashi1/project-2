@@ -3,7 +3,7 @@ import Hero from '../components/home/Hero';
 import FeaturedProjects from '../components/home/FeaturedProjects';
 import Testimonials from '../components/home/Testimonials';
 import CallToAction from '../components/common/CallToAction';
-import {Certifications} from '../components/home/Certifications';
+import { Certifications } from '../components/home/Certifications';
 import { Helmet } from 'react-helmet-async';
 
 const Home: React.FC = () => {
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       </Helmet>
       <Hero />
       <FeaturedProjects />
-      <Certifications/>
+      <Certifications />
       {/* <Testimonials /> */}
       {/* <CallToAction /> */}
     </div>

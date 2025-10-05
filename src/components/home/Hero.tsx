@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -9,6 +9,96 @@ import {
   Wrench,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Animated Counter Component
+const AnimatedCounter: React.FC<{ 
+  end: number; 
+  suffix?: string; 
+  duration?: number;
+  decimals?: number;
+}> = ({ end, suffix = '', duration = 2000, decimals = 0 }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Easing function
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      const currentCount = easeOutCubic * end;
+      
+      setCount(decimals > 0 ? Number(currentCount.toFixed(decimals)) : Math.floor(currentCount));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [isVisible, end, duration, decimals]);
+
+  return (
+    <div ref={elementRef} className="text-3xl font-bold text-secondary-400">
+      {count}{suffix}
+    </div>
+  );
+};
+
+// Animated Stats Component
+const AnimatedStats: React.FC = () => {
+  const stats = [
+    { value: 35, suffix: '+', label: 'Years Experience', duration: 2000 },
+    { value: 800, suffix: '+', label: 'Projects Completed', duration: 2500 },
+    { value: 99.9, suffix: '%', label: 'Safety Record', duration: 2200, decimals: 1 },
+    { value: 98, suffix: '%', label: 'Client Retention Rate', duration: 2300 },
+  ];
+
+  return (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+      {stats.map((stat, index) => (
+        <div key={index} className="text-center">
+          <AnimatedCounter 
+            end={stat.value} 
+            suffix={stat.suffix}
+            duration={stat.duration}
+            decimals={stat.decimals || 0}
+          />
+          <div className="text-gray-300 text-sm">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 // Interactive component for Why Southern Underground section
 // import React, { useState } from "react";
@@ -65,9 +155,8 @@ const WhySouthernUnderground: React.FC = () => {
               return (
                 <li key={key} className="flex items-center">
                   <span
-                    className={`mr-4 hidden md:inline-block transition-all ${
-                      isActive ? "text-secondary-500" : "text-transparent"
-                    }`}
+                    className={`mr-4 hidden md:inline-block transition-all ${isActive ? "text-secondary-500" : "text-transparent"
+                      }`}
                     aria-hidden
                   >
                     ▶
@@ -118,7 +207,7 @@ const WhySouthernUnderground: React.FC = () => {
                   </span>
                   <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
-            </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -135,12 +224,15 @@ const NewHero: React.FC = () => {
     <section className="relative min-h-[80vh] overflow-hidden pt-12 pb-10">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
         style={{ backgroundImage: `url('/Deep Foundation/IMG_0415.jpg')` }}
       />
 
-      {/* Gradient Overlay: bottom (dark) → top (lighter dark) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/90 to-gray-800/70" />
+      {/* Gradient Overlay: stronger at bottom for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+      
+      {/* Additional overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/20" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -161,15 +253,15 @@ const NewHero: React.FC = () => {
                   alt="Southern Underground Badge Logo" 
                   className="h-16 md:h-24 w-auto object-contain -mt-6 md:-mt-20"
                 /> */}
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-2xl">
                   Southern Underground of Louisiana{' '}
                   {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
                     Foundations
                   </span>{' '} */}
                 </h1>
               </div>
-              <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl">
-                A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface. 
+              <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-lg">
+                A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface.
               </p>
             </div>
 
@@ -181,16 +273,16 @@ const NewHero: React.FC = () => {
                 Know more about us
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-             
+
             </div>
           </div>
-          
+
 
           {/* Feature Cards */}
           <div className="space-y-2 animate-slide-in-right">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <h3 className="text-xl font-semibold text-white mb-3">Licensed & Insured</h3>
-              <p className="text-gray-200">
+            <div className="bg-black/30 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-black/40 transition-all duration-300">
+              <h3 className="text-xl font-semibold text-white mb-3 drop-shadow-lg">Licensed & Insured</h3>
+              <p className="text-gray-200 drop-shadow-md">
                 Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
               </p>
             </div>
@@ -200,24 +292,7 @@ const NewHero: React.FC = () => {
                 We stand behind the quality of our work and take pride in delivering dependable, high-quality work on every project. Our team is committed to precision, safety, and lasting results—guaranteed.
               </p>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">35+</div>
-                <div className="text-gray-300 text-sm">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">800+</div>
-                <div className="text-gray-300 text-sm">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">99.9%</div>
-                <div className="text-gray-300 text-sm">Safety Record</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary-400">98%</div>
-                <div className="text-gray-300 text-sm">Client Retention Rate</div>
-              </div>
-            </div>
+            <AnimatedStats />
           </div>
         </div>
       </div>
@@ -229,10 +304,10 @@ const NewHero: React.FC = () => {
           <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div> */}
-      
+
     </section>
-    
-    
+
+
   );
 };
 
@@ -419,15 +494,13 @@ const ServicesHero: React.FC = () => {
                     className="shrink-0 basis-1/2 snap-start pr-6 text-left"
                   >
                     <span
-                      className={`relative text-lg font-semibold whitespace-nowrap ${
-                        active ? 'text-primary-400' : 'text-gray-200'
-                      }`}
+                      className={`relative text-lg font-semibold whitespace-nowrap ${active ? 'text-primary-400' : 'text-gray-200'
+                        }`}
                     >
                       {service.name}
                       <span
-                        className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
-                          active ? 'w-full' : 'w-0'
-                        }`}
+                        className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${active ? 'w-full' : 'w-0'
+                          }`}
                       />
                     </span>
                   </button>
@@ -449,9 +522,8 @@ const ServicesHero: React.FC = () => {
                       {service.name}
                     </span>
                     <span
-                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${
-                        active ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
+                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 ${active ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
                       style={{ right: 0 }}
                     />
                   </button>
@@ -461,13 +533,12 @@ const ServicesHero: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-gradient-to-r from-primary-700 via-primary-300 to-secondary-300 dark:from-gray-200 dark:via-gray-400 dark:to-gray-700">
-      {/* <section className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" /> */}
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
             Accelerate Your Career, Join a Winning Team
           </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
             Southern Underground invests in our people and our processes to enhance opportunities for growth.
             We're in this together. Come and join us!
           </p>
@@ -480,7 +551,7 @@ const ServicesHero: React.FC = () => {
           </Link>
         </div>
       </section>
-     
+
       {/* Why Southern Underground Section */}
       <section className="relative py-15 overflow-hidden">
         {/* Background image */}
@@ -499,7 +570,7 @@ const ServicesHero: React.FC = () => {
       </section>
 
       {/* Career Section */}
-      
+
     </div>
   );
 };
@@ -510,10 +581,10 @@ const Hero: React.FC = () => {
     <div>
       {/* New Hero Section */}
       <NewHero />
-      
+
       {/* Contact Section */}
       <ContactSection />
-      
+
       {/* Services Hero Section */}
       <ServicesHero />
     </div>

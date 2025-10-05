@@ -133,11 +133,11 @@ const Contact: React.FC = () => {
           style={{ backgroundImage: 'url(/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg)' }}
         >
           {/* <div className="absolute inset-0 bg-black/60" /> */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-700/90 via-primary-300/80 to-secondary-300/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Get In <span className="text-secondary-400 dark:text-secondary-300">Touch</span>
+            Get In <span className="text-secondary-200 dark:text-secondary-200">Touch</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Ready to start your construction project? Contact us for a free consultation and detailed
@@ -147,16 +147,8 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Contact Information */}
-      <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
+      <section className="py-12 bg-white dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Contact Information
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Multiple ways to reach us for your convenience
-            </p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mx-auto">
             {contactInfo.map((info, idx) => {
               const Icon = info.icon;

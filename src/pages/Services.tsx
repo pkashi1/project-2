@@ -937,7 +937,7 @@ useEffect(() => {
         >
           
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-300/90 via-primary-800/80 to-secondary-900/90" /> */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-400/90 via-primary-300/80 to-secondary-200/90 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
 
         <div className="absolute inset-0 overflow-hidden">
@@ -947,7 +947,7 @@ useEffect(() => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
-            Expert Construction <span className="text-secondary-300">Solutions</span>
+            Expert Construction <span className="text-secondary-200">Solutions</span>
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
             From precision trenchless technology to comprehensive civil works—delivered safely, on time, and on budget.
