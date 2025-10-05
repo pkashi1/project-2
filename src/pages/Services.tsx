@@ -17,8 +17,8 @@ const services = [
     name: 'Directional Drilling',
     icon: 'Drill',
     category: 'Trenchless',
-    
-    
+
+
     shortDescription: 'Precision underground installations without surface disruption',
     detailedDescription:
       'Trenchless HDD installs conduits and pipelines beneath roads, railways, waterways, and sensitive areas—minimizing disruption while meeting strict alignment and depth tolerances.',
@@ -97,8 +97,8 @@ const services = [
     name: 'Utility Installation',
     icon: 'Layers',
     category: 'Utilities',
-    
-    
+
+
     shortDescription: 'Complete water, gas, and wastewater system installations',
     detailedDescription:
       'End-to-end installation for water, gas, and wastewater systems including appurtenances, testing/commissioning, and restoration.',
@@ -181,8 +181,8 @@ const services = [
     name: 'Underground Electrical Conduit',
     icon: 'Zap',
     category: 'Electrical',
-    
-    
+
+
     shortDescription: 'Primary/secondary conduit systems and electrical infrastructure',
     detailedDescription:
       'Primary/secondary conduit systems, duct banks, handholes/pull boxes, vaults and transformer pads with trenchless crossings where required.',
@@ -252,8 +252,8 @@ const services = [
     name: 'Deep Foundation',
     icon: 'Hammer',
     category: 'Foundation',
-    
-    
+
+
     shortDescription: 'Drilled shafts, piles and specialty supports for heavy structures',
     detailedDescription:
       'Drilled shafts, piles and specialty supports for bridges, buildings and heavy structures—delivered with certified testing and QA/QC.',
@@ -332,8 +332,8 @@ const services = [
     name: 'Civil Construction',
     icon: 'Building',
     category: 'Civil',
-    
-    
+
+
     shortDescription: 'Full-scope sitework, roads, and structural concrete',
     detailedDescription:
       'Full-scope sitework, roads, structural concrete, drainage, and public infrastructure with strict schedule and safety control.',
@@ -408,8 +408,8 @@ const services = [
     name: 'Drainage',
     icon: 'Droplets',
     category: 'Utilities',
-    
-    
+
+
     shortDescription: 'Storm drain systems and water management solutions',
     detailedDescription:
       'Storm drain mains/laterals, culverts, inlets/structures, open channels and hydrologic controls—installed, inspected and restored.',
@@ -486,8 +486,8 @@ const services = [
     name: 'Pipe Fabrication',
     icon: 'Wrench',
     category: 'Fabrication',
-    
-    
+
+
     shortDescription: 'Custom cutting, welding, fitting, and coating services',
     detailedDescription:
       'Custom cutting, welding, fitting, coating and assembly with documentation, NDT and field support.',
@@ -559,8 +559,8 @@ const services = [
     name: 'Underground Tunneling',
     icon: 'MoveRight',
     category: 'Trenchless',
-    
-    
+
+
     shortDescription: 'Steel casing jacked beneath roads and obstructions',
     detailedDescription:
       'Steel casing jacked beneath roads/rails/obstructions with precise grade control and carrier pipe pullback.',
@@ -644,7 +644,7 @@ const getServiceDirectory = (serviceId: string): string => {
 // Function to get images for a specific service
 const getServiceImages = async (serviceId: string): Promise<string[]> => {
   const directory = getServiceDirectory(serviceId);
-  
+
   try {
     // For now, we'll define known images for each service
     // In a real-world scenario, you might want to dynamically fetch this list
@@ -718,7 +718,7 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
       ],
       'Logos': [],
     };
-    
+
     const images = imageMap[directory] || [];
     return images.map(img => `/${encodeURIComponent(directory)}/${img}`);
   } catch (error) {
@@ -746,48 +746,48 @@ const Services: React.FC = () => {
   // NEW imports
 
 
-// inside your component:
-const location = useLocation();
-const navigate = useNavigate();
+  // inside your component:
+  const location = useLocation();
+  const navigate = useNavigate();
 
-// keep the URL in sync when the user clicks a tab
-useEffect(() => {
-  // replace, so back button isn't spammy
-  navigate(`/services?service=${activeId}`, { replace: true });
-}, [activeId, navigate]);
+  // keep the URL in sync when the user clicks a tab
+  useEffect(() => {
+    // replace, so back button isn't spammy
+    navigate(`/services?service=${activeId}`, { replace: true });
+  }, [activeId, navigate]);
 
-// allow deep-linking: read ?service=... and ?group=...
-useEffect(() => {
-  const params = new URLSearchParams(location.search);
+  // allow deep-linking: read ?service=... and ?group=...
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
 
-  // support hash (#id) as well, but prefer ?service=
-  const fromHash = location.hash ? location.hash.replace('#', '') : '';
-  const targetService = params.get('service') || fromHash;
+    // support hash (#id) as well, but prefer ?service=
+    const fromHash = location.hash ? location.hash.replace('#', '') : '';
+    const targetService = params.get('service') || fromHash;
 
-  if (targetService) {
-    const match = services.find(s => s.id === targetService);
-    if (match) {
-      setActiveId(match.id);
-      // optional: scroll the tab rail into view
-      document.getElementById(`tab-${match.id}`)?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    if (targetService) {
+      const match = services.find(s => s.id === targetService);
+      if (match) {
+        setActiveId(match.id);
+        // optional: scroll the tab rail into view
+        document.getElementById(`tab-${match.id}`)?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
 
-      // optional: open a particular accordion card (desktop opens the whole row)
-      const groupParam = params.get('group'); // you pass the slug we generate below
-      if (groupParam && match.services?.length) {
-        const idx = match.services.findIndex(g => groupKey(match.id, g.title) === groupParam);
-        if (idx >= 0) {
-          if (window.matchMedia('(min-width: 768px)').matches) {
-            setOpenRow(Math.floor(idx / 2));     // open both cards in that row on md+
-            setOpenCardKey(null);
-          } else {
-            setOpenCardKey(groupKey(match.id, match.services[idx].title)); // open single card on mobile
-            setOpenRow(null);
+        // optional: open a particular accordion card (desktop opens the whole row)
+        const groupParam = params.get('group'); // you pass the slug we generate below
+        if (groupParam && match.services?.length) {
+          const idx = match.services.findIndex(g => groupKey(match.id, g.title) === groupParam);
+          if (idx >= 0) {
+            if (window.matchMedia('(min-width: 768px)').matches) {
+              setOpenRow(Math.floor(idx / 2));     // open both cards in that row on md+
+              setOpenCardKey(null);
+            } else {
+              setOpenCardKey(groupKey(match.id, match.services[idx].title)); // open single card on mobile
+              setOpenRow(null);
+            }
           }
         }
       }
     }
-  }
-}, [location.search, location.hash]); // re-run when URL changes
+  }, [location.search, location.hash]); // re-run when URL changes
 
   // Image carousel state
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -813,9 +813,9 @@ useEffect(() => {
     const itemWidth = 320; // Match the animation itemWidth
     const totalImages = Math.max(serviceImages.length, 5);
     const maxScroll = -(itemWidth * totalImages);
-    
+
     setIsManualNavigation(true);
-    
+
     setScrollPosition(prev => {
       let newPosition;
       if (direction === 'left') {
@@ -831,7 +831,7 @@ useEffect(() => {
       }
       return newPosition;
     });
-    
+
     // Resume automatic scrolling after a delay
     setTimeout(() => {
       setIsManualNavigation(false);
@@ -858,7 +858,7 @@ useEffect(() => {
         setIsLoadingImages(false);
       }
     };
-    
+
     loadImages();
     // Reset scroll position when switching services
     setScrollPosition(0);
@@ -868,7 +868,7 @@ useEffect(() => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (serviceImages.length === 0) return;
-      
+
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         handleManualNavigation('left');
@@ -894,7 +894,7 @@ useEffect(() => {
   // Infinite scroll for images
   useEffect(() => {
     if (isHovered || serviceImages.length === 0 || isManualNavigation) return;
-    
+
     const interval = setInterval(() => {
       setScrollPosition(prev => {
         const itemWidth = 320; // Increased from 256 to account for larger images (20rem + gap)
@@ -935,7 +935,7 @@ useEffect(() => {
           // style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
           style={{ backgroundImage: "url('public/Deep Foundation/IMG_4394.JPG')" }}
         >
-          
+
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-300/90 via-primary-800/80 to-secondary-900/90" /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
@@ -981,18 +981,16 @@ useEffect(() => {
                   >
                     <span className="inline-flex items-center gap-2">
                       <span
-                        className={`w-7 h-7 rounded-md grid place-items-center ${
-                          active ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
-                        }`}
+                        className={`w-7 h-7 rounded-md grid place-items-center ${active ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
+                          }`}
                       >
                         <Icon className={`w-4 h-4 ${active ? 'text-white' : 'text-gray-700 dark:text-gray-200'}`} />
                       </span>
                       {s.name}
                     </span>
                     <span
-                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary-600 transition-all duration-300 ${
-                        active ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
+                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary-600 transition-all duration-300 ${active ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
                     />
                   </button>
                 );
@@ -1091,7 +1089,7 @@ useEffect(() => {
         {/* Infinite Scrolling Thumb Strip */}
         {serviceImages.length > 0 && (
           <div className="mt-8 overflow-hidden">
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
@@ -1104,7 +1102,7 @@ useEffect(() => {
               >
                 <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
               </button>
-              
+
               {/* Right Navigation Button */}
               <button
                 onClick={() => handleManualNavigation('right')}
@@ -1115,7 +1113,7 @@ useEffect(() => {
               </button>
 
               {/* Continuous scrolling container */}
-              <div 
+              <div
                 className="flex gap-4 transition-none"
                 style={{
                   transform: `translateX(${scrollPosition}px)`,
@@ -1159,31 +1157,31 @@ useEffect(() => {
                   </React.Fragment>
                 ))}
               </div>
-              
+
               {/* Gradient overlays for smooth edges */}
               <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
               <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
             </div>
-            
+
             {/* Pause indicator when hovered or manually navigating */}
             {(isHovered || isManualNavigation) && (
               <div className="text-center mt-4">
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {isManualNavigation 
+                  {isManualNavigation
                     ? 'Manual navigation • Auto-scroll resumes in 3 seconds'
                     : 'Hover to pause • Move away to resume'
                   }
                 </span>
               </div>
             )}
-            
+
             {/* Service name indicator */}
             <div className="text-center mt-2">
               <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 {activeService.name} Project Gallery ({serviceImages.length} images)
               </span>
             </div>
-            
+
             {/* Navigation instructions */}
             <div className="text-center mt-1">
               <span className="text-xs text-gray-400 dark:text-gray-500">
@@ -1192,7 +1190,7 @@ useEffect(() => {
             </div>
           </div>
         )}
-        
+
         {/* Loading state for images */}
         {isLoadingImages && (
           <div className="mt-8 text-center">
@@ -1202,7 +1200,7 @@ useEffect(() => {
             </div>
           </div>
         )}
-        
+
         {/* No images available state */}
         {!isLoadingImages && serviceImages.length === 0 && (
           <div className="mt-8 text-center">
