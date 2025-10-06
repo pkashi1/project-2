@@ -137,7 +137,7 @@ const Contact: React.FC = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Get In <span className="text-secondary-200 dark:text-secondary-200">Touch</span>
+            Get In Touch
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Ready to start your construction project? Contact us for a free consultation and detailed

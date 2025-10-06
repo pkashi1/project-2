@@ -947,7 +947,7 @@ const Services: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
-            Expert Construction <span className="text-secondary-200">Solutions</span>
+            Expert Construction Solutions
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
             From precision trenchless technology to comprehensive civil works—delivered safely, on time, and on budget.

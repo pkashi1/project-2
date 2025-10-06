@@ -329,7 +329,7 @@ const FeaturedProjects: React.FC = () => {
                     className="group inline-flex items-center text-gray-200 hover:text-white font-semibold"
                   >
                     <span className="underline decoration-white/20 underline-offset-4 group-hover:decoration-white transition">
-                      About The Project
+                      About the Project
                     </span>
                     <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Link>

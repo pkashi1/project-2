@@ -141,7 +141,7 @@ const Header: React.FC = () => {
             )}
 
             {/* Dark Mode Toggle and Language Toggle */}
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <DarkModeToggle />
               {isCareers && (
                 <button
@@ -152,12 +152,12 @@ const Header: React.FC = () => {
                 </button>
               )}
               <div id="google_translate_element" className="translate-widget" />
-            </div>
+            </div> */}
           </nav>
 
           {/* Mobile Hamburger & Toggles */}
           <div className="flex items-center space-x-2 lg:hidden">
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
             {isCareers && (
               <button
                 onClick={toggleLang}

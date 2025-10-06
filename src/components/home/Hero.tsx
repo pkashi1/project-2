@@ -142,7 +142,7 @@ const WhySouthernUnderground: React.FC = () => {
   return (
     <div className="relative min-h-[50vh] overflow-hidden">
       {/* Heading */}
-      <h2 className="text-center text-3xl md:text-4xl font-bold text-white">
+      <h2 className="text-center text-3xl md:text-4xl font-bold text-white mt-6 md:mt-12">
         Why Southern Underground?
       </h2>
 
@@ -221,12 +221,17 @@ const WhySouthernUnderground: React.FC = () => {
 // New Hero Section Component
 const NewHero: React.FC = () => {
   return (
-    <section className="relative min-h-[80vh] overflow-hidden pt-12 pb-10">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-        style={{ backgroundImage: `url('/Deep Foundation/IMG_0415.jpg')` }}
-      />
+    <section className="relative min-h-[80vh] overflow-hidden pt-12 pb-9">
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/images/road-construction.mp4" type="video/mp4" />
+      </video>
 
       {/* Gradient Overlay: stronger at bottom for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
@@ -239,25 +244,9 @@ const NewHero: React.FC = () => {
           {/* Content */}
           <div className="text-white space-y-8 animate-slide-in-left">
             <div className="space-y-4">
-              {/* <h1 className="text-4xl font-bold text-gray-900">
-                Building the{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-900 to-secondary-400">
-                  Foundations
-                </span>{' '}
-                of Tomorrow
-              </h1> */}
-
               <div className="flex justify-center items-center">
-                {/* <img 
-                  src="public/Logos/BADGE LOGO PNG .png" 
-                  alt="Southern Underground Badge Logo" 
-                  className="h-16 md:h-24 w-auto object-contain -mt-6 md:-mt-20"
-                /> */}
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-2xl">
-                  Southern Underground of Louisiana{' '}
-                  {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
-                    Foundations
-                  </span>{' '} */}
+                <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
+                  SOUTHERN UNDERGROUND OF LOUISIANA{' '}
                 </h1>
               </div>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-lg">
@@ -270,17 +259,15 @@ const NewHero: React.FC = () => {
                 to="/about"
                 className="inline-flex items-center justify-center bg-secondary-500 text-white px-4 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
               >
-                Know more about us
+                Know More About Us
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-
             </div>
           </div>
 
-
           {/* Feature Cards */}
           <div className="space-y-2 animate-slide-in-right">
-            <div className="bg-black/30 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-black/40 transition-all duration-300">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-black/15 transition-all duration-300">
               <h3 className="text-xl font-semibold text-white mb-3 drop-shadow-lg">Licensed & Insured</h3>
               <p className="text-gray-200 drop-shadow-md">
                 Safety and compliance are our top priorities. We are fully licensed and insured, ensuring that all our projects meet rigorous standards and regulations. Trust in a company committed to professionalism, accountability, and quality workmanship.
@@ -296,15 +283,6 @@ const NewHero: React.FC = () => {
           </div>
         </div>
       </div>
-
-
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div> */}
-
     </section>
 
 
@@ -314,21 +292,21 @@ const NewHero: React.FC = () => {
 // Contact Section Component
 const ContactSection: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-100 dark:bg-gray-800">
+    <section className="py-8 bg-gray-100 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               Contact us for your project
             </p>
           </div>
-          <div className="mt-6 md:mt-0">
+          <div className="mt-4 md:mt-0">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center justify-center bg-secondary-500 hover:bg-secondary-600 text-white px-6 py-2 rounded-lg font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               Contact Us
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -369,7 +347,7 @@ const ServicesHero: React.FC = () => {
       description:
         'Minimize disruption, maximize precision—HDD, jack & bore, and tunneling.',
       backgroundImage: '/Directional%20Drilling/down-net_http20250912-127-gh773e.jpg',
-      ctaText: 'MORE ABOUT DRILLING SERVICES',
+      ctaText: 'More About Drilling Services',
       ctaLink: '/services#directional-drilling', // ← updated
     },
     {
@@ -380,7 +358,7 @@ const ServicesHero: React.FC = () => {
       description:
         'Drilled shafts, piles, and specialty supports for long-term stability.',
       backgroundImage: '/Deep%20Foundation/IMG_0415.jpg',
-      ctaText: 'MORE ABOUT DEEP FOUNDATIONS',
+      ctaText: 'More About Deep Foundations',
       ctaLink: '/services#deep-foundation', // ← updated
     },
     {
@@ -391,7 +369,7 @@ const ServicesHero: React.FC = () => {
       description:
         'From site prep to final grade—roads, concrete, drainage, and public works.',
       backgroundImage: '/Civil%20Construction/down-net_http20250911-109-uhtwxe.jpg',
-      ctaText: 'MORE ABOUT CIVIL CONSTRUCTION',
+      ctaText: 'More About Civil Construction',
       ctaLink: '/services#civil-construction', // ← updated
     },
     {
@@ -402,7 +380,7 @@ const ServicesHero: React.FC = () => {
       description:
         'Water, sewer, gas, and electrical conduit systems installed and commissioned.',
       backgroundImage: '/Utilites/Water%20System%20Installation/down-net_http20250911-125-y4rprp.jpg',
-      ctaText: 'MORE ABOUT UTILITY SERVICES',
+      ctaText: 'More About Utility Services',
       ctaLink: '/services#utility-installation', // ← updated
     },
     {
@@ -413,7 +391,7 @@ const ServicesHero: React.FC = () => {
       description:
         'Comprehensive drainage solutions for municipal and commercial projects.',
       backgroundImage: '/Drainage/down-net_http20250911-137-o2qt0c.jpg',
-      ctaText: 'MORE ABOUT DRAINAGE',
+      ctaText: 'More About Drainage',
       ctaLink: '/services#drainage', // ← updated
     },
   ];
@@ -564,7 +542,7 @@ const ServicesHero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/90 to-gray-800/70" />
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-5 lg:px-6">
           <WhySouthernUnderground />
         </div>
       </section>
