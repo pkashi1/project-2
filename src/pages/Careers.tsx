@@ -524,7 +524,7 @@ const Careers: React.FC = () => {
     <div className="pt-16 bg-white dark:bg-gray-900 min-h-screen">
       {/* Hero */}
       <section className="relative py-20 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/Gemini_Generated_Image_bjxysubjxysubjxy.png)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/Jack&Bore-Tunneling/down-net_http20250912-130-mbgxq6.jpg)' }}>
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
@@ -563,7 +563,7 @@ const Careers: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src="/images/pedro-miranda-3QzMBrvCeyQ-unsplash.jpg" 
+              src="/Deep Foundation/IMG_4365.JPG" 
               alt="Construction team at work" 
               className="rounded-2xl shadow-xl w-full h-64 object-cover" 
             />
