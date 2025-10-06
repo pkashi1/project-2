@@ -933,7 +933,7 @@ const Services: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           // style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
-          style={{ backgroundImage: "url('public/Deep Foundation/IMG_4394.JPG')" }}
+          style={{ backgroundImage: "url('/Deep Foundation/IMG_4394.JPG')" }}
         >
 
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-300/90 via-primary-800/80 to-secondary-900/90" /> */}
