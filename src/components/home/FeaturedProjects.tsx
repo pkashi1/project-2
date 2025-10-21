@@ -217,7 +217,7 @@ const FeaturedProjects: React.FC = () => {
       description:
         'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).',
       category: 'Wastewater/Sewer',
-      image: '/Utilites/Wastewater%20Collection%20and%20Sewer/down-net_http20250910-102-huufa1.jpg',
+      image: '/project_background/Oberlin.jpg',
       completionDate: '2024-12-14',
       clientName: 'Town of Oberlin',
       location: 'Oberlin, LA',

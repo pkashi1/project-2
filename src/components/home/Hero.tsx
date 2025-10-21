@@ -346,7 +346,7 @@ const ServicesHero: React.FC = () => {
       icon: Drill,
       description:
         'Minimize disruption, maximize precision—HDD, jack & bore, and tunneling.',
-      backgroundImage: '/Directional%20Drilling/down-net_http20250912-127-gh773e.jpg',
+      backgroundImage: '/Directional%20Drilling/down-net_http20250912-84-a01vr6.jpg',
       ctaText: 'More About Drilling Services',
       ctaLink: '/services#directional-drilling', // ← updated
     },
