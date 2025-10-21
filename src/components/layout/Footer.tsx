@@ -50,10 +50,9 @@ const handleSubscribe = async (e: React.FormEvent) => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
               <img
-                src="/images/logo.jpg"
+                src="/Logos/BADGE LOGO PNG .png"
                 alt="Southern Underground Construction Company Logo"
-                className="w-70 h-16 rounded-lg object-contain bg-white"
-                style={{ maxWidth: 200 }}
+                className="w-52 h-52 rounded-full object-contain bg-white p-1"
               />
             </Link>
             {/* <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed">
@@ -90,8 +89,8 @@ const handleSubscribe = async (e: React.FormEvent) => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
-                <a href="tel:+12255550123" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors text-sm">
-                  (225) 555-0123
+                <a href="tel:+12255921336" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors text-sm">
+                  225-592-1336
                 </a>
               </div>
               <div className="flex items-center space-x-3">

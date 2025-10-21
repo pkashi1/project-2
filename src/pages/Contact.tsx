@@ -136,10 +136,10 @@ const Contact: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
             Get In Touch
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
             Ready to start your construction project? Contact us for a free consultation and detailed
             quote tailored to your specific needs.
           </p>

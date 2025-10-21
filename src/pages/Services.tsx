@@ -946,7 +946,7 @@ const Services: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
             Expert Construction Solutions
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
@@ -1129,7 +1129,7 @@ const Services: React.FC = () => {
                           src={imageSrc}
                           alt={`${activeService.name} project ${i + 1}`}
                           loading="lazy"
-                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-top rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
                           onError={(e) => {
                             // Fallback to a default image if service image fails to load
                             const target = e.target as HTMLImageElement;
@@ -1150,7 +1150,7 @@ const Services: React.FC = () => {
                           ][i % 4]}
                           alt={`${activeService.name} construction work`}
                           loading="lazy"
-                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-top rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
                         />
                       </div>
                     ))}

@@ -484,6 +484,17 @@ const ServicesHero: React.FC = () => {
                   </button>
                 );
               })}
+              {/* More Services tab */}
+              <button
+                key="more-services"
+                onClick={() => window.location.href = '/services'}
+                className="shrink-0 basis-1/2 snap-start pr-6 text-left"
+              >
+                <span className="relative text-lg font-semibold whitespace-nowrap text-gray-200">
+                  MORE SERVICES
+                  <span className="absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 w-0" />
+                </span>
+              </button>
             </div>
 
             {/* Desktop rail */}
@@ -507,6 +518,20 @@ const ServicesHero: React.FC = () => {
                   </button>
                 );
               })}
+              {/* More Services tab */}
+              <button
+                key="more-services"
+                onClick={() => window.location.href = '/services'}
+                className="relative text-lg font-semibold whitespace-nowrap group"
+              >
+                <span className="text-gray-200">
+                  MORE SERVICES
+                </span>
+                <span
+                  className="absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 w-0 group-hover:w-full"
+                  style={{ right: 0 }}
+                />
+              </button>
             </div>
           </div>
         </div>

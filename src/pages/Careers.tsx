@@ -537,7 +537,7 @@ const Careers: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent leading-tight pb-2">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] leading-tight pb-2">
               {t('joinTeam')}
             </h1>
             <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">

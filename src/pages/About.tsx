@@ -83,7 +83,7 @@ const About: React.FC = () => {
     {/* Content */}
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div className="animate-fade-in-up">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-secondary-200 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
           Building the Invisible, all over the country
         </h1>
         <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
@@ -168,7 +168,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+      {/* <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Our Expertise
@@ -180,7 +180,6 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Underground Utilities Card */}
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
                   Underground Utilities
@@ -209,7 +208,7 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              {/* Site Development Card */}
+
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
                   Site Development
@@ -237,7 +236,7 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              {/* Specialized Services Card */}
+
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary-600 dark:hover:border-primary-400 hover:shadow-lg transition-all duration-300  group">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 transition-colors duration-300">
                   Specialized Services
@@ -266,10 +265,10 @@ const About: React.FC = () => {
               </div>
             </div>
           </div>
-      </section>
+      </section> */}
     
         {/* Team Section */}
-        <section className="py-20 bg-white dark:bg-gray-900 transition-colors">
+        <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
@@ -306,7 +305,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Certifications */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
+        <section className="py-20 bg-white dark:bg-gray-800 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
