@@ -52,7 +52,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
               <img
                 src="/Logos/BADGE LOGO PNG .png"
                 alt="Southern Underground Construction Company Logo"
-                className="w-52 h-52 rounded-full object-contain bg-white p-1"
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-contain bg-white"
               />
             </Link>
             {/* <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed">

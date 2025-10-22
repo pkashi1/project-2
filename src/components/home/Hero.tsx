@@ -246,7 +246,7 @@ const NewHero: React.FC = () => {
             <div className="space-y-4">
               <div className="flex justify-center items-center">
                 <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
-                  SOUTHERN UNDERGROUND OF LOUISIANA{' '}
+                  Strong Foundations Start Here
                 </h1>
               </div>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-lg">
@@ -461,7 +461,7 @@ const ServicesHero: React.FC = () => {
             {/* Mobile rail */}
             <div
               ref={tabsWrapRef}
-              className="md:hidden flex gap-0 overflow-x-auto snap-x snap-mandatory no-scrollbar py-3 -mx-4 px-4"
+              className="md:hidden flex gap-0 overflow-x-auto snap-x snap-mandatory no-scrollbar py-3"
             >
               {services.map((service, index) => {
                 const active = index === currentSlide;
@@ -556,7 +556,7 @@ const ServicesHero: React.FC = () => {
       </section>
 
       {/* Why Southern Underground Section */}
-      <section className="relative py-15 overflow-hidden">
+      <section className="relative py-16 overflow-hidden">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 filter grayscale"

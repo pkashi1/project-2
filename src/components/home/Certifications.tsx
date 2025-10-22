@@ -164,7 +164,7 @@ export const Certifications: React.FC = () => {
           {/* Sliding Container */}
           <div 
             className="relative overflow-hidden mx-auto"
-            style={{ width: `${containerWidth}px`, height: '200px' }}
+            style={{ width: '100%', height: '200px', maxWidth: `${containerWidth}px` }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

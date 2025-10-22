@@ -26,3 +26,13 @@
 .goog-te-gadget {
   font-size: 0 !important;
 }
+
+/* Hide scrollbars for elements with no-scrollbar class */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

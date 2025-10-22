@@ -72,7 +72,8 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center py-2">
           <Link to="/" className="flex items-end space-x-3">
             <img
-              src="/images/logo.jpg"
+              // src="/images/logo.jpg"
+              src='/Logos/SUlogo.PNG'
               alt="Southern Underground Construction Company Logo"
               className="w-80 h-20 rounded-lg object-contain bg-white"
               style={{ maxWidth: 280 }}
