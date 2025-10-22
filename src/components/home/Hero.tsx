@@ -485,16 +485,16 @@ const ServicesHero: React.FC = () => {
                 );
               })}
               {/* More Services tab */}
-              <button
+              <Link
                 key="more-services"
-                onClick={() => window.location.href = '/services#directional-drilling'}
-                className="shrink-0 basis-1/2 snap-start pr-6 text-left"
+                to="/services"
+                className="shrink-0 basis-1/2 snap-start pr-6 text-left group"
               >
                 <span className="relative text-lg font-semibold whitespace-nowrap text-gray-200">
                   MORE SERVICES
-                  <span className="absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 w-0" />
+                  <span className="absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 w-0 group-hover:w-full" />
                 </span>
-              </button>
+              </Link>
             </div>
 
             {/* Desktop rail */}
@@ -519,9 +519,9 @@ const ServicesHero: React.FC = () => {
                 );
               })}
               {/* More Services tab */}
-              <button
+              <Link
                 key="more-services"
-                onClick={() => window.location.href = '/services'}
+                to="/services"
                 className="relative text-lg font-semibold whitespace-nowrap group"
               >
                 <span className="text-gray-200">
@@ -531,7 +531,7 @@ const ServicesHero: React.FC = () => {
                   className="absolute left-0 -bottom-1 h-0.5 bg-primary-400 transition-all duration-300 w-0 group-hover:w-full"
                   style={{ right: 0 }}
                 />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
