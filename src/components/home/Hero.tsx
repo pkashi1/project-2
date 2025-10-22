@@ -487,7 +487,7 @@ const ServicesHero: React.FC = () => {
               {/* More Services tab */}
               <button
                 key="more-services"
-                onClick={() => window.location.href = '/services'}
+                onClick={() => window.location.href = '/services#directional-drilling'}
                 className="shrink-0 basis-1/2 snap-start pr-6 text-left"
               >
                 <span className="relative text-lg font-semibold whitespace-nowrap text-gray-200">
