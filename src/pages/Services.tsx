@@ -1125,7 +1125,7 @@ const Services: React.FC = () => {
                   <React.Fragment key={setIndex}>
                     {serviceImages.slice(0, 5).map((imageSrc, i) => (
                       <div key={`${setIndex}-${i}`} className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
-                        <img
+                        {/*<img
                           src={imageSrc}
                           alt={`${activeService.name} project ${i + 1}`}
                           loading="lazy"
@@ -1135,7 +1135,20 @@ const Services: React.FC = () => {
                             const target = e.target as HTMLImageElement;
                             target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
                           }}
-                        />
+                        />*/}
+                        <div className="aspect-[4/3] w-full rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
+                      <img
+                        src={imageSrc}
+                        alt={`${activeService.name} project ${i + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                        }}
+                      />
+                    </div>
+
                       </div>
                     ))}
                     {/* If less than 5 images, fill with fallback images */}
