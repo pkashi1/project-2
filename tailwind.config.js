@@ -3,9 +3,21 @@ export default {
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens: {
+      'xs': '320px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        'touch-target': '44px',
+        'touch-target-lg': '48px',
       },
       colors: {
         primary: {
@@ -72,7 +84,70 @@ export default {
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '3/2': '3 / 2',
+        '5/4': '5 / 4',
+      },
+      maxWidth: {
+        'container': '1200px',
+        'container-sm': '640px',
+        'container-md': '768px',
+        'container-lg': '1024px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities, theme }) {
+      const newUtilities = {
+        '.touch-target': {
+          minWidth: theme('spacing.touch-target'),
+          minHeight: theme('spacing.touch-target'),
+        },
+        '.touch-target-lg': {
+          minWidth: theme('spacing.touch-target-lg'),
+          minHeight: theme('spacing.touch-target-lg'),
+        },
+        '.responsive-container': {
+          width: '100%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: theme('spacing.4'),
+          paddingRight: theme('spacing.4'),
+          '@screen sm': {
+            paddingLeft: theme('spacing.6'),
+            paddingRight: theme('spacing.6'),
+          },
+          '@screen lg': {
+            paddingLeft: theme('spacing.8'),
+            paddingRight: theme('spacing.8'),
+          },
+        },
+        '.responsive-grid': {
+          display: 'grid',
+          gap: theme('spacing.4'),
+          gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+          '@screen sm': {
+            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+            gap: theme('spacing.6'),
+          },
+          '@screen lg': {
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: theme('spacing.8'),
+          },
+        },
+        '.responsive-text': {
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.relaxed'),
+          '@screen sm': {
+            fontSize: theme('fontSize.base'),
+          },
+          '@screen lg': {
+            fontSize: theme('fontSize.lg'),
+          },
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 };

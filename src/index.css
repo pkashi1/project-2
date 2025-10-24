@@ -36,3 +36,115 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Mobile-first responsive image classes */
+/* Mobile: Prefer showing full image with object-fit: contain */
+.mobile-image-optimized {
+  object-fit: contain;
+  object-position: center;
+  max-height: 60vh; /* Prevent images from being too tall on mobile */
+  width: 100%;
+  height: 100%;
+}
+
+/* Tablet: Balanced approach with object-fit: cover */
+@media (min-width: 768px) {
+  .mobile-image-optimized {
+    object-fit: cover;
+    object-position: center;
+    max-height: none; /* Remove height restriction on larger screens */
+  }
+}
+
+/* Desktop: Full cover behavior */
+@media (min-width: 1024px) {
+  .mobile-image-optimized {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Utility classes for different object-position strategies */
+.image-position-top {
+  object-position: top;
+}
+
+.image-position-bottom {
+  object-position: bottom;
+}
+
+.image-position-left {
+  object-position: left;
+}
+
+.image-position-right {
+  object-position: right;
+}
+
+.image-position-top-left {
+  object-position: top left;
+}
+
+.image-position-top-right {
+  object-position: top right;
+}
+
+.image-position-bottom-left {
+  object-position: bottom left;
+}
+
+.image-position-bottom-right {
+  object-position: bottom right;
+}
+
+/* Mobile-specific object-fit utilities */
+.mobile-contain {
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .mobile-contain {
+    object-fit: cover;
+  }
+}
+
+.mobile-scale-down {
+  object-fit: scale-down;
+}
+
+@media (min-width: 768px) {
+  .mobile-scale-down {
+    object-fit: cover;
+  }
+}
+
+/* Responsive aspect ratio utilities for mobile optimization */
+.mobile-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 768px) {
+  .mobile-aspect-square {
+    aspect-ratio: auto;
+  }
+}
+
+.mobile-aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+@media (min-width: 768px) {
+  .mobile-aspect-video {
+    aspect-ratio: auto;
+  }
+}
+
+.mobile-aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 768px) {
+  .mobile-aspect-photo {
+    aspect-ratio: auto;
+  }
+}
