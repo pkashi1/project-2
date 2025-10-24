@@ -1129,7 +1129,7 @@ const Services: React.FC = () => {
                           src={imageSrc}
                           alt={`${activeService.name} project ${i + 1}`}
                           loading="lazy"
-                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-top rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
                           onError={(e) => {
                             // Fallback to a default image if service image fails to load
                             const target = e.target as HTMLImageElement;
@@ -1150,7 +1150,7 @@ const Services: React.FC = () => {
                           ][i % 4]}
                           alt={`${activeService.name} construction work`}
                           loading="lazy"
-                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-top rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
+                          className="w-full h-40 md:h-48 lg:h-56 xl:h-64 object-cover object-center rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
                         />
                       </div>
                     ))}
