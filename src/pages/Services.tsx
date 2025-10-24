@@ -946,7 +946,7 @@ const Services: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white ">
             Expert Construction Solutions
           </h1>
           <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed">

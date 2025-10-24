@@ -90,7 +90,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                 <a href="tel:+12255921336" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors text-sm">
-                  225-592-1336
+                 +1 (225) 592-1336
                 </a>
               </div>
               <div className="flex items-center space-x-3">

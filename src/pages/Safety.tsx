@@ -139,7 +139,7 @@ const Safety: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white ">
               Safety First, Always
             </h1>
             <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto leading-relaxed mb-8">
