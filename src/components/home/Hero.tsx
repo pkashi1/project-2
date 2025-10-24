@@ -248,7 +248,7 @@ const NewHero: React.FC = () => {
                 <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
                   Strong Foundations Start Here
                 </h1>
-                <img src='public/project_background/drilling.png' alt='Drilling' className='w-40 h-40'/>
+                <img src='/project_background/drilling.png' alt='Drilling' className='w-40 h-40'/>
               </div>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-lg">
                 A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface.
