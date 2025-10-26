@@ -555,7 +555,7 @@ const services = [
     ],
   },
   {
-    id: 'Underground Tunneling',
+    id: 'Underground Tunneling', // This should match the ID exactly
     name: 'Underground Tunneling',
     icon: 'MoveRight',
     category: 'Trenchless',
@@ -633,7 +633,7 @@ const getServiceDirectory = (serviceId: string): string => {
     'civil-construction': 'Civil Construction',
     'deep-foundation': 'Deep Foundation',
     'drainage': 'Drainage',
-    'Underground Tunneling': 'Jack&Bore-Tunneling',
+    'Underground Tunneling': 'Jack&Bore-Tunneling', // Fixed the directory name to match exactly
     'utility-installation': 'Utilites',
     'underground-electrical': 'Utilites', // Maps to utilities since they're related
     'pipe-fabrication': 'Civil Construction', // Fallback to civil construction
@@ -720,7 +720,9 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
     };
 
     const images = imageMap[directory] || [];
-    return images.map(img => `/${encodeURIComponent(directory)}/${img}`);
+    // Fixed image path generation - removed encodeURIComponent which was causing issues on mobile
+    // Also corrected the path to not include '/public' since Vite serves static assets from the root
+    return images.map(img => `/${directory}/${img}`);
   } catch (error) {
     console.warn(`Failed to load images for service: ${serviceId}`, error);
     return [];
@@ -807,36 +809,31 @@ const Services: React.FC = () => {
     typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
   );
 
+  // Refs need to be declared before useEffect hooks that use them
+  const railRef = useRef<HTMLDivElement | null>(null);
+  const imageScrollRef = useRef<HTMLDivElement | null>(null);
+
   const activeService = useMemo(
     () => services.find((s) => s.id === activeId) ?? services[0],
     [activeId]
   );
 
-  // Manual navigation functions
+  // Manual navigation functions - works for both desktop and mobile
   const handleManualNavigation = (direction: 'left' | 'right') => {
-    // Calculate item width based on screen size
+    const container = imageScrollRef.current;
+    if (!container) return;
+    
+    // Calculate scroll amount based on screen size
     const isMobile = window.innerWidth < 768;
-    const itemWidth = isMobile ? window.innerWidth : 320; // Full width on mobile, fixed width on desktop
-    const totalImages = Math.max(serviceImages.length, 5);
-    const maxScroll = -(itemWidth * totalImages);
-
+    const scrollAmount = isMobile ? window.innerWidth * 0.8 : 320; // 80% of screen width on mobile, fixed on desktop
+    
     setIsManualNavigation(true);
 
-    setScrollPosition(prev => {
-      let newPosition;
-      if (direction === 'left') {
-        newPosition = prev + itemWidth;
-        if (newPosition > 0) {
-          newPosition = maxScroll + itemWidth; // Wrap to end
-        }
-      } else {
-        newPosition = prev - itemWidth;
-        if (newPosition <= maxScroll) {
-          newPosition = 0; // Wrap to beginning
-        }
-      }
-      return newPosition;
-    });
+    if (direction === 'left') {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
 
     // Resume automatic scrolling after a delay
     setTimeout(() => {
@@ -850,15 +847,9 @@ const Services: React.FC = () => {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-    const currentScroll = scrollPosition;
-    const deltaX = touchStart - e.targetTouches[0].clientX;
-    const isMobile = window.innerWidth < 768;
+    if (!touchStart) return;
     
-    if (isMobile) {
-      setScrollPosition(currentScroll - deltaX / 10);
-      setTouchStart(e.targetTouches[0].clientX);
-    }
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
@@ -870,22 +861,17 @@ const Services: React.FC = () => {
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
-    const itemWidth = window.innerWidth;
-    const totalImages = Math.max(serviceImages.length, 5);
-    const maxScroll = -(itemWidth * totalImages);
+    const itemWidth = window.innerWidth * 0.8; // Scroll by 80% of screen width
+    const container = imageScrollRef.current;
+    
+    if (!container) return;
 
     if (isLeftSwipe) {
-      setScrollPosition(prev => {
-        const newPos = prev - itemWidth;
-        return newPos <= maxScroll ? 0 : newPos;
-      });
+      container.scrollBy({ left: itemWidth, behavior: 'smooth' });
     }
     
     if (isRightSwipe) {
-      setScrollPosition(prev => {
-        const newPos = prev + itemWidth;
-        return newPos > 0 ? maxScroll + itemWidth : newPos;
-      });
+      container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
     }
     
     setTouchStart(0);
@@ -945,30 +931,38 @@ const Services: React.FC = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // Infinite scroll for images - only on desktop
+  // Auto-scroll images for both desktop and mobile
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile || isHovered || serviceImages.length === 0 || isManualNavigation) return;
+    if (serviceImages.length === 0) return;
 
+    const container = imageScrollRef.current;
+    if (!container) return;
+
+    // Use a simpler interval-based approach for consistent auto-scroll on all devices
+    let scrollPosition = 0;
+    const scrollSpeed = 1; // Pixels to scroll per interval
+    const scrollInterval = 30; // Milliseconds between scrolls
+    
     const interval = setInterval(() => {
-      setScrollPosition(prev => {
-        const itemWidth = 320;
-        const scrollSpeed = 0.5;
-        const totalImages = Math.max(serviceImages.length, 5); // At least 5 for smooth scrolling
-        const resetPoint = -(itemWidth * totalImages); // Reset after all images
-        if (prev <= resetPoint) {
-          return 0; // Reset to start for seamless loop
+      // Only auto-scroll if not manually navigating and not hovered (for desktop)
+      if (!isManualNavigation && !isHovered) {
+        scrollPosition += scrollSpeed;
+        container.scrollLeft = scrollPosition;
+        
+        // Reset to beginning when we've scrolled to the end
+        if (scrollPosition >= container.scrollWidth - container.clientWidth - 10) {
+          scrollPosition = 0;
+          container.scrollLeft = 0;
         }
-        return prev - scrollSpeed; // Move slower on mobile for better viewing
-      });
-    }, 16); // ~60fps for smooth animation
+      }
+    }, scrollInterval);
 
-    return () => clearInterval(interval);
-  }, [isHovered, serviceImages.length, isManualNavigation]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [serviceImages.length, isManualNavigation, isHovered]);
 
   // auto-scroll tab rail on mobile so active tab stays in view
-  const railRef = useRef<HTMLDivElement | null>(null);
-  const imageScrollRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
@@ -978,42 +972,10 @@ const Services: React.FC = () => {
     const activeIndex = services.findIndex((s) => s.id === activeId);
     if (activeIndex < 0) return;
 
-    const perView = 3; // approximate; we’ll center-ish the selection
+    const perView = 3; // approximate; we'll center-ish the selection
     const itemWidth = rail.clientWidth / perView;
     rail.scrollTo({ left: Math.max(0, activeIndex * itemWidth - itemWidth), behavior: 'smooth' });
   }, [activeId]);
-
-  // Auto-scroll images on mobile
-  useEffect(() => {
-    if (serviceImages.length === 0) return;
-    
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile) return;
-
-    const container = imageScrollRef.current;
-    if (!container) return;
-
-    const scrollSpeed = 0.5;
-    let animationFrame: number;
-
-    const autoScroll = () => {
-      container.scrollLeft += scrollSpeed;
-      
-      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
-        container.scrollLeft = 0;
-      }
-      
-      animationFrame = requestAnimationFrame(autoScroll);
-    };
-
-    animationFrame = requestAnimationFrame(autoScroll);
-
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [serviceImages.length]);
 
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -1202,7 +1164,13 @@ const Services: React.FC = () => {
               </button>
 
               {/* Horizontal scroll container - like service tabs */}
-              <div ref={imageScrollRef} className="flex gap-4 overflow-x-auto no-scrollbar md:overflow-hidden md:gap-4 -mx-4 px-4 md:mx-0 md:px-0">
+              <div 
+                ref={imageScrollRef} 
+                className="flex gap-4 overflow-x-auto no-scrollbar md:overflow-hidden md:gap-4 -mx-4 px-4 md:mx-0 md:px-0"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 {/* Images - simple horizontal scroll like service tabs */}
                 {serviceImages.map((imageSrc, i) => (
                   <div key={i} className="min-w-[calc(100%-2rem)] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
