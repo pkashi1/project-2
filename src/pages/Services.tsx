@@ -720,9 +720,17 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
     };
 
     const images = imageMap[directory] || [];
-    // Fixed image path generation - removed encodeURIComponent which was causing issues on mobile
+    // Fixed image path generation - handle spaces in directory and file names properly
     // Also corrected the path to not include '/public' since Vite serves static assets from the root
-    return images.map(img => `/${directory}/${img}`);
+    return images.map(img => {
+      // For paths with subdirectories (like 'Water System Installation/down-net_http20250911-125-y4rprp.jpg')
+      if (img.includes('/')) {
+        const [subDir, fileName] = img.split('/');
+        return `/${directory}/${encodeURIComponent(subDir)}/${encodeURIComponent(fileName)}`;
+      }
+      // For simple paths
+      return `/${directory}/${encodeURIComponent(img)}`;
+    });
   } catch (error) {
     console.warn(`Failed to load images for service: ${serviceId}`, error);
     return [];
@@ -938,10 +946,10 @@ const Services: React.FC = () => {
     const container = imageScrollRef.current;
     if (!container) return;
 
-    // Use a simpler interval-based approach for consistent auto-scroll on all devices
+    // Increased scroll speed to make it more noticeable
     let scrollPosition = 0;
-    const scrollSpeed = 1; // Pixels to scroll per interval
-    const scrollInterval = 30; // Milliseconds between scrolls
+    const scrollSpeed = 2; // Increased from 1 to 2 pixels per interval
+    const scrollInterval = 20; // Decreased from 30 to 20 milliseconds for faster scrolling
     
     const interval = setInterval(() => {
       // Only auto-scroll if not manually navigating and not hovered (for desktop)
@@ -1163,6 +1171,11 @@ const Services: React.FC = () => {
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
+              {/* Auto-scroll indicator - visible on all devices */}
+              <div className="absolute top-2 right-2 z-20 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
+                Auto-scrolling
+              </div>
+
               {/* Horizontal scroll container - like service tabs */}
               <div 
                 ref={imageScrollRef} 
@@ -1183,7 +1196,12 @@ const Services: React.FC = () => {
                         onError={(e) => {
                           // Fallback to a default image if service image fails to load
                           const target = e.target as HTMLImageElement;
+                          // Try a secondary fallback image
                           target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                          // If that also fails, show a placeholder
+                          target.onerror = () => {
+                            target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
+                          };
                         }}
                       />
                     </div>
