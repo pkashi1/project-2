@@ -795,6 +795,10 @@ const Services: React.FC = () => {
   const [serviceImages, setServiceImages] = useState<string[]>([]);
   const [isLoadingImages, setIsLoadingImages] = useState(false);
   const [isManualNavigation, setIsManualNavigation] = useState(false);
+  
+  // Touch scroll state for mobile
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   // Row/card expansion state
   const [openRow, setOpenRow] = useState<number | null>(null);          // md+ : which row is open (both cards)
@@ -810,7 +814,9 @@ const Services: React.FC = () => {
 
   // Manual navigation functions
   const handleManualNavigation = (direction: 'left' | 'right') => {
-    const itemWidth = 320; // Match the animation itemWidth
+    // Calculate item width based on screen size
+    const isMobile = window.innerWidth < 768;
+    const itemWidth = isMobile ? window.innerWidth : 320; // Full width on mobile, fixed width on desktop
     const totalImages = Math.max(serviceImages.length, 5);
     const maxScroll = -(itemWidth * totalImages);
 
@@ -836,6 +842,54 @@ const Services: React.FC = () => {
     setTimeout(() => {
       setIsManualNavigation(false);
     }, 3000); // 3 seconds delay before resuming auto-scroll
+  };
+
+  // Touch handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+    const currentScroll = scrollPosition;
+    const deltaX = touchStart - e.targetTouches[0].clientX;
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+      setScrollPosition(currentScroll - deltaX / 10);
+      setTouchStart(e.targetTouches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    const itemWidth = window.innerWidth;
+    const totalImages = Math.max(serviceImages.length, 5);
+    const maxScroll = -(itemWidth * totalImages);
+
+    if (isLeftSwipe) {
+      setScrollPosition(prev => {
+        const newPos = prev - itemWidth;
+        return newPos <= maxScroll ? 0 : newPos;
+      });
+    }
+    
+    if (isRightSwipe) {
+      setScrollPosition(prev => {
+        const newPos = prev + itemWidth;
+        return newPos > 0 ? maxScroll + itemWidth : newPos;
+      });
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   // when switching tabs, close anything open
@@ -891,19 +945,21 @@ const Services: React.FC = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // Infinite scroll for images
+  // Infinite scroll for images - only on desktop
   useEffect(() => {
-    if (isHovered || serviceImages.length === 0 || isManualNavigation) return;
+    const isMobile = window.innerWidth < 768;
+    if (isMobile || isHovered || serviceImages.length === 0 || isManualNavigation) return;
 
     const interval = setInterval(() => {
       setScrollPosition(prev => {
-        const itemWidth = 320; // Increased from 256 to account for larger images (20rem + gap)
+        const itemWidth = 320;
+        const scrollSpeed = 0.5;
         const totalImages = Math.max(serviceImages.length, 5); // At least 5 for smooth scrolling
         const resetPoint = -(itemWidth * totalImages); // Reset after all images
         if (prev <= resetPoint) {
           return 0; // Reset to start for seamless loop
         }
-        return prev - 0.5; // Move 0.5px per frame for smooth motion
+        return prev - scrollSpeed; // Move slower on mobile for better viewing
       });
     }, 16); // ~60fps for smooth animation
 
@@ -912,6 +968,7 @@ const Services: React.FC = () => {
 
   // auto-scroll tab rail on mobile so active tab stays in view
   const railRef = useRef<HTMLDivElement | null>(null);
+  const imageScrollRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
@@ -925,6 +982,38 @@ const Services: React.FC = () => {
     const itemWidth = rail.clientWidth / perView;
     rail.scrollTo({ left: Math.max(0, activeIndex * itemWidth - itemWidth), behavior: 'smooth' });
   }, [activeId]);
+
+  // Auto-scroll images on mobile
+  useEffect(() => {
+    if (serviceImages.length === 0) return;
+    
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return;
+
+    const container = imageScrollRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 0.5;
+    let animationFrame: number;
+
+    const autoScroll = () => {
+      container.scrollLeft += scrollSpeed;
+      
+      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
+        container.scrollLeft = 0;
+      }
+      
+      animationFrame = requestAnimationFrame(autoScroll);
+    };
+
+    animationFrame = requestAnimationFrame(autoScroll);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [serviceImages.length]);
 
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -1088,79 +1177,55 @@ const Services: React.FC = () => {
 
         {/* Infinite Scrolling Thumb Strip */}
         {serviceImages.length > 0 && (
-          <div className="mt-8 overflow-hidden">
+          <div className="mt-8">
             <div
               className="relative"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              {/* Left Navigation Button */}
+              {/* Left Navigation Button - hidden on mobile */}
               <button
                 onClick={() => handleManualNavigation('left')}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                className="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
                 aria-label="Previous images"
               >
                 <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
               </button>
 
-              {/* Right Navigation Button */}
+              {/* Right Navigation Button - hidden on mobile */}
               <button
                 onClick={() => handleManualNavigation('right')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                className="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
                 aria-label="Next images"
               >
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
-              {/* Continuous scrolling container */}
-              <div
-                className="flex gap-4 transition-none"
-                style={{
-                  transform: `translateX(${scrollPosition}px)`,
-                  width: 'max-content'
-                }}
-              >
-                {/* Create multiple copies for seamless infinite scroll */}
-                {Array.from({ length: 6 }, (_, setIndex) => (
-                  <React.Fragment key={setIndex}>
-                    {serviceImages.slice(0, 5).map((imageSrc, i) => (
-                      <div key={`${setIndex}-${i}`} className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
-                        <img
-                          src={imageSrc}
-                          alt={`${activeService.name} project ${i + 1}`}
-                          loading="lazy"
-                          className="w-full h-64 md:h-48 lg:h-56 xl:h-64 object-cover object-center rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md"
-                          onError={(e) => {
-                            // Fallback to a default image if service image fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
-                          }}
-                        />
-                      </div>
-                    ))}
-                    {/* If less than 5 images, fill with fallback images */}
-                    {serviceImages.length < 5 && Array.from({ length: 5 - serviceImages.length }, (_, i) => (
-                      <div key={`fallback-${setIndex}-${i}`} className="min-w-[16rem] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
-                        <img
-                          src={[
-                            '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg',
-                            '/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg',
-                            '/images/dean-bennett-aBV8pVODWiM-unsplash.jpg',
-                            '/images/di-F1MlxlEpaOk-unsplash.jpg',
-                          ][i % 4]}
-                          alt={`${activeService.name} construction work`}
-                          loading="lazy"
-                          className="w-full h-64 md:h-48 lg:h-56 xl:h-64 object-cover object-center rounded-lg ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md opacity-70"
-                        />
-                      </div>
-                    ))}
-                  </React.Fragment>
+              {/* Horizontal scroll container - like service tabs */}
+              <div ref={imageScrollRef} className="flex gap-4 overflow-x-auto no-scrollbar md:overflow-hidden md:gap-4 -mx-4 px-4 md:mx-0 md:px-0">
+                {/* Images - simple horizontal scroll like service tabs */}
+                {serviceImages.map((imageSrc, i) => (
+                  <div key={i} className="min-w-[calc(100%-2rem)] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
+                    <div className="w-full h-[300px] md:h-48 lg:h-56 xl:h-64 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md">
+                      <img
+                        src={imageSrc}
+                        alt={`${activeService.name} project ${i + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-contain md:object-cover object-center"
+                        onError={(e) => {
+                          // Fallback to a default image if service image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                        }}
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
 
-              {/* Gradient overlays for smooth edges */}
-              <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
-              <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10"></div>
+              {/* Gradient overlays for smooth edges - hidden on mobile */}
+              <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10 hidden md:block"></div>
+              <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10 hidden md:block"></div>
             </div>
 
             {/* Pause indicator when hovered or manually navigating */}
@@ -1184,7 +1249,10 @@ const Services: React.FC = () => {
 
             {/* Navigation instructions */}
             <div className="text-center mt-1">
-              <span className="text-xs text-gray-400 dark:text-gray-500">
+              <span className="text-xs text-gray-400 dark:text-gray-500 block md:hidden">
+                Swipe left or right to navigate
+              </span>
+              <span className="text-xs text-gray-400 dark:text-gray-500 hidden md:block">
                 Use arrow buttons or ←/→ keys to navigate manually
               </span>
             </div>
