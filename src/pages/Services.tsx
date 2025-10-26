@@ -805,6 +805,7 @@ const Services: React.FC = () => {
   const [serviceImages, setServiceImages] = useState<string[]>([]);
   const [isLoadingImages, setIsLoadingImages] = useState(false);
   const [isManualNavigation, setIsManualNavigation] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // Touch scroll state for mobile
   const [touchStart, setTouchStart] = useState(0);
@@ -869,17 +870,16 @@ const Services: React.FC = () => {
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
-    const itemWidth = window.innerWidth * 0.8; // Scroll by 80% of screen width
-    const container = imageScrollRef.current;
     
-    if (!container) return;
-
+    // Handle mobile single image navigation
     if (isLeftSwipe) {
-      container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+      // Move to next image
+      setCurrentImageIndex(prev => (prev + 1) % serviceImages.length);
     }
     
     if (isRightSwipe) {
-      container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+      // Move to previous image
+      setCurrentImageIndex(prev => (prev - 1 + serviceImages.length) % serviceImages.length);
     }
     
     setTouchStart(0);
@@ -910,6 +910,8 @@ const Services: React.FC = () => {
     loadImages();
     // Reset scroll position when switching services
     setScrollPosition(0);
+    // Reset current image index when switching services
+    setCurrentImageIndex(0);
   }, [activeId]);
 
   // Keyboard navigation support
@@ -939,36 +941,52 @@ const Services: React.FC = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // Auto-scroll images for both desktop and mobile
+  // Auto-scroll images - modified for mobile single image display
   useEffect(() => {
     if (serviceImages.length === 0) return;
 
-    const container = imageScrollRef.current;
-    if (!container) return;
-
-    // Increased scroll speed to make it more noticeable
-    let scrollPosition = 0;
-    const scrollSpeed = 2; // Increased from 1 to 2 pixels per interval
-    const scrollInterval = 20; // Decreased from 30 to 20 milliseconds for faster scrolling
-    
-    const interval = setInterval(() => {
-      // Only auto-scroll if not manually navigating and not hovered (for desktop)
-      if (!isManualNavigation && !isHovered) {
-        scrollPosition += scrollSpeed;
-        container.scrollLeft = scrollPosition;
-        
-        // Reset to beginning when we've scrolled to the end
-        if (scrollPosition >= container.scrollWidth - container.clientWidth - 10) {
-          scrollPosition = 0;
-          container.scrollLeft = 0;
+    // For mobile, change image every 6 seconds
+    if (!isMdUp) {
+      const interval = setInterval(() => {
+        // Only auto-change if not manually navigating and not hovered
+        if (!isManualNavigation && !isHovered) {
+          setCurrentImageIndex(prev => (prev + 1) % serviceImages.length);
         }
-      }
-    }, scrollInterval);
+      }, 6000); // 6 seconds (matching the user's updated value)
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [serviceImages.length, isManualNavigation, isHovered]);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    // For desktop, keep the existing scrolling behavior
+    else {
+      const container = imageScrollRef.current;
+      if (!container) return;
+
+      // Increased scroll speed to make it more noticeable
+      let scrollPosition = 0;
+      const scrollSpeed = 2; // Increased from 1 to 2 pixels per interval
+      const scrollInterval = 20; // Decreased from 30 to 20 milliseconds for faster scrolling
+      
+      const interval = setInterval(() => {
+        // Only auto-scroll if not manually navigating and not hovered (for desktop)
+        if (!isManualNavigation && !isHovered) {
+          scrollPosition += scrollSpeed;
+          container.scrollLeft = scrollPosition;
+          
+          // Reset to beginning when we've scrolled to the end
+          if (scrollPosition >= container.scrollWidth - container.clientWidth - 10) {
+            scrollPosition = 0;
+            container.scrollLeft = 0;
+          }
+        }
+      }, scrollInterval);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [serviceImages.length, isManualNavigation, isHovered, isMdUp]);
 
   // auto-scroll tab rail on mobile so active tab stays in view
   useEffect(() => {
@@ -1173,41 +1191,108 @@ const Services: React.FC = () => {
 
               {/* Auto-scroll indicator - visible on all devices */}
               <div className="absolute top-2 right-2 z-20 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
-                Auto-scrolling
+                {!isMdUp ? 'Auto-rotating' : 'Auto-scrolling'}
               </div>
 
-              {/* Horizontal scroll container - like service tabs */}
-              <div 
-                ref={imageScrollRef} 
-                className="flex gap-4 overflow-x-auto no-scrollbar md:overflow-hidden md:gap-4 -mx-4 px-4 md:mx-0 md:px-0"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                {/* Images - simple horizontal scroll like service tabs */}
-                {serviceImages.map((imageSrc, i) => (
-                  <div key={i} className="min-w-[calc(100%-2rem)] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
-                    <div className="w-full h-[300px] md:h-48 lg:h-56 xl:h-64 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md">
-                      <img
-                        src={imageSrc}
-                        alt={`${activeService.name} project ${i + 1}`}
-                        loading="lazy"
-                        className="w-full h-full object-contain md:object-cover object-center"
-                        onError={(e) => {
-                          // Fallback to a default image if service image fails to load
-                          const target = e.target as HTMLImageElement;
-                          // Try a secondary fallback image
-                          target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
-                          // If that also fails, show a placeholder
-                          target.onerror = () => {
-                            target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
-                          };
-                        }}
-                      />
+              {/* Mobile single image display */}
+              {!isMdUp && (
+                <div className="flex flex-col items-center">
+                  {/* Navigation buttons for mobile */}
+                  <div className="relative w-full">
+                    {/* Left Navigation Button */}
+                    <button
+                      onClick={() => {
+                        setCurrentImageIndex(prev => (prev - 1 + serviceImages.length) % serviceImages.length);
+                        setIsManualNavigation(true);
+                        setTimeout(() => setIsManualNavigation(false), 3000);
+                      }}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+                    </button>
+
+                    {/* Image container with fade transition */}
+                    <div className="w-full h-[300px] rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 shadow-sm relative">
+                      {serviceImages.map((imageSrc, index) => (
+                        <img
+                          key={`${imageSrc}-${index}`}
+                          src={imageSrc}
+                          alt={`${activeService.name} project ${index + 1}`}
+                          className={`absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-500 ease-in-out ${
+                            index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                          }`}
+                          onError={(e) => {
+                            // Fallback to a default image if service image fails to load
+                            const target = e.target as HTMLImageElement;
+                            // Try a secondary fallback image
+                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                            // If that also fails, show a placeholder
+                            target.onerror = () => {
+                              target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
+                            };
+                          }}
+                        />
+                      ))}
                     </div>
+
+                    {/* Right Navigation Button */}
+                    <button
+                      onClick={() => {
+                        setCurrentImageIndex(prev => (prev + 1) % serviceImages.length);
+                        setIsManualNavigation(true);
+                        setTimeout(() => setIsManualNavigation(false), 3000);
+                      }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                    </button>
                   </div>
-                ))}
-              </div>
+                  
+                  {/* Image counter for mobile */}
+                  <div className="text-center mt-2">
+                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      {currentImageIndex + 1} / {serviceImages.length}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Desktop horizontal scroll container - like service tabs */}
+              {isMdUp && (
+                <div 
+                  ref={imageScrollRef} 
+                  className="flex gap-4 overflow-x-auto no-scrollbar md:overflow-hidden md:gap-4 -mx-4 px-4 md:mx-0 md:px-0"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  {/* Images - simple horizontal scroll like service tabs */}
+                  {serviceImages.map((imageSrc, i) => (
+                    <div key={i} className="min-w-[80vw] md:min-w-[20rem] lg:min-w-[24rem] group flex-shrink-0">
+                      <div className="w-full h-[300px] md:h-48 lg:h-56 xl:h-64 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 group-hover:ring-2 group-hover:ring-blue-500/20 transition-all duration-300 group-hover:scale-[1.02] shadow-sm hover:shadow-md">
+                        <img
+                          src={imageSrc}
+                          alt={`${activeService.name} project ${i + 1}`}
+                          loading="lazy"
+                          className="w-full h-full object-contain md:object-cover object-center"
+                          onError={(e) => {
+                            // Fallback to a default image if service image fails to load
+                            const target = e.target as HTMLImageElement;
+                            // Try a secondary fallback image
+                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                            // If that also fails, show a placeholder
+                            target.onerror = () => {
+                              target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
+                            };
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Gradient overlays for smooth edges - hidden on mobile */}
               <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10 hidden md:block"></div>
