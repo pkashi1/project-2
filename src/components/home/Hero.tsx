@@ -245,7 +245,7 @@ const NewHero: React.FC = () => {
           <div className="text-white space-y-8 animate-slide-in-left">
             <div className="space-y-4">
               <div className="flex justify-center items-center">
-                <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
+                <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-secondary-500 leading-tight drop-shadow-2xl">
                   Strong Foundations Start Here
                 </h1>
                 <img src='/project_background/drilling.png' alt='Drilling' className='w-40 h-40'/>
