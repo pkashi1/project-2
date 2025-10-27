@@ -206,6 +206,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from '../common/OptimizedImage';
 
 const FeaturedProjects: React.FC = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -272,11 +273,15 @@ const FeaturedProjects: React.FC = () => {
         {/* HERO CARD */}
         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
           {/* Background image */}
-          <div
-            className="h-[520px] md:h-[560px] lg:h-[600px] w-full bg-cover bg-center grayscale-[35%]"
-            style={{ backgroundImage: `url('${p.image}')` }}
-            aria-hidden="true"
-          />
+          <div className="h-[520px] md:h-[560px] lg:h-[600px] w-full relative overflow-hidden">
+            <OptimizedImage
+              src={p.image}
+              alt={p.title}
+              className="w-full h-full object-cover grayscale-[35%]"
+              loading="eager"
+              priority
+            />
+          </div>
 
           {/* Bottom→Top dark gradient overlay */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-gray-900/70 to-transparent" />
