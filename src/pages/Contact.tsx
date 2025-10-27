@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 text-white">
+      <section className="relative min-h-[50vh] flex items-center text-white">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/images/ant-rozetsky-SLIFI67jv5k-unsplash.jpg)' }}

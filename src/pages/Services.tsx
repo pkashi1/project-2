@@ -751,32 +751,36 @@ const groupKey = (serviceId: string, title: string) =>
    Page Component (Tabs layout)
    ============================ */
 const Services: React.FC = () => {
-  // show first service by default
-  const [activeId, setActiveId] = useState<string>(services[0]?.id ?? '');
-  // NEW imports
-
-
-  // inside your component:
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Initialize activeId from URL or default to first service
+  const [activeId, setActiveId] = useState<string>(() => {
+    const params = new URLSearchParams(location.search);
+    const fromHash = location.hash ? location.hash.replace('#', '') : '';
+    const targetService = params.get('service') || fromHash;
+    
+    if (targetService) {
+      const match = services.find(s => s.id === targetService);
+      if (match) return match.id;
+    }
+    return services[0]?.id ?? '';
+  });
+
   // keep the URL in sync when the user clicks a tab
   useEffect(() => {
-    // replace, so back button isn't spammy
     navigate(`/services?service=${activeId}`, { replace: true });
   }, [activeId, navigate]);
 
   // allow deep-linking: read ?service=... and ?group=...
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-
-    // support hash (#id) as well, but prefer ?service=
     const fromHash = location.hash ? location.hash.replace('#', '') : '';
     const targetService = params.get('service') || fromHash;
 
     if (targetService) {
       const match = services.find(s => s.id === targetService);
-      if (match) {
+      if (match && match.id !== activeId) {
         setActiveId(match.id);
         // optional: scroll the tab rail into view
         document.getElementById(`tab-${match.id}`)?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
