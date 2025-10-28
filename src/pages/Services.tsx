@@ -921,6 +921,22 @@ const Services: React.FC = () => {
   // Keyboard navigation support
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Handle browser navigation with Cmd+Left/Right (Mac) or Ctrl+Left/Right (Windows)
+      if ((event.metaKey || event.ctrlKey) && event.key === 'ArrowLeft') {
+        event.preventDefault();
+        // Go back in browser history
+        window.history.back();
+        return;
+      }
+      
+      if ((event.metaKey || event.ctrlKey) && event.key === 'ArrowRight') {
+        event.preventDefault();
+        // Go forward in browser history
+        window.history.forward();
+        return;
+      }
+
+      // Handle image navigation with arrow keys (only when not using modifier keys)
       if (serviceImages.length === 0) return;
 
       if (event.key === 'ArrowLeft') {
