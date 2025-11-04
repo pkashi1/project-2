@@ -61,7 +61,7 @@ console.log('📦 MIME type:', resumeFile?.mimetype);
       if (err) console.error('⚠️ Failed to delete temp file:', err);
     });
 
-    res.json({ msg: 'Application submitted successfully! 🎉', link: sasUrl });
+    res.json({ msg: 'Application submitted successfully!', link: sasUrl });
 
   } catch (err) {
     console.error('❌ Application failed:', err);

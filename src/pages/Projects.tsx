@@ -19,23 +19,6 @@ const Projects: React.FC = () => {
   return (
     <div className="pt-16 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
       {/* Hero Section */}
-      {/* <section className="relative py-20 text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
-        >
-          <div className="absolute inset-0 bg-black/70" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Our <span className="text-secondary-400 dark:text-secondary-300">Project Portfolio</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Explore our successful project completions across Louisiana and beyond, showcasing our expertise in construction and utility services
-          </p>
-        </div>
-      </section> */}
-      {/* Hero Section */}
       <section className="relative py-20 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -175,30 +158,6 @@ const Projects: React.FC = () => {
           )}
         </div>
       </section>
-
-      {/* Stats Section */}
-      {/* <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Project Achievements</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">Our track record speaks for itself</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: '800+', label: 'Projects Completed' },
-              { value: '99.9% ', label: 'Safety Record' },
-              { value: '98%', label: 'Client Retention Rate' },
-              { value: '99.9%', label: 'Safety Record' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2">{stat.value}</div>
-                <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       <section className="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

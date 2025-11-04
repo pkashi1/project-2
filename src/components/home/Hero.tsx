@@ -244,13 +244,10 @@ const NewHero: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-white space-y-8 animate-slide-in-left">
-            <div className="space-y-4">
-              <div className="flex justify-center items-center">
-                <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-secondary-500 leading-tight drop-shadow-2xl">
-                  Strong Foundations Start Here
-                </h1>
-                <img src='/project_background/drilling.png' alt='Drilling' loading="eager" decoding="async" className='w-40 h-40'/>
-              </div>
+            <div className="space-y-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-500 leading-tight drop-shadow-2xl whitespace-nowrap">
+                Strong Foundations Start Here
+              </h1>
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-lg">
                 A trusted leader in underground utility construction and structural foundation solutions. Specializing in municipal infrastructure projects, directional drilling, piling, and deep foundations—delivering safe, efficient, and reliable results below the surface.
               </p>
@@ -259,10 +256,10 @@ const NewHero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-2">
               <Link
                 to="/about"
-                className="inline-flex items-center justify-center bg-secondary-500 text-white px-4 py-4 rounded-lg font-semibold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
+                className="inline-flex items-center justify-center bg-secondary-500 text-white px-6 py-3 sm:px-4 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
               >
                 Know More About Us
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

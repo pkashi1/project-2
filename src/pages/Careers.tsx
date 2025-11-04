@@ -375,6 +375,8 @@ const TRANSLATIONS = {
     serverError: "Server error. Please try again later.",
     noOpenings: "No Current Openings",
     noOpeningsDesc: "We are not actively hiring for specific roles at the moment, but we are always looking for talented individuals to join our team. If you are interested in future opportunities, please submit your application.",
+    currentOpenings: "Current Openings",
+    currentOpeningsDesc: "Explore exciting career opportunities with our growing team",
     interestedIn: "I am interested in...",
     selectPosition: "Select a position",
     other: "Other",
@@ -415,6 +417,8 @@ const TRANSLATIONS = {
     serverError: "Error del servidor. Por favor inténtalo más tarde.",
     noOpenings: "No Hay Vacantes Actuales",
     noOpeningsDesc: "No estamos contratando activamente para roles específicos en este momento, pero siempre estamos buscando personas talentosas para unirse a nuestro equipo. Si estás interesado en futuras oportunidades, por favor envía tu solicitud.",
+    currentOpenings: "Vacantes Actuales",
+    currentOpeningsDesc: "Descubre emocionantes oportunidades de carrera con nuestro equipo en crecimiento",
     interestedIn: "Estoy interesado en...",
     selectPosition: "Seleccione un puesto",
     other: "Otro",
@@ -606,8 +610,8 @@ const Careers: React.FC = () => {
             </div>
           ) : (
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Current Openings</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Explore exciting career opportunities with our growing team</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('currentOpenings')}</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{t('currentOpeningsDesc')}</p>
             </div>
           )}
 
