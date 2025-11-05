@@ -64,19 +64,17 @@ const Header: React.FC = () => {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white dark:bg-gray-900 shadow-lg'
-          : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm'
+          ? 'bg-gray-900 shadow-lg'
+          : 'bg-gray-900/95 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center py-3">
           <Link to="/" className="flex items-end space-x-3">
             <img
-              // src="/images/logo.jpg"
-              src='/Logos/SUlogo.PNG'
+              src='/Logos/LOGO WHITE PNG .png'
               alt="Southern Underground Construction Company Logo"
-              className="w-80 h-20 rounded-lg object-contain bg-white"
-              style={{ maxWidth: 280 }}
+              className="h-32 w-80 object-contain"
             />
           </Link>
 
@@ -94,10 +92,10 @@ const Header: React.FC = () => {
                 >
                   <Link
                     to="/projects"
-                    className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-primary-600 dark:hover:text-primary-400 ${
+                    className={`font-medium flex items-center space-x-1 transition-colors duration-200 hover:text-primary-400 ${
                       location.pathname === '/projects'
-                        ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400'
-                        : 'text-gray-700 dark:text-gray-200'
+                        ? 'text-primary-400 border-b-2 border-primary-400'
+                        : 'text-white'
                     }`}
                   >
                     <span>Projects</span>
@@ -130,10 +128,10 @@ const Header: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`font-medium transition-colors duration-200 hover:text-primary-600 dark:hover:text-primary-400 ${
+                  className={`font-medium transition-colors duration-200 hover:text-primary-400 ${
                     location.pathname === link.path
-                      ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400'
-                      : 'text-gray-700 dark:text-gray-200'
+                      ? 'text-primary-400 border-b-2 border-primary-400'
+                      : 'text-white'
                   }`}
                 >
                   {link.name}
@@ -157,7 +155,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Hamburger & Toggles */}
           <div className="flex items-center space-x-2 lg:hidden">
-            {/* <DarkModeToggle /> */}
+            <DarkModeToggle />
             {isCareers && (
               <>
                 <button
@@ -171,9 +169,9 @@ const Header: React.FC = () => {
             )}
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700 dark:text-gray-200" />
+                <X className="w-6 h-6 text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700 dark:text-gray-200" />
+                <Menu className="w-6 h-6 text-white" />
               )}
             </button>
           </div>
