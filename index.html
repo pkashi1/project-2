@@ -14,9 +14,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" as="video" href="/images/road-construction.mp4" type="video/mp4">
-    <link rel="preload" as="image" href="/project_background/drilling.png">
+    <!-- Preload critical LCP resources -->
+    <link rel="preload" as="video" href="/images/road-construction.mp4" type="video/mp4" fetchpriority="high">
+    
+    <!-- Inline critical CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for FCP */
+      body { margin: 0; font-family: Inter, system-ui, -apple-system, sans-serif; }
+      #root { min-height: 100vh; }
+      .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    </style>
   </head>
   <body>
     <!-- Google Translate Widget --> 

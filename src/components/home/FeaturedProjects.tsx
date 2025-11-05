@@ -13,7 +13,7 @@ const FeaturedProjects: React.FC = () => {
       description:
         'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).',
       category: 'Wastewater/Sewer',
-      image: '/project_background/Oberlin.jpg',
+      image: '/project_background/Oberlin.webp',
       completionDate: '2024-12-14',
       clientName: 'Town of Oberlin',
       location: 'Oberlin, LA',
@@ -27,7 +27,7 @@ const FeaturedProjects: React.FC = () => {
       description:
         'Investigation and rehabilitation to reduce I&I within the South Plaquemine Sewer Collection System.',
       category: 'Wastewater/Sewer',
-      image: '/Utilites/Wastewater Collection and Sewer/down-net_http20250910-102-huufa1.jpg',
+      image: '/Utilites/Wastewater Collection and Sewer/down-net_http20250910-102-huufa1.webp',
       completionDate: '2024-10-30',
       clientName: 'Iberville Parish Council',
       location: 'Plaquemine, LA',

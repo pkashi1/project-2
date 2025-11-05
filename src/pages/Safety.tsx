@@ -206,8 +206,8 @@ const Safety: React.FC = () => {
             </div>
             <div className="relative">
               <img
-                // src="/images/downtown-construction.png"
-                src="/Jack&Bore-Tunneling/down-net_http20250912-130-mbgxq6.jpg"
+                // src="/images/downtown-construction.webp"
+                src="/Jack&Bore-Tunneling/down-net_http20250912-130-mbgxq6.webp"
                 alt="Safety equipment and construction site"
                 className="rounded-2xl shadow-xl w-full h-56 sm:h-80 object-cover"
               />

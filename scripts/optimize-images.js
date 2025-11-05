@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * Image Optimization Script
+ * Image Optimization Script with Auto-Compression
  * 
- * This script helps identify large images that should be optimized.
- * 
- * To actually compress images, install sharp:
- * npm install --save-dev sharp
- * 
- * Then run: node scripts/optimize-images.js
+ * Install sharp: npm install --save-dev sharp
+ * Run: node scripts/optimize-images.js
+ * Compress: node scripts/optimize-images.js --compress
  */
 
 import fs from 'fs';
@@ -21,6 +18,7 @@ const __dirname = path.dirname(__filename);
 const publicDir = path.join(__dirname, '..', 'public');
 const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
 const sizeThreshold = 500 * 1024; // 500KB
+const shouldCompress = process.argv.includes('--compress');
 
 function getFileSizeInKB(filePath) {
   const stats = fs.statSync(filePath);
@@ -42,7 +40,8 @@ function scanDirectory(dir, results = []) {
         const size = stat.size;
         if (size > sizeThreshold) {
           results.push({
-            path: filePath.replace(publicDir, ''),
+            path: filePath,
+            relativePath: filePath.replace(publicDir, ''),
             size: getFileSizeInKB(filePath),
             ext: ext
           });
@@ -52,6 +51,37 @@ function scanDirectory(dir, results = []) {
   });
 
   return results;
+}
+
+async function compressImages(images) {
+  try {
+    const sharp = (await import('sharp')).default;
+    
+    console.log('\n🔧 Compressing images...\n');
+    
+    for (const img of images) {
+      const originalSize = parseFloat(img.size);
+      const outputPath = img.path.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+      
+      try {
+        await sharp(img.path)
+          .webp({ quality: 75 })
+          .toFile(outputPath);
+        
+        const newSize = getFileSizeInKB(outputPath);
+        const savings = ((originalSize - parseFloat(newSize)) / originalSize * 100).toFixed(1);
+        
+        console.log(`✅ ${img.relativePath}`);
+        console.log(`   ${originalSize} KB → ${newSize} KB (${savings}% smaller)\n`);
+      } catch (err) {
+        console.log(`❌ Failed: ${img.relativePath} - ${err.message}`);
+      }
+    }
+    
+    console.log('✅ Compression complete!');
+  } catch (err) {
+    console.error('\n❌ Sharp not installed. Run: npm install --save-dev sharp');
+  }
 }
 
 console.log('🔍 Scanning for large images...\n');
@@ -64,13 +94,22 @@ if (largeImages.length === 0) {
   
   largeImages
     .sort((a, b) => parseFloat(b.size) - parseFloat(a.size))
+    .slice(0, 20)
     .forEach(img => {
-      console.log(`  ${img.path} - ${img.size} KB`);
+      console.log(`  ${img.relativePath} - ${img.size} KB`);
     });
 
+  if (largeImages.length > 20) {
+    console.log(`  ... and ${largeImages.length - 20} more`);
+  }
+
   console.log('\n📝 Recommendations:');
-  console.log('  1. Use online tools like TinyPNG or Squoosh to compress images');
-  console.log('  2. Convert to WebP format for better compression');
-  console.log('  3. Resize images to appropriate dimensions before uploading');
-  console.log('  4. Consider using a CDN with automatic image optimization');
+  console.log('  1. Run: node scripts/optimize-images.js --compress');
+  console.log('  2. Or use TinyPNG/Squoosh manually');
+  console.log('  3. Convert to WebP format (75% quality recommended)');
+  console.log('  4. Expected savings: 60-80% file size reduction');
+  
+  if (shouldCompress) {
+    await compressImages(largeImages);
+  }
 }

@@ -201,7 +201,7 @@
 //             </div>
 //           </div>
 //           <div className="relative">
-//             <img src="/images/pedro-miranda-3QzMBrvCeyQ-unsplash.jpg" alt="Construction team at work" className="rounded-2xl shadow-xl w-full h-64 object-cover" />
+//             <img src="/images/pedro-miranda-3QzMBrvCeyQ-unsplash.webp" alt="Construction team at work" className="rounded-2xl shadow-xl w-full h-64 object-cover" />
 //             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
 //           </div>
 //         </div>
@@ -567,7 +567,7 @@ const Careers: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src="/Deep Foundation/IMG_4365.JPG" 
+              src="/Deep Foundation/IMG_4365.webp" 
               alt="Construction team at work" 
               className="rounded-2xl shadow-xl w-full h-64 object-cover" 
             />

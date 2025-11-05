@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const axios = require('axios');
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -19,12 +20,22 @@ async function sendJobApplicationEmail({ name, email, phone, position, experienc
     <p><strong>Resume:</strong> <a href="${sasUrl}" target="_blank">${resumeName}</a> (valid for 7 days)</p>
   `;
 
+  // Download the PDF from Azure Blob Storage
+  const response = await axios.get(sasUrl, { responseType: 'arraybuffer' });
+  const pdfBuffer = Buffer.from(response.data);
+
   return transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: 'kasiparimal@gmail.com',
     // to:'srikanthbangaru.lsu@gmail.com',
     subject: `Application for ${position} – ${name}`,
     html,
+    attachments: [
+      {
+        filename: resumeName,
+        content: pdfBuffer,
+      },
+    ],
   });
 }
 

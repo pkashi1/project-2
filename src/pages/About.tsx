@@ -67,8 +67,8 @@ const About: React.FC = () => {
     {/* Background image + gradient overlay */}
     <div
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      // style={{ backgroundImage: "url('/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')" }}
-      style={{ backgroundImage: "url('/Civil Construction/down-net_http20250912-125-o2zd82.jpg')" }  }
+      // style={{ backgroundImage: "url('/images/jeriden-villegas-VLPUm5wP5Z0-unsplash.webp')" }}
+      style={{ backgroundImage: "url('/Civil Construction/down-net_http20250912-125-o2zd82.webp')" }  }
     >
       {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
 <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />
@@ -314,7 +314,7 @@ const About: React.FC = () => {
 
               {/* Responsive, centered, and capped size */}
               <img
-                src="/images/certifications/credentials.png"
+                src="/images/certifications/credentials.webp"
                 alt="Contractor License"
                 className="block mx-auto w-full h-auto object-contain max-w-[36rem] md:max-w-[44rem] lg:max-w-[52rem]"
               />

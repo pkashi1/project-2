@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const certImages = [
   {
-    src: '/images/certifications/ABC.png',
+    src: '/images/certifications/ABC.webp',
     alt: 'ABC Associated Builders and Contractors'
   },
   {
@@ -10,7 +10,7 @@ const certImages = [
     alt: 'Alliance Logo'
   },
   {
-    src: '/images/certifications/avetta_member.png',
+    src: '/images/certifications/avetta_member.webp',
     alt: 'Avetta Member'
   },
   {
@@ -26,7 +26,7 @@ const certImages = [
     alt: 'OSHA Certification'
   },
   {
-    src: '/images/certifications/state_of_LA.png',
+    src: '/images/certifications/state_of_LA.webp',
     alt: 'State of Louisiana Certification'
   }
 ];

@@ -23,7 +23,7 @@ const Projects: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           // style={{ backgroundImage: 'url(/images/di-F1MlxlEpaOk-unsplash.jpg)' }}
-          style={{ backgroundImage: "url('/Deep Foundation/thumbnail_image002.jpg')" }}
+          style={{ backgroundImage: "url('/Deep Foundation/thumbnail_image002.webp')" }}
         >
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-900/90" /> */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary-800/85 via-primary-600/75 to-secondary-600/80 dark:from-gray-200/80 dark:via-gray-400/90 dark:to-gray-700/90" />

@@ -6,6 +6,7 @@ interface OptimizedImageProps {
   className?: string;
   loading?: 'lazy' | 'eager';
   priority?: boolean;
+  fetchpriority?: 'high' | 'low' | 'auto';
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -14,8 +15,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   className = '',
   loading = 'lazy',
   priority = false,
+  fetchpriority,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(priority);
   const [isInView, setIsInView] = useState(priority);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -47,8 +49,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       ref={imgRef}
       src={isInView ? src : undefined}
       alt={alt}
-      loading={loading}
+      loading={priority ? 'eager' : loading}
       decoding="async"
+      fetchpriority={fetchpriority || (priority ? 'high' : 'auto')}
       className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
       onLoad={() => setIsLoaded(true)}
     />

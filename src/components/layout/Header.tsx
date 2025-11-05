@@ -73,7 +73,7 @@ const Header: React.FC = () => {
           <Link to="/" className="flex items-end space-x-3">
             <img
               // src="/images/logo.jpg"
-              src='/Logos/SUlogo.PNG'
+              src='/Logos/SUlogo.webp'
               alt="Southern Underground Construction Company Logo"
               className="w-80 h-20 rounded-lg object-contain bg-white"
               style={{ maxWidth: 280 }}

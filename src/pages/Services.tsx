@@ -1029,8 +1029,8 @@ const Services: React.FC = () => {
       <section className="relative py-20 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          // style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.jpg')" }}
-          style={{ backgroundImage: "url('/Deep Foundation/IMG_4394.JPG')" }}
+          // style={{ backgroundImage: "url('/images/christopher-burns-8KfCR12oeUM-unsplash.webp')" }}
+          style={{ backgroundImage: "url('/Deep Foundation/IMG_4394.webp')" }}
         >
 
           {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-300/90 via-primary-800/80 to-secondary-900/90" /> */}
@@ -1246,7 +1246,7 @@ const Services: React.FC = () => {
                             // Fallback to a default image if service image fails to load
                             const target = e.target as HTMLImageElement;
                             // Try a secondary fallback image
-                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.webp';
                             // If that also fails, show a placeholder
                             target.onerror = () => {
                               target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
@@ -1301,7 +1301,7 @@ const Services: React.FC = () => {
                             // Fallback to a default image if service image fails to load
                             const target = e.target as HTMLImageElement;
                             // Try a secondary fallback image
-                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.jpg';
+                            target.src = '/images/christopher-burns-8KfCR12oeUM-unsplash.webp';
                             // If that also fails, show a placeholder
                             target.onerror = () => {
                               target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjE2MCIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';

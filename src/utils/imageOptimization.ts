@@ -252,3 +252,76 @@ export function calculateAspectRatio(width: number, height: number): string {
 
 // Import React for types
 import React from 'react';
+
+/**
+ * Video optimization utilities
+ */
+export interface VideoOptimizationConfig {
+  src: string;
+  poster?: string;
+  lazy?: boolean;
+  priority?: boolean;
+  quality?: 'low' | 'medium' | 'high';
+}
+
+/**
+ * Get optimal video preload strategy
+ */
+export function getVideoPreloadStrategy(): 'none' | 'metadata' | 'auto' {
+  if (typeof navigator === 'undefined') return 'metadata';
+  
+  const connection = (navigator as any).connection;
+  if (!connection) return 'metadata';
+  
+  const effectiveType = connection.effectiveType;
+  const saveData = connection.saveData;
+  
+  if (saveData) return 'none';
+  if (effectiveType === '4g') return 'metadata';
+  if (effectiveType === '3g') return 'metadata';
+  return 'none';
+}
+
+/**
+ * Preload video for faster playback
+ */
+export function preloadVideo(src: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    video.preload = 'metadata';
+    video.onloadedmetadata = () => resolve();
+    video.onerror = reject;
+    video.src = src;
+  });
+}
+
+/**
+ * Create video lazy loader
+ */
+export function createVideoLazyLoader(rootMargin: string = '200px'): IntersectionObserver | null {
+  if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    return null;
+  }
+
+  return new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target as HTMLVideoElement;
+          const src = video.dataset.src;
+
+          if (src) {
+            video.src = src;
+            video.load();
+            video.removeAttribute('data-src');
+            
+            if (video.muted && video.hasAttribute('autoplay')) {
+              video.play().catch(() => {});
+            }
+          }
+        }
+      });
+    },
+    { rootMargin, threshold: 0.1 }
+  );
+}

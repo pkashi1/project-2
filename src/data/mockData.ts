@@ -32,7 +32,7 @@ import type { ServiceWithMeta } from '../../src/utils/seoMetadata';
 //     id: 'utility-installation',
 //     name: 'Utility Installation',
 //     icon: 'Zap',
-//     image: '/images//di-F1MlxlEpaOk-unsplash.jpg',
+//     image: '/images//di-F1MlxlEpaOk-unsplash.webp',
 //     shortDescription: 'Complete utility infrastructure installation and maintenance services.',
 //     detailedDescription: 'Comprehensive utility installation services covering water, sewer, gas, electrical, and telecommunications infrastructure. Our experienced team handles everything from residential connections to major municipal projects.',
 //     features: [
@@ -1372,7 +1372,7 @@ export const projects = [
     description:
       'Citywide sanitary sewer assessment and rehabilitation to reduce inflow and infiltration (I&I).',
     category: 'Wastewater/Sewer',
-    image: '/project_background/Oberlin.jpg',
+    image: '/project_background/Oberlin.webp',
     completionDate: '2024-12-15',               
     clientName: 'Town of Oberlin',
     location: 'Oberlin, LA',
@@ -1443,7 +1443,7 @@ export const projects = [
   //   title: 'Downtown Baton Rouge Utility Upgrade',
   //   description: 'Upgrade the whole 12-block downtown area\'s utility infrastructure, including the water, sewage, and telecommunications systems.',
   //   category: 'Utility Installation',
-  //   image: '/images//downtown-construction.png',
+  //   image: '/images//downtown-construction.webp',
   //   completionDate: '2024-02-15',
   //   clientName: 'City of Baton Rouge',
   //   location: 'Baton Rouge, LA',
@@ -1497,7 +1497,7 @@ export const projects = [
   //   title: 'Water Treatment Plant Upgrade',
   //   description: 'Major upgrade to municipal water treatment facility including new filtration systems and pipeline connections.',
   //   category: 'Water & Sewer Treatment',
-  //   image: '/images//waterplant.png',
+  //   image: '/images//waterplant.webp',
   //   completionDate: '2023-09-15',
   //   clientName: 'Central Water Works',
   //   location: 'Central, LA',
@@ -1754,7 +1754,7 @@ export const blogPosts = [
     author: 'Amanda Wilson',
     publishDate: '2024-03-05',
     tags: ['Safety', 'Training', 'Best Practices'],
-    featuredImage: '/images//dean-bennett-aBV8pVODWiM-unsplash.jpg',
+    featuredImage: '/images//dean-bennett-aBV8pVODWiM-unsplash.webp',
     readTime: 4
   },
   {

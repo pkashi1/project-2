@@ -9,6 +9,7 @@ import {
   Wrench,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import OptimizedVideo from '../common/OptimizedVideo';
 
 // Animated Counter Component
 const AnimatedCounter: React.FC<{ 
@@ -222,17 +223,17 @@ const WhySouthernUnderground: React.FC = () => {
 const NewHero: React.FC = () => {
   return (
     <section className="relative min-h-[80vh] overflow-hidden pt-12 pb-9">
-      {/* Background video */}
-      <video
+      {/* Background video - LCP element */}
+      <OptimizedVideo
+        src="/images/road-construction.mp4"
         autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/images/road-construction.mp4" type="video/mp4" />
-      </video>
+        priority={true}
+        lazy={false}
+        className="hero-video"
+      />
 
       {/* Gradient Overlay: stronger at bottom for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
@@ -389,7 +390,7 @@ const ServicesHero: React.FC = () => {
       icon: Wrench,
       description:
         'Comprehensive drainage solutions for municipal and commercial projects.',
-      backgroundImage: '/Drainage/down-net_http20250911-137-o2qt0c.jpg',
+      backgroundImage: '/Drainage/down-net_http20250911-137-o2qt0c.webp',
       ctaText: 'More About Drainage',
       ctaLink: '/services#drainage', // ← updated
     },
