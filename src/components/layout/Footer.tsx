@@ -96,14 +96,16 @@ const Footer: React.FC = () => {
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Company Logo - Desktop */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center justify-start">
-              <img
-                src="/Logos/BADGE LOGO PNG .png"
-                alt="Southern Underground Construction Company Logo"
-                className="w-24 h-24 lg:w-28 lg:h-28 rounded-full object-contain bg-white"
-              />
-            </Link>
-          </div>
+  <Link to="/" className="flex items-center justify-start">
+    <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-white flex items-center justify-center">
+      <img
+        src="/Logos/BADGE LOGO PNG .png"
+        alt="Southern Underground Construction Company Logo"
+        className="w-full h-full object-contain"
+      />
+    </div>
+  </Link>
+</div>
 
           {/* Quick Links - Desktop */}
           <div className="text-left">

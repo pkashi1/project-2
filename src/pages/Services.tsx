@@ -651,8 +651,8 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
     const imageMap: Record<string, string[]> = {
       'Directional Drilling': [
         'down-net_http20250912-127-gh773e.jpg',
-        'down-net_http20250912-137-1r4lb3.jpg',
-        'down-net_http20250912-144-eyooq1.jpg',
+        // 'down-net_http20250912-137-1r4lb3.jpg',
+        // 'down-net_http20250912-144-eyooq1.jpg',
         'down-net_http20250912-161-5whxnz.jpg',
         'down-net_http20250912-165-x4wftm.jpg',
         'down-net_http20250912-175-8ut3xj.jpg',
