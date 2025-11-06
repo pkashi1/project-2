@@ -22,6 +22,7 @@ async function sendJobApplicationEmail({ name, email, phone, position, experienc
   return transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: 'career@suofla.com',
+    // to: 'kasiparimal@gmail.com',
     subject: `Application for ${position} – ${name}`,
     html,
     attachments: [{
@@ -76,7 +77,8 @@ async function sendContactSubmissionEmail(contact) {
 
   return transporter.sendMail({
     from: process.env.EMAIL_USER,
-    to: 'info@suofla.com',
+    // to: 'info@suofla.com',
+    to: 'kasiparimal@gmail.com',
     subject: `New contact request – ${name}`,
     html,
   });

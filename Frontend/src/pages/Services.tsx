@@ -657,18 +657,18 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
         'down-net_http20250912-165-x4wftm.jpg',
         'down-net_http20250912-175-8ut3xj.jpg',
         'down-net_http20250912-175-rzog2v.jpg',
-        'down-net_http20250912-190-z59lu.jpg',
-        'down-net_http20250912-198-fkd4q2.jpg',
+        // 'down-net_http20250912-190-z59lu.jpg',
+        // 'down-net_http20250912-198-fkd4q2.jpg',
         'down-net_http20250912-205-iteedj.jpg',
       ],
       'Civil Construction': [
         'down-net_http20250911-109-uhtwxe.jpg',
         'down-net_http20250911-122-4kanyl.jpg',
-        'down-net_http20250911-160-ou0v6t.jpg',
+        // 'down-net_http20250911-160-ou0v6t.jpg',
         'down-net_http20250911-162-v6ta0w.jpg',
         'down-net_http20250911-179-fh5cfp.jpg',
         'down-net_http20250911-207-l0qx25.jpg',
-        'down-net_http20250911-246-1gmpof.jpg',
+        // 'down-net_http20250911-246-1gmpof.jpg',
         'down-net_http20250911-96-11t083.jpg',
         'down-net_http20250912-125-o2zd82.jpg',
         'down-net_http20250912-236-n4pumu.jpg',
@@ -698,19 +698,19 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
         'down-net_http20250912-107-1dvg26.jpg',
         'down-net_http20250912-116-kqu90f.jpg',
         'down-net_http20250912-126-k3qg8w.jpg',
-        'down-net_http20250912-130-mbgxq6.jpg',
-        'down-net_http20250912-145-wp33ip.jpg',
+        // 'down-net_http20250912-130-mbgxq6.jpg',
+        // 'down-net_http20250912-145-wp33ip.jpg',
         'down-net_http20250912-147-q42v8p.jpg',
         'down-net_http20250912-169-j491tb.jpg',
         'down-net_http20250912-175-jij4mo.jpg',
       ],
       'Utilites': [
-        'Water System Installation/down-net_http20250911-125-y4rprp.jpg',
+        // 'Water System Installation/down-net_http20250911-125-y4rprp.jpg',
         'Water System Installation/down-net_http20250911-135-69fimn.jpg',
         'Water System Installation/down-net_http20250911-152-i74o87.jpg',
         'Water System Installation/down-net_http20250911-162-zrc1k3.jpg',
         'Water System Installation/down-net_http20250911-165-nh5ffb.jpg',
-        'Gas System Installation/down-net_http20250912-105-dh3cqs.jpg',
+        // 'Gas System Installation/down-net_http20250912-105-dh3cqs.jpg',
         'Gas System Installation/down-net_http20250912-125-hkgir.jpg',
         'Gas System Installation/down-net_http20250912-209-dxghan.jpg',
         'Gas System Installation/down-net_http20250912-267-o6u13q.jpg',
@@ -723,7 +723,6 @@ const getServiceImages = async (serviceId: string): Promise<string[]> => {
     // Fixed image path generation - handle spaces in directory and file names properly
     // Also corrected the path to not include '/public' since Vite serves static assets from the root
     return images.map(img => {
-      // For paths with subdirectories (like 'Water System Installation/down-net_http20250911-125-y4rprp.jpg')
       if (img.includes('/')) {
         const [subDir, fileName] = img.split('/');
         return `/${directory}/${encodeURIComponent(subDir)}/${encodeURIComponent(fileName)}`;
