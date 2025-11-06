@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
               <img
                 src="/Logos/BADGE LOGO PNG .png"
                 alt="Southern Underground Construction Company Logo"
-                className="w-16 h-16 rounded-full object-contain bg-white mx-auto"
+                className="w-16 h-16 object-contain bg-white mx-auto"
               />
             </Link>
           </div>
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
           {/* Company Logo - Desktop */}
           <div className="lg:col-span-1">
         <Link to="/" className="flex items-center justify-start">
-          <div className="w-24 h-24 lg:w-28 lg:h-28 bg-white flex items-center justify-center">
+          <div className="w-32 h-32 lg:w-40 lg:h-40 bg-white flex items-center justify-center">
             <img
               src="/Logos/BADGE LOGO PNG .png"
               alt="Southern Underground Construction Company Logo"
