@@ -70,11 +70,11 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center py-3">
-          <Link to="/" className="flex items-end space-x-3">
+          <Link to="/" className="flex items-end space-x-3 -ml-8">
             <img
               src='/Logos/LOGO WHITE PNG .png'
               alt="Southern Underground Construction Company Logo"
-              className="h-32 w-80 object-contain"
+              className="h-36 w-112 object-contain"
             />
           </Link>
 

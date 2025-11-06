@@ -1039,7 +1039,7 @@ export const projects = [
     description:
       'Investigation and rehabilitation to reduce I&I within the South Plaquemine Sewer Collection System.',
     category: 'Wastewater/Sewer',
-    image: '/Utilites/Wastewater%20Collection%20and%20Sewer/down-net_http20250910-119-fc9v3c.jpg',
+    image: '/Utilites/Wastewater Collection and Sewer/down-net_http20250910-102-huufa1.jpg',
     completionDate: '2024-10-30',
     clientName: 'Iberville Parish Council',
     location: 'Plaquemine, LA',
@@ -1063,7 +1063,7 @@ export const projects = [
     description:
       'Water and gas distribution improvements including high‑pressure gas pipeline work with enhanced safety protocols.',
     category: 'Water / Gas Distribution',
-    image: '/Utilites/Gas%20System%20Installation/down-net_http20250912-125-hkgir.jpg',
+    image: '/Utilites/Gas System Installation/gas.png',
     completionDate: '2024-08-15',
     clientName: 'City of Baker',
     location: 'Baker, LA',
