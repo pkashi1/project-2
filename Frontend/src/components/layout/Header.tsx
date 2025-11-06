@@ -155,7 +155,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Hamburger & Toggles */}
           <div className="flex items-center space-x-2 lg:hidden">
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
             {isCareers && (
               <>
                 <button
