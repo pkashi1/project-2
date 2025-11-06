@@ -31,7 +31,7 @@ app.use('/api/contact', async (req,res,next)=>{await connectMongo();next();}, co
 app.use('/api/newsletter', async (req,res,next)=>{await connectMongo();next();}, newsletter);
 app.use('/api/job', async (req,res,next)=>{await connectMongo();next();}, jobApp);
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app;      // ✅ export, don’t listen()
