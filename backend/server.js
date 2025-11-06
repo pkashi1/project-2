@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://salmon-meadow-0e430c50f.6.azurestaticapps.net/'],
+  origin: ['http://localhost:5173', 'https://salmon-meadow-0e430c50f.6.azurestaticapps.net'],
   credentials: false
 }));
 
