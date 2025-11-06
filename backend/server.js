@@ -26,11 +26,12 @@ function connectMongo() {
 const contact = require('./routes/contact');
 const newsletter = require('./routes/newsletter');
 const jobApp = require('./routes/jobApplication');
-const upload = require('./routes/upload'); // SAS route
 
 app.use('/api/contact', async (req,res,next)=>{await connectMongo();next();}, contact);
 app.use('/api/newsletter', async (req,res,next)=>{await connectMongo();next();}, newsletter);
-app.use('/api/job-apply', async (req,res,next)=>{await connectMongo();next();}, jobApp);
-app.use('/api/upload', upload);
+app.use('/api/job', async (req,res,next)=>{await connectMongo();next();}, jobApp);
+
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app;      // ✅ export, don’t listen()
