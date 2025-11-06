@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { jobOpenings } from '../data/mockData';
 import { useLanguage } from '../contexts/LanguageContext';
+import { API_URL } from '../config/api';
 
 const TRANSLATIONS = {
   en: {
@@ -146,7 +147,7 @@ const Careers: React.FC = () => {
       });
       if (applicationData.resume) payload.append('resume', applicationData.resume);
       
-      const res = await fetch('http://localhost:5050/api/job/apply', { 
+      const res = await fetch(`${API_URL}/api/job/apply`, { 
         method: 'POST', 
         body: payload 
       });
